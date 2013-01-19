@@ -1,0 +1,44 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Mindsweep.Login"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="{StaticResource AppTitleUppercase}" Style="{StaticResource JPhoneTextNormalStyle}"/>
+        </StackPanel>
+
+        <phone:WebBrowser Grid.Row="1" x:Name="wbLogin" IsScriptEnabled="True"
+                          Navigating="wbLogin_Navigating"/>
+    
+        <StackPanel Background="Gainsboro" Grid.Row="2" Orientation="Vertical" HorizontalAlignment="Stretch">
+            <TextBlock Margin="0,8,0,0" Text="Click done after logging in and authorizing the app." TextWrapping="Wrap" Style="{StaticResource JPhoneTextNormalStyle}" HorizontalAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Margin="0,0,40,0" Content="retry" Foreground="Black" BorderBrush="Black" Click="Retry_Click" />
+            <Button x:Name="DoneButton" Content="done" IsEnabled="False" Foreground="Black" BorderBrush="Black" Click="Done_Click" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+
+</phone:PhoneApplicationPage>

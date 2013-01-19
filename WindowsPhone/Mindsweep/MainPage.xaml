@@ -1,0 +1,110 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Mindsweep.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+	<!--LayoutRoot is the root grid where all page content is placed-->
+	<Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="{StaticResource AppTitleUppercase}" Style="{StaticResource JPhoneTextNormalStyle}"/>
+            <TextBlock x:Name="PageTitle" Text="home" Margin="9,-7,0,0" Style="{StaticResource JPhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Button Visibility="{Binding IsLoggedIn,Converter={StaticResource BoolVisibilityConverter}, ConverterParameter=true}" Content="Log In" Click="LogIn_Click" Height="100" Style="{StaticResource LightButtonStyle}"/>
+            <ListBox Visibility="{Binding IsLoggedIn,Converter={StaticResource BoolVisibilityConverter}}" Margin="14,0,-12,0" FontSize="{StaticResource PhoneFontSizeExtraLarge}" FontFamily="{StaticResource PhoneFontFamilySemiLight}">
+                <ListBoxItem Tap="GoToInbox">
+                    <Grid Width="430" Margin="0,10,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock HorizontalAlignment="Stretch" Grid.Column="0" Text="Inbox"/>
+                        <Border Grid.Column="1" Style="{StaticResource NumberBadgeBorderStyle}">
+                            <TextBlock Text="2" Style="{StaticResource NumberBadgeTextStyle}"/>
+                        </Border>
+                    </Grid>
+                </ListBoxItem>
+
+                <ListBoxItem Tap="GoToNextActions">
+                    <Grid Width="430" Margin="0,10,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock HorizontalAlignment="Stretch" Grid.Column="0" Text="Next Actions"/>
+                        <Border Grid.Column="1" Style="{StaticResource NumberBadgeBorderStyle}">
+                            <TextBlock Text="8" Style="{StaticResource NumberBadgeTextStyle}"/>
+                        </Border>
+                    </Grid>
+                </ListBoxItem>
+
+                <ListBoxItem Tap="GoToProjects">
+                    <Grid Width="430" Margin="0,10,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock HorizontalAlignment="Stretch" Grid.Column="0" Text="Projects"/>
+                    </Grid>
+                </ListBoxItem>
+                <ListBoxItem Tap="GoToContexts">
+                    <Grid Width="430" Margin="0,10,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock HorizontalAlignment="Stretch" Grid.Column="0" Text="Contexts"/>
+                    </Grid>
+                </ListBoxItem>
+                <ListBoxItem Tap="GoToFlagged">
+                    <Grid Width="430" Margin="0,10,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock HorizontalAlignment="Stretch" Grid.Column="0" Text="Flagged"/>
+                        <Border Grid.Column="1" Background="Red" Style="{StaticResource NumberBadgeBorderStyle}">
+                            <TextBlock Text="1" Style="{StaticResource NumberBadgeTextStyle}"/>
+                        </Border>
+                    </Grid>
+                </ListBoxItem>
+            </ListBox>
+		</Grid>
+	</Grid>
+
+	<phone:PhoneApplicationPage.ApplicationBar>
+		<shell:ApplicationBar BackgroundColor="Gainsboro" ForegroundColor="Black" IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Images/sync.png" Text="sync" Click="Sync_Click"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/feature.search.png" Text="search" Click="Search_Click"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/add.png" Text="new task" Click="Add_Click"/>
+			<shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="about" Click="About_Click"/>
+                <shell:ApplicationBarMenuItem Text="logout" Click="LogOut_Click"/>
+                <shell:ApplicationBarMenuItem Text="delete db" Click="DeleteDB_Click"/>
+            </shell:ApplicationBar.MenuItems>
+		</shell:ApplicationBar>
+	</phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>
+
