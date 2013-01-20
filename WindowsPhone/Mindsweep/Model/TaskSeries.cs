@@ -145,6 +145,23 @@ namespace Mindsweep.Model
                 );
         }
 
+        public void Sync(TaskSeries ts)
+        {
+            // Update if newer.
+            if (ts.Modified > Modified)
+            {
+                Created = ts.Created;
+                Modified = ts.Modified;
+                Name = ts.Name;
+                Project = ts.Project;
+                RepeatRule = ts.RepeatRule;
+                Source = ts.Source;
+                Tags = ts.Tags;
+                Tasks = ts.Tasks;
+                Url = ts.Url;
+            }
+        }
+
         #region Child Tasks
 
         // Define the entity set for the collection side of the relationship.

@@ -35,7 +35,7 @@ namespace Mindsweep
 
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
-            if (App.ViewModel.IsLoggedIn)
+            if (App.ViewModel.IsLoggedIn && !App.ViewModel.IsSynced)
                 App.ViewModel.Sync();
         }
 

@@ -26,6 +26,7 @@ namespace Mindsweep.ViewModels
             mainDB = new MainDataContext(deckDBConnectionString);
             client = new WebClient();
             client.DownloadStringCompleted += client_DownloadStringCompleted;
+            IsSynced = false;
         }
 
         // All projects.
@@ -90,7 +91,7 @@ namespace Mindsweep.ViewModels
             get { return !string.IsNullOrEmpty(this.Token); }
         }
 
-
+        public bool IsSynced { get; set; }
 
         private string _token;
         public string Token
@@ -166,17 +167,40 @@ namespace Mindsweep.ViewModels
                 }
             }
 
+            // TODO: delete projects that don't exist on the server.
+
             mainDB.SubmitChanges();
 
             AllProjects = new ObservableCollection<Project>(mainDB.Projects);
 
-            client.DownloadStringAsync(RTM.SignJsonRequest(RTM.URI_GETTASKS + "&filter=status:incomplete"), new Action<string>(ParseJsonTasks));
+            // If we haven't downloaded tasks for this user, just grab the incomplete ones.
+            if(mainDB.TaskSeries.Count() == 0)
+                client.DownloadStringAsync(RTM.SignJsonRequest(RTM.URI_GETTASKS + "&filter=status:incomplete"), new Action<string>(ParseJsonTasks));
+            else // Download the changes since the last sync.
+                client.DownloadStringAsync(RTM.SignJsonRequest(RTM.URI_GETTASKS + "&last_sync=" + LastSync.ToString("o")), new Action<string>(ParseJsonTasks));
+        }
+
+        private DateTime _lastSync;
+        public DateTime LastSync
+        {
+            get
+            {
+                if (!IsolatedStorageSettings.ApplicationSettings.TryGetValue<DateTime>("LastSync", out _lastSync))
+                    _lastSync = DateTime.MinValue;
+
+                return _lastSync;
+            }
+            set
+            {
+                _lastSync = value;
+                IsolatedStorageSettings.ApplicationSettings["LastSync"] = _lastSync;
+                NotifyPropertyChanged("LastSync");
+            }
         }
 
         public void ParseJsonTasks(string json)
         {
             JsonResponse response = JsonConvert.DeserializeObject<JsonResponse>(json);
-
 
             if (response.Status == StatusCodes.InvalidAuthToken)
                 Logout();
@@ -198,8 +222,7 @@ namespace Mindsweep.ViewModels
                         }
                         else
                         {
-                            throw new NotImplementedException();
-                            // storedTaskSeries.Sync(ts);
+                            storedTaskSeries.Sync(ts);
                         }
                     }
                 }
@@ -207,12 +230,17 @@ namespace Mindsweep.ViewModels
 
             mainDB.SubmitChanges();
 
+            IsSynced = true;
+            LastSync = DateTime.UtcNow;
+
             LoadCollectionsFromDatabase();
         }
 
         public void Sync()
         {
             client.DownloadStringAsync(RTM.SignJsonRequest(RTM.URI_GETLISTS), new Action<string>(ParseJsonProjects));
+
+            // TODO: Sync the other way -- send updates to RTM.
         }
 
         public void DeleteDB()

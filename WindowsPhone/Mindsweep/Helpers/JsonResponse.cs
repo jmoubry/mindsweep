@@ -42,9 +42,12 @@ namespace Mindsweep.Helpers
 
                 foreach(JsonTasksResultsList list in rsp.tasks.list)
                 {
-                    Project p = new Project() { Id = list.id };
-                    p.TaskSeries.AddRange(list.taskseries);
-                    projects.Add(p);
+                    if (list.taskseries != null && list.taskseries.Count  > 0)
+                    {
+                        Project p = new Project() { Id = list.id };
+                        p.TaskSeries.AddRange(list.taskseries);
+                        projects.Add(p);
+                    }
                 }
 
                 return projects;
