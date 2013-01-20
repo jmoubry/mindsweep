@@ -90,15 +90,7 @@ namespace Mindsweep
 
         private void wbLogin_Navigating(object sender, NavigatingEventArgs e)
         {
-            // TODO: if uri is http://mindsweep.moubry.com, cancel and do this:
-
-            // TODO: Show Loading.
-
-
-            client.CancelAsync();
             client.DownloadStringAsync(RTM.SignRequest(RTM.URI_GET_TOKEN + "&frob=" + _frob), new Action<XDocument>(Done));
-
-  
         }
 
     }

@@ -88,6 +88,9 @@
     <Compile Include="Commands\RateThisAppCommand.cs" />
     <Compile Include="Commands\SendAnEmailCommand.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="ProjectView.xaml.cs">
+      <DependentUpon>ProjectView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\JsonConverters.cs" />
     <Compile Include="Helpers\JsonResponse.cs" />
     <Compile Include="Login.xaml.cs">
@@ -147,6 +150,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="AppConfig_Sensitive.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ProjectView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

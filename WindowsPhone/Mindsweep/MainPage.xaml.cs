@@ -76,7 +76,12 @@ namespace Mindsweep
 
         private void GoToInbox(object sender, GestureEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("/Inbox.xaml", UriKind.RelativeOrAbsolute));
+            var inbox = App.ViewModel.AllProjects.Where(p => p.Name == "Inbox" && p.Locked).FirstOrDefault();
+
+            if (inbox == null)
+                MessageBox.Show("Error accessing your Inbox. Try again later.");
+            else
+                this.NavigationService.Navigate(new Uri("/ProjectView.xaml?id=" + inbox.Id, UriKind.RelativeOrAbsolute));
         }
 
         private void GoToNextActions(object sender, GestureEventArgs e)
