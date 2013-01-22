@@ -43,7 +43,7 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock HorizontalAlignment="Stretch" Grid.Column="0" Text="Inbox"/>
                         <Border Grid.Column="1" Style="{StaticResource NumberBadgeBorderStyle}">
-                            <TextBlock Text="2" Style="{StaticResource NumberBadgeTextStyle}"/>
+                            <TextBlock Text="{Binding InboxOpenTaskCount}" Style="{StaticResource NumberBadgeTextStyle}"/>
                         </Border>
                     </Grid>
                 </ListBoxItem>

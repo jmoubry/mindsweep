@@ -190,7 +190,7 @@ namespace Mindsweep.Model
         [Association(Storage = "_repeatrule", ThisKey = "_repeatruleId", OtherKey = "Id")]
         public RepeatRule RepeatRule
         {
-            get { return _repeatrule.Entity; }
+            get { return _repeatrule.HasLoadedOrAssignedValue ? _repeatrule.Entity : null; }
             set
             {
                 NotifyPropertyChanging("RepeatRule");

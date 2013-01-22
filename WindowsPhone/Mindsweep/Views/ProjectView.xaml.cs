@@ -35,7 +35,7 @@ namespace Mindsweep.Views
             else
             {
                 Title.Text = proj.Name;
-                TaskListBox.ItemsSource = proj.TaskSeries;
+                TaskListBox.ItemsSource = proj.TaskSeries.Where(t => t.Tasks.Any(tt => !tt.Completed.HasValue && !tt.Deleted.HasValue));
             }
 
             FlurryWP7SDK.Api.LogEvent("Project");

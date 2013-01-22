@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.Linq;
@@ -36,6 +37,109 @@ namespace Mindsweep.Model
                 NotifyPropertyChanged("Due");
             }
         }
+
+        private bool _hasDueTime;
+
+        [JsonConverter(typeof(Helpers.BitStringToBoolConverter))]
+        [JsonProperty(PropertyName="has_due_time")]
+        [Column]
+        public bool HasDueTime
+        {
+            get { return _hasDueTime; }
+            set
+            {
+                NotifyPropertyChanging("HasDueTime");
+                _hasDueTime = value;
+                NotifyPropertyChanged("HasDueTime");
+            }
+        }
+
+
+        private DateTime? _added;
+
+        [Column]
+        public DateTime? Added
+        {
+            get { return _added; }
+            set
+            {
+                NotifyPropertyChanging("Added");
+                _added = value;
+                NotifyPropertyChanged("Added");
+            }
+        }
+
+        private DateTime? _completed;
+
+        [Column]
+        public DateTime? Completed
+        {
+            get { return _completed; }
+            set
+            {
+                NotifyPropertyChanging("Completed");
+                _completed = value;
+                NotifyPropertyChanged("Completed");
+            }
+        }
+
+        private DateTime? _deleted;
+
+        [Column]
+        public DateTime? Deleted
+        {
+            get { return _deleted; }
+            set
+            {
+                NotifyPropertyChanging("Deleted");
+                _deleted = value;
+                NotifyPropertyChanged("Deleted");
+            }
+        }
+
+        private int _postponed;
+
+        [Column]
+        public int Postponed
+        {
+            get { return _postponed; }
+            set
+            {
+                NotifyPropertyChanging("Postponed");
+                _postponed = value;
+                NotifyPropertyChanged("Postponed");
+            }
+        }
+
+        private char _priority;
+
+        [Column]
+        public char Priority
+        {
+            get { return _priority; }
+            set
+            {
+                NotifyPropertyChanging("Priority");
+                _priority = value;
+                NotifyPropertyChanged("Priority");
+            }
+        }
+
+
+        private string _estimate;
+
+        [Column]
+        public string Estimate
+        {
+            get { return _estimate; }
+            set
+            {
+                NotifyPropertyChanging("Estimate");
+                _estimate = value;
+                NotifyPropertyChanged("Estimate");
+            }
+        }
+
 
         // Internal column for the associated Project ID value
         [Column]

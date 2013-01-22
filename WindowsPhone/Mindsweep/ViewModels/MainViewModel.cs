@@ -29,6 +29,8 @@ namespace Mindsweep.ViewModels
             IsSynced = false;
         }
 
+        #region Public Members
+
         // All projects.
         private ObservableCollection<Project> _allProjects;
         public ObservableCollection<Project> AllProjects
@@ -53,11 +55,6 @@ namespace Mindsweep.ViewModels
             }
         }
 
-        // Write changes in the data context to the database.
-        public void SaveChangesToDB()
-        {
-            mainDB.SubmitChanges();
-        }
 
         private bool _isAuthorized;
         public bool IsAuthorized
@@ -68,22 +65,6 @@ namespace Mindsweep.ViewModels
                 _isAuthorized = value;
                 NotifyPropertyChanged("IsAuthorized");
             }
-        }
-
-        // Query database and load the collections and list used by the pivot pages.
-        public void LoadCollectionsFromDatabase()
-        {
-            AllProjects = new ObservableCollection<Project>(mainDB.Projects);
-            AllTaskSeries = new ObservableCollection<TaskSeries>(mainDB.TaskSeries);
-        }
-
-        WebClient client;
-
-
-        void client_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
-        {
-            // TODO: handle error
-            (e.UserState as Action<string>)(e.Result);
         }
 
         public bool IsLoggedIn
@@ -112,20 +93,13 @@ namespace Mindsweep.ViewModels
             }
         }
 
-        public class UserInfo
-        {
-            public string Id { get; set; }
-            public string Username { get; set; }
-            public string FullName { get; set; }
-        }
-
         private UserInfo _user;
         public UserInfo User
         {
             get
             {
                 if (_user == null)
-                   IsolatedStorageSettings.ApplicationSettings.TryGetValue<UserInfo>("User", out _user);
+                    IsolatedStorageSettings.ApplicationSettings.TryGetValue<UserInfo>("User", out _user);
 
                 return _user;
             }
@@ -137,6 +111,72 @@ namespace Mindsweep.ViewModels
             }
         }
 
+        private DateTime _lastSync;
+        public DateTime LastSync
+        {
+            get
+            {
+                if (!IsolatedStorageSettings.ApplicationSettings.TryGetValue<DateTime>("LastSync", out _lastSync))
+                    _lastSync = DateTime.MinValue;
+
+                return _lastSync;
+            }
+            set
+            {
+                _lastSync = value;
+                IsolatedStorageSettings.ApplicationSettings["LastSync"] = _lastSync;
+                NotifyPropertyChanged("LastSync");
+                NotifyPropertyChanged("InboxOpenTaskCount");
+            }
+        }
+
+        public int InboxOpenTaskCount
+        {
+            get 
+            {
+                var inbox = AllProjects.Where(p => p.Name == "Inbox" && p.Locked).FirstOrDefault();
+
+                if (inbox == null)
+                    return 0;
+
+                return inbox.TaskSeries.Count(t => t.Tasks.Any(tt => !tt.Completed.HasValue && !tt.Deleted.HasValue));
+            }
+        }
+
+        #endregion
+
+        // Write changes in the data context to the database.
+        public void SaveChangesToDB()
+        {
+            mainDB.SubmitChanges();
+        }
+
+        // Query database and load the collections and list used by the pivot pages.
+        public void LoadCollectionsFromDatabase()
+        {
+            AllProjects = new ObservableCollection<Project>(mainDB.Projects);
+            AllTaskSeries = new ObservableCollection<TaskSeries>(mainDB.TaskSeries);
+        }
+
+        WebClient client;
+
+
+        void client_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
+        {
+            // TODO: handle error
+            (e.UserState as Action<string>)(e.Result);
+        }
+
+
+
+        public class UserInfo
+        {
+            public string Id { get; set; }
+            public string Username { get; set; }
+            public string FullName { get; set; }
+        }
+
+     
         public void Login(string token)
         {
             this.Token = token;
@@ -180,23 +220,7 @@ namespace Mindsweep.ViewModels
                 client.DownloadStringAsync(RTM.SignJsonRequest(RTM.URI_GETTASKS + "&last_sync=" + LastSync.ToString("o")), new Action<string>(ParseJsonTasks));
         }
 
-        private DateTime _lastSync;
-        public DateTime LastSync
-        {
-            get
-            {
-                if (!IsolatedStorageSettings.ApplicationSettings.TryGetValue<DateTime>("LastSync", out _lastSync))
-                    _lastSync = DateTime.MinValue;
-
-                return _lastSync;
-            }
-            set
-            {
-                _lastSync = value;
-                IsolatedStorageSettings.ApplicationSettings["LastSync"] = _lastSync;
-                NotifyPropertyChanged("LastSync");
-            }
-        }
+      
 
         public void ParseJsonTasks(string json)
         {
@@ -218,7 +242,9 @@ namespace Mindsweep.ViewModels
                         if (localTaskSeries == null)
                         {
                             serverTaskSeries.Project = localProject;
-                            serverTaskSeries.RepeatRule = mainDB.RepeatRules.Where(rr => rr.Rule == serverTaskSeries.RepeatRule.Rule).FirstOrDefault() ?? serverTaskSeries.RepeatRule;
+
+                            if (serverTaskSeries.RepeatRule != null)
+                                serverTaskSeries.RepeatRule = mainDB.RepeatRules.Where(rr => rr.Rule == serverTaskSeries.RepeatRule.Rule).FirstOrDefault() ?? serverTaskSeries.RepeatRule;
 
                             AddTaskSeries(serverTaskSeries);
                         }
@@ -237,6 +263,8 @@ namespace Mindsweep.ViewModels
 
             LoadCollectionsFromDatabase();
         }
+
+       
 
         private void _SyncProject(Project localProject, Project serverProject)
         {
