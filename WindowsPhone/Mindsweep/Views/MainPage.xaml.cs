@@ -11,8 +11,9 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using System.IO.IsolatedStorage;
+using Microsoft.Phone.Shell;
 
-namespace Mindsweep
+namespace Mindsweep.Views
 {
     public partial class MainPage : PhoneApplicationPage
     {
@@ -41,7 +42,7 @@ namespace Mindsweep
 
         private void LogIn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/Login.xaml", UriKind.RelativeOrAbsolute));
+            NavigationService.Navigate(new Uri("/Views/Login.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void LogOut_Click(object sender, EventArgs e)
@@ -56,12 +57,12 @@ namespace Mindsweep
 
         private void Search_Click(object sender, EventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("/Search.xaml", UriKind.RelativeOrAbsolute));
+            this.NavigationService.Navigate(new Uri("/Views/Search.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void Add_Click(object sender, EventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("/AddTask.xaml", UriKind.RelativeOrAbsolute));
+            this.NavigationService.Navigate(new Uri("/Views/AddTask.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void DeleteDB_Click(object sender, EventArgs e)
@@ -71,7 +72,7 @@ namespace Mindsweep
 
         private void About_Click(object sender, EventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("/About.xaml", UriKind.RelativeOrAbsolute));
+            this.NavigationService.Navigate(new Uri("/Views/About.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void GoToInbox(object sender, GestureEventArgs e)
@@ -81,27 +82,27 @@ namespace Mindsweep
             if (inbox == null)
                 MessageBox.Show("Error accessing your Inbox. Try again later.");
             else
-                this.NavigationService.Navigate(new Uri("/ProjectView.xaml?id=" + inbox.Id, UriKind.RelativeOrAbsolute));
+                this.NavigationService.Navigate(new Uri("/Views/ProjectView.xaml?id=" + inbox.Id, UriKind.RelativeOrAbsolute));
         }
 
         private void GoToNextActions(object sender, GestureEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("/NextActions.xaml", UriKind.RelativeOrAbsolute));
+            this.NavigationService.Navigate(new Uri("/Views/NextActions.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void GoToProjects(object sender, GestureEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("/Projects.xaml", UriKind.RelativeOrAbsolute));
+            this.NavigationService.Navigate(new Uri("/Views/Projects.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void GoToContexts(object sender, GestureEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("/Contexts.xaml", UriKind.RelativeOrAbsolute));
+            this.NavigationService.Navigate(new Uri("/Views/Contexts.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void GoToFlagged(object sender, GestureEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("/Flagged.xaml", UriKind.RelativeOrAbsolute));
+            this.NavigationService.Navigate(new Uri("/Views/Flagged.xaml", UriKind.RelativeOrAbsolute));
         }
     }
 }

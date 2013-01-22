@@ -5,7 +5,9 @@
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
-    xmlns:converter="clr-namespace:Mindsweep.Converters">
+    xmlns:converter="clr-namespace:Mindsweep.Converters"
+    xmlns:telerikCore="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Core"
+    xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives">
 
 	<!--Application Resources-->
     <Application.Resources>
@@ -20,6 +22,10 @@
         
         <converter:BoolToVisibilityConverter x:Key="BoolVisibilityConverter" />
 
+        <telerikCore:RadSlideAnimation  x:Key="fadeInAnimation" MoveDirection="LeftIn" />
+        <telerikCore:RadSlideAnimation  x:Key="fadeOutAnimation"  MoveDirection="LeftOut"/>
+        <telerikCore:RadSlideAnimation  x:Key="RightInAnimation" MoveDirection="RightIn" />
+        <telerikCore:RadSlideAnimation  x:Key="RightOutAnimation"  MoveDirection="RightOut"/>
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>

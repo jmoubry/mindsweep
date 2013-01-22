@@ -153,17 +153,17 @@ namespace Mindsweep.ViewModels
             if (response.Status == StatusCodes.InvalidAuthToken)
                 Logout();
 
-            foreach (Project proj in response.Projects)
+            foreach (Project serverProject in response.Projects)
             {
-                var storedProj = mainDB.Projects.Where(p => p.Id == proj.Id).FirstOrDefault();
+                var localProject = mainDB.Projects.Where(p => p.Id == serverProject.Id).FirstOrDefault();
 
-                if (storedProj == null)
+                if (localProject == null)
                 {
-                    AddProject(proj);
+                    AddProject(serverProject);
                 }
                 else
                 {
-                    storedProj.Sync(proj);
+                    _SyncProject(localProject, serverProject);
                 }
             }
 
@@ -205,24 +205,26 @@ namespace Mindsweep.ViewModels
             if (response.Status == StatusCodes.InvalidAuthToken)
                 Logout();
 
-            foreach (Project proj in response.TasksByProject)
+            foreach (Project serverProject in response.TasksByProject)
             {
-                var storedProject = mainDB.Projects.Where(p => p.Id == proj.Id).FirstOrDefault();
+                var localProject = mainDB.Projects.Where(p => p.Id == serverProject.Id).FirstOrDefault();
 
-                if (storedProject != null)
+                if (localProject != null)
                 {
-                    foreach (TaskSeries ts in proj.TaskSeries)
+                    foreach (TaskSeries serverTaskSeries in serverProject.TaskSeries)
                     {
-                        var storedTaskSeries = mainDB.TaskSeries.Where(t => t.Id == ts.Id).FirstOrDefault();
+                        var localTaskSeries = mainDB.TaskSeries.Where(t => t.Id == serverTaskSeries.Id).FirstOrDefault();
 
-                        if (storedTaskSeries == null)
+                        if (localTaskSeries == null)
                         {
-                            ts.Project = storedProject;
-                            AddTaskSeries(ts);
+                            serverTaskSeries.Project = localProject;
+                            serverTaskSeries.RepeatRule = mainDB.RepeatRules.Where(rr => rr.Rule == serverTaskSeries.RepeatRule.Rule).FirstOrDefault() ?? serverTaskSeries.RepeatRule;
+
+                            AddTaskSeries(serverTaskSeries);
                         }
                         else
                         {
-                            storedTaskSeries.Sync(ts);
+                            _SyncTaskSeries(localProject, localTaskSeries, serverTaskSeries);
                         }
                     }
                 }
@@ -234,6 +236,51 @@ namespace Mindsweep.ViewModels
             LastSync = DateTime.UtcNow;
 
             LoadCollectionsFromDatabase();
+        }
+
+        private void _SyncProject(Project localProject, Project serverProject)
+        {
+            localProject.Name = serverProject.Name;
+            localProject.Deleted = serverProject.Deleted;
+            localProject.Locked = serverProject.Locked;
+            localProject.Archived = serverProject.Archived;
+            localProject.Smart = serverProject.Smart;
+            localProject.Position = serverProject.Position;
+        }
+
+        private void _SyncTaskSeries(Project localProject, TaskSeries localTaskSeries, TaskSeries serverTaskSeries)
+        {
+            // Update if newer.
+            if (localTaskSeries.Modified < serverTaskSeries.Modified)
+            {
+                localTaskSeries.Created = serverTaskSeries.Created;
+                localTaskSeries.Modified = serverTaskSeries.Modified;
+                localTaskSeries.Name = serverTaskSeries.Name;
+                localTaskSeries.Project = localProject;
+                localTaskSeries.RepeatRule = mainDB.RepeatRules.Where(rr => rr.Rule == serverTaskSeries.RepeatRule.Rule).FirstOrDefault() ?? serverTaskSeries.RepeatRule;
+                localTaskSeries.Source = serverTaskSeries.Source;
+                localTaskSeries.Tags = serverTaskSeries.Tags;
+                localTaskSeries.Url = serverTaskSeries.Url;
+
+                foreach (Task serverTask in serverTaskSeries.Tasks)
+                {
+                    var localTask = localTaskSeries.Tasks.Where(tt => tt.Id == serverTask.Id).FirstOrDefault();
+
+                    if (localTask == null)
+                        localTaskSeries.Tasks.Add(serverTask);
+                    else
+                        _SyncTask(localTask, serverTask);
+                }
+
+                // Look for any tasks that need to be removed.
+                foreach (Task localTaskToRemove in localTaskSeries.Tasks.Except(serverTaskSeries.Tasks, new TaskComparer()).ToList())
+                    localTaskSeries.Tasks.Remove(localTaskToRemove);
+            }
+        }
+
+        private void _SyncTask(Task localTask, Task serverTask)
+        {
+            localTask.Due = serverTask.Due;
         }
 
         public void Sync()
@@ -284,7 +331,7 @@ namespace Mindsweep.ViewModels
                     FlurryWP7SDK.Api.LogEvent("Delete Project");
 
                     this.DeleteProject(project);
-                    page.NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.RelativeOrAbsolute));
+                    page.NavigationService.Navigate(new Uri("/Views/MainPage.xaml", UriKind.RelativeOrAbsolute));
                 }
             });
         }

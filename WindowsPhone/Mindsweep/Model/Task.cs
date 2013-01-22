@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.Linq;
 using System.Data.Linq.Mapping;
@@ -95,5 +96,18 @@ namespace Mindsweep.Model
         }
 
         #endregion
+    }
+
+    public class TaskComparer : IEqualityComparer<Task>
+    {
+        public bool Equals(Task x, Task y)
+        {
+            return x.Id == y.Id;
+        }
+
+        public int GetHashCode(Task obj)
+        {
+            return obj.Id.GetHashCode();
+        }
     }
 }

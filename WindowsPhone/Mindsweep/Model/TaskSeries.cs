@@ -4,6 +4,7 @@ using System;
 using System.ComponentModel;
 using System.Data.Linq;
 using System.Data.Linq.Mapping;
+using System.Linq;
 
 namespace Mindsweep.Model
 {
@@ -143,23 +144,6 @@ namespace Mindsweep.Model
                 new Action<Task>(this.attach_Task),
                 new Action<Task>(this.detach_Task)
                 );
-        }
-
-        public void Sync(TaskSeries ts)
-        {
-            // Update if newer.
-            if (ts.Modified > Modified)
-            {
-                Created = ts.Created;
-                Modified = ts.Modified;
-                Name = ts.Name;
-                Project = ts.Project;
-                RepeatRule = ts.RepeatRule;
-                Source = ts.Source;
-                Tags = ts.Tags;
-                Tasks = ts.Tasks;
-                Url = ts.Url;
-            }
         }
 
         #region Child Tasks

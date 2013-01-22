@@ -10,7 +10,7 @@ using Microsoft.Phone.Shell;
 using Mindsweep.Model;
 using Telerik.Windows.Controls;
 
-namespace Mindsweep
+namespace Mindsweep.Views
 {
     public partial class Projects : PhoneApplicationPage
     {
@@ -46,7 +46,7 @@ namespace Mindsweep
             if (proj == null)
                 MessageBox.Show("Error loading project. Please try again later.");
             else
-                this.NavigationService.Navigate(new Uri("/ProjectView.xaml?id=" + proj.Id, UriKind.RelativeOrAbsolute));
+                this.NavigationService.Navigate(new Uri("/Views/ProjectView.xaml?id=" + proj.Id, UriKind.RelativeOrAbsolute));
         }
     }
 }

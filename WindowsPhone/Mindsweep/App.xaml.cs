@@ -2,7 +2,9 @@
 using Microsoft.Phone.Shell;
 using Mindsweep.Model;
 using Mindsweep.ViewModels;
+using System;
 using System.Windows;
+using System.Windows.Media;
 using System.Windows.Navigation;
 using Telerik.Windows.Controls;
 
@@ -235,19 +237,61 @@ namespace Mindsweep
         // Do not add any additional code to this method
         private void InitializePhoneApplication()
         {
+            //if (phoneApplicationInitialized)
+            //    return;
+
+            //// Create the frame but don't set it as RootVisual yet; this allows the splash
+            //// screen to remain active until the application is ready to render.
+            //RadPhoneApplicationFrame frame = new RadPhoneApplicationFrame();
+            //frame.Background = new SolidColorBrush(Colors.White);
+            //RootFrame = frame;
+
+            //RootFrame.Navigated += CompleteInitializePhoneApplication;
+
+            //// Handle navigation failures
+            //RootFrame.NavigationFailed += RootFrame_NavigationFailed;
+
+            //// Ensure we don't initialize again
+            //phoneApplicationInitialized = true;
+
+
+
             if (phoneApplicationInitialized)
                 return;
-
             // Create the frame but don't set it as RootVisual yet; this allows the splash
             // screen to remain active until the application is ready to render.
-            RootFrame = new RadPhoneApplicationFrame();
-            RootFrame.Navigated += CompleteInitializePhoneApplication;
+            RadTransition transition = new RadTransition();
+            transition.BackwardInAnimation = this.Resources["RightInAnimation"] as RadSlideAnimation;
+            transition.BackwardOutAnimation = this.Resources["RightOutAnimation"] as RadSlideAnimation;
+            transition.ForwardInAnimation = this.Resources["fadeInAnimation"] as RadSlideAnimation;
+            transition.ForwardOutAnimation = this.Resources["fadeOutAnimation"] as RadSlideAnimation;
 
+            //transition.ForwardOutAnimation.Duration = new Duration(new TimeSpan(0, 0, 0, 0, 100));
+            //transition.ForwardInAnimation.Duration = new Duration(new TimeSpan(0, 0, 0, 0, 100));
+            //transition.ForwardOutAnimation.InitialDelay = new TimeSpan(0);
+            //transition.ForwardInAnimation.InitialDelay = new TimeSpan(0);
+
+            //transition.BackwardOutAnimation.Duration = new Duration(new TimeSpan(0, 0, 0, 0, 100));
+            //transition.BackwardInAnimation.Duration = new Duration(new TimeSpan(0, 0, 0, 0, 100));
+            //transition.BackwardOutAnimation.InitialDelay = new TimeSpan(0);
+            //transition.BackwardInAnimation.InitialDelay = new TimeSpan(0);
+
+            transition.PlayMode = TransitionPlayMode.Simultaneously;
+            RadPhoneApplicationFrame frame = new RadPhoneApplicationFrame();
+            frame.Transition = transition;
+            frame.Background = new SolidColorBrush(Colors.White);
+
+
+            RootFrame = frame;
+            RootFrame.Navigated += CompleteInitializePhoneApplication;
             // Handle navigation failures
             RootFrame.NavigationFailed += RootFrame_NavigationFailed;
-
             // Ensure we don't initialize again
             phoneApplicationInitialized = true;
+
+
+
+            
         }
 
         // Do not add any additional code to this method

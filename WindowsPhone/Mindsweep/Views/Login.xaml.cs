@@ -10,7 +10,7 @@ using Microsoft.Phone.Shell;
 using Mindsweep.Helpers;
 using System.Xml.Linq;
 
-namespace Mindsweep
+namespace Mindsweep.Views
 {
     public partial class Login : PhoneApplicationPage
     {
@@ -85,7 +85,7 @@ namespace Mindsweep
 
         private void Done_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.RelativeOrAbsolute));
+            this.NavigationService.Navigate(new Uri("/Views/MainPage.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void wbLogin_Navigating(object sender, NavigatingEventArgs e)

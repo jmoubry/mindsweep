@@ -111,16 +111,6 @@ namespace Mindsweep.Model
             }
         }
 
-        public void Sync(Project p)
-        {
-            Name = p.Name;
-            Deleted = p.Deleted;
-            Locked = p.Locked;
-            Archived = p.Archived;
-            Smart = p.Smart;
-            Position = p.Position;
-        }
-
         // Define the entity set for the collection side of the relationship.
         private EntitySet<TaskSeries> _taskseries;
 

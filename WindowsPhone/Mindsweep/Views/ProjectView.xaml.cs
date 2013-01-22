@@ -9,7 +9,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Mindsweep.Model;
 
-namespace Mindsweep
+namespace Mindsweep.Views
 {
     public partial class ProjectView : PhoneApplicationPage
     {
