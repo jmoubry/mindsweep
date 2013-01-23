@@ -8,6 +8,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Mindsweep.Model;
+using Mindsweep.Helpers;
 
 namespace Mindsweep.Views
 {
@@ -24,18 +25,31 @@ namespace Mindsweep.Views
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            string projectId = NavigationContext.QueryString["id"];
-
-            Project proj = App.ViewModel.AllProjects.Where(p => p.Id == projectId).FirstOrDefault();
-
-            if (proj == null)
+            if (NavigationContext.QueryString.ContainsKey("id"))
             {
-                TaskListBox.ItemsSource = null;
+                string projectId = NavigationContext.QueryString["id"];
+
+                Project proj = App.ViewModel.AllProjects.Where(p => p.Id == projectId).FirstOrDefault();
+
+                if (proj == null)
+                {
+                    TaskListBox.ItemsSource = null;
+                }
+                else
+                {
+                    Title.Text = proj.Name;
+                    TaskListBox.ItemsSource = proj.TaskSeries.Where(Exp.IsOpen);
+                }
             }
             else
             {
-                Title.Text = proj.Name;
-                TaskListBox.ItemsSource = proj.TaskSeries.Where(t => t.Tasks.Any(tt => !tt.Completed.HasValue && !tt.Deleted.HasValue));
+                string tag = NavigationContext.QueryString["tag"];
+
+                Title.Text = tag;
+
+                var tasksForTag = App.ViewModel.AllTaskSeries.Where(Exp.IsOpen).Where(Exp.HasTags).Where(t => t.Tags.Split(',').Contains(tag)).ToList();
+
+                TaskListBox.ItemsSource = tasksForTag;
             }
 
             FlurryWP7SDK.Api.LogEvent("Project");

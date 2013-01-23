@@ -12,6 +12,7 @@ using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using System.IO.IsolatedStorage;
 using Microsoft.Phone.Shell;
+using Mindsweep.Helpers;
 
 namespace Mindsweep.Views
 {
@@ -77,7 +78,7 @@ namespace Mindsweep.Views
 
         private void GoToInbox(object sender, GestureEventArgs e)
         {
-            var inbox = App.ViewModel.AllProjects.Where(p => p.Name == "Inbox" && p.Locked).FirstOrDefault();
+            var inbox = App.ViewModel.AllProjects.Where(Exp.IsInbox).FirstOrDefault();
 
             if (inbox == null)
                 MessageBox.Show("Error accessing your Inbox. Try again later.");
@@ -97,7 +98,7 @@ namespace Mindsweep.Views
 
         private void GoToContexts(object sender, GestureEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("/Views/Contexts.xaml", UriKind.RelativeOrAbsolute));
+            this.NavigationService.Navigate(new Uri("/Views/Tags.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void GoToFlagged(object sender, GestureEventArgs e)

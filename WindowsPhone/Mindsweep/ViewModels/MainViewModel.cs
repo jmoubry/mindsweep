@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO.IsolatedStorage;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Windows.Controls;
 using Telerik.Windows.Controls;
@@ -134,12 +135,12 @@ namespace Mindsweep.ViewModels
         {
             get 
             {
-                var inbox = AllProjects.Where(p => p.Name == "Inbox" && p.Locked).FirstOrDefault();
+                var inbox = AllProjects.Where(Exp.IsInbox).FirstOrDefault();
 
                 if (inbox == null)
                     return 0;
 
-                return inbox.TaskSeries.Count(t => t.Tasks.Any(tt => !tt.Completed.HasValue && !tt.Deleted.HasValue));
+                return inbox.TaskSeries.Count(Exp.IsOpen);
             }
         }
 
@@ -214,7 +215,7 @@ namespace Mindsweep.ViewModels
             AllProjects = new ObservableCollection<Project>(mainDB.Projects);
 
             // If we haven't downloaded tasks for this user, just grab the incomplete ones.
-            if(mainDB.TaskSeries.Count() == 0)
+            if(mainDB.TaskSeries.Count() == 0 || LastSync == DateTime.MinValue)
                 client.DownloadStringAsync(RTM.SignJsonRequest(RTM.URI_GETTASKS + "&filter=status:incomplete"), new Action<string>(ParseJsonTasks));
             else // Download the changes since the last sync.
                 client.DownloadStringAsync(RTM.SignJsonRequest(RTM.URI_GETTASKS + "&last_sync=" + LastSync.ToString("o")), new Action<string>(ParseJsonTasks));
@@ -264,8 +265,6 @@ namespace Mindsweep.ViewModels
             LoadCollectionsFromDatabase();
         }
 
-       
-
         private void _SyncProject(Project localProject, Project serverProject)
         {
             localProject.Name = serverProject.Name;
@@ -285,7 +284,10 @@ namespace Mindsweep.ViewModels
                 localTaskSeries.Modified = serverTaskSeries.Modified;
                 localTaskSeries.Name = serverTaskSeries.Name;
                 localTaskSeries.Project = localProject;
-                localTaskSeries.RepeatRule = mainDB.RepeatRules.Where(rr => rr.Rule == serverTaskSeries.RepeatRule.Rule).FirstOrDefault() ?? serverTaskSeries.RepeatRule;
+
+                if (serverTaskSeries.RepeatRule != null)
+                    localTaskSeries.RepeatRule = mainDB.RepeatRules.Where(rr => rr.Rule == serverTaskSeries.RepeatRule.Rule).FirstOrDefault() ?? serverTaskSeries.RepeatRule;
+
                 localTaskSeries.Source = serverTaskSeries.Source;
                 localTaskSeries.Tags = serverTaskSeries.Tags;
                 localTaskSeries.Url = serverTaskSeries.Url;
