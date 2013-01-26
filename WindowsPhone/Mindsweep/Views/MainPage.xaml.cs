@@ -150,7 +150,7 @@ namespace Mindsweep.Views
 
         private void GoToNextActions(object sender, GestureEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("/Views/NextActions.xaml", UriKind.RelativeOrAbsolute));
+            this.NavigationService.Navigate(new Uri("/Views/NextActionsView.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void GoToProjects(object sender, GestureEventArgs e)

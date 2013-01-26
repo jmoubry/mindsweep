@@ -89,6 +89,9 @@
     <Compile Include="Commands\RateThisAppCommand.cs" />
     <Compile Include="Commands\SendAnEmailCommand.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Views\NextActionsView.xaml.cs">
+      <DependentUpon>NextActionsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Tags.xaml.cs">
       <DependentUpon>Tags.xaml</DependentUpon>
     </Compile>
@@ -154,6 +157,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="AppConfig_Sensitive.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\NextActionsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -24,7 +24,7 @@ namespace Mindsweep.Views
 
             List<string> tags = new List<string>();
 
-            App.ViewModel.AllTaskSeries.Where(Exp.HasTags).Where(Exp.IsOpen).Select(t => t.Tags.Split(',')).ToList().ForEach(t => tags.AddRange(t));
+            App.ViewModel.AllTasks.Where(Exp.HasTags).Where(Exp.IsOpen).Select(t => t.TaskSeries.Tags.Split(',')).ToList().ForEach(t => tags.AddRange(t));
 
             TagsListBox.ItemsSource = tags.Distinct().OrderBy(t => t);
 

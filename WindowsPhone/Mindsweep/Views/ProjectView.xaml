@@ -34,7 +34,7 @@
             <telerikPrimitives:RadDataBoundListBox x:Name="TaskListBox" IsItemReorderEnabled="False" Margin="14,0,-12,0">
                 <telerikPrimitives:RadDataBoundListBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Name}" Style="{StaticResource JPhoneTextTitle2Style}" />
+                        <TextBlock Text="{Binding TaskSeries.Name}" Style="{StaticResource JPhoneTextTitle2Style}" />
 
                     </DataTemplate>
                 </telerikPrimitives:RadDataBoundListBox.ItemTemplate>

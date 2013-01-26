@@ -38,7 +38,7 @@ namespace Mindsweep.Views
                 else
                 {
                     Title.Text = proj.Name;
-                    TaskListBox.ItemsSource = proj.TaskSeries.Where(Exp.IsOpen);
+                    TaskListBox.ItemsSource = App.ViewModel.AllTasks.Where(t => t.TaskSeries.Project.Id == proj.Id).Where(Exp.IsOpen);
                 }
             }
             else
@@ -47,7 +47,7 @@ namespace Mindsweep.Views
 
                 Title.Text = tag;
 
-                var tasksForTag = App.ViewModel.AllTaskSeries.Where(Exp.IsOpen).Where(Exp.HasTags).Where(t => t.Tags.Split(',').Contains(tag)).ToList();
+                var tasksForTag = App.ViewModel.AllTasks.Where(Exp.IsOpen).Where(Exp.HasTags).Where(t => t.TaskSeries.Tags.Split(',').Contains(tag)).ToList();
 
                 TaskListBox.ItemsSource = tasksForTag;
             }

@@ -23,6 +23,22 @@ namespace Mindsweep.Model
                 NotifyPropertyChanged("Id");
             }
         }
+        
+        public string DueString
+        {
+            get
+            {
+                if (!Due.HasValue)
+                    return string.Empty;
+                else if (Due.Value.ToLocalTime().Date >= DateTime.Now.Date
+                    && Due.Value.ToLocalTime() < DateTime.Now.Date.AddDays(7))
+                {
+                    return Due.Value.ToLocalTime().DayOfWeek.ToString();
+                }
+                else
+                    return Due.Value.ToLocalTime().ToShortDateString();
+            }
+        }
 
         private DateTime? _due;
 

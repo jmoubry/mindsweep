@@ -56,7 +56,7 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock HorizontalAlignment="Stretch" Grid.Column="0" Text="Next Actions"/>
                         <Border Grid.Column="1" Style="{StaticResource NumberBadgeBorderStyle}">
-                            <TextBlock Text="8" Style="{StaticResource NumberBadgeTextStyle}"/>
+                            <TextBlock Text="{Binding NextActionsCount}" Style="{StaticResource NumberBadgeTextStyle}"/>
                         </Border>
                     </Grid>
                 </ListBoxItem>

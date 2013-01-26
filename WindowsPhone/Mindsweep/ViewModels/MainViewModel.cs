@@ -44,7 +44,20 @@ namespace Mindsweep.ViewModels
             }
         }
 
-        // All tasks.
+        // Active projects.
+        private ObservableCollection<Project> _activeProjects;
+        public ObservableCollection<Project> ActiveProjects
+        {
+            get { return _activeProjects; }
+            set
+            {
+                _activeProjects = value;
+                NotifyPropertyChanged("ActiveProjects");
+            }
+        }
+
+
+        // All task series.
         private ObservableCollection<TaskSeries> _allTaskSeries;
         public ObservableCollection<TaskSeries> AllTaskSeries
         {
@@ -56,6 +69,77 @@ namespace Mindsweep.ViewModels
             }
         }
 
+        // All tasks.
+        private ObservableCollection<Task> _allTasks;
+        public ObservableCollection<Task> AllTasks
+        {
+            get { return _allTasks; }
+            set
+            {
+                _allTasks = value;
+                NotifyPropertyChanged("AllTasks");
+            }
+        }
+
+        // All overdue tasks.
+        private ObservableCollection<Task> _allOverdueTasks;
+        public ObservableCollection<Task> AllOverdueTasks
+        {
+            get { return _allOverdueTasks; }
+            set
+            {
+                _allOverdueTasks = value;
+                NotifyPropertyChanged("AllOverdueTasks");
+            }
+        }
+
+        // All due today tasks.
+        private ObservableCollection<Task> _tasksDueToday;
+        public ObservableCollection<Task> TasksDueToday
+        {
+            get { return _tasksDueToday; }
+            set
+            {
+                _tasksDueToday = value;
+                NotifyPropertyChanged("TasksDueToday");
+            }
+        }
+
+        // All due tomorrow tasks.
+        private ObservableCollection<Task> _tasksDueTomorrow;
+        public ObservableCollection<Task> TasksDueTomorrow
+        {
+            get { return _tasksDueTomorrow; }
+            set
+            {
+                _tasksDueTomorrow = value;
+                NotifyPropertyChanged("TasksDueTomorrow");
+            }
+        }
+
+        // All due this week tasks.
+        private ObservableCollection<Task> _tasksDueThisWeek;
+        public ObservableCollection<Task> TasksDueThisWeek
+        {
+            get { return _tasksDueThisWeek; }
+            set
+            {
+                _tasksDueThisWeek = value;
+                NotifyPropertyChanged("TasksDueThisWeek");
+            }
+        }
+
+        // All someday tasks.
+        private ObservableCollection<Task> _tasksDueSomeday;
+        public ObservableCollection<Task> TasksDueSomeday
+        {
+            get { return _tasksDueSomeday; }
+            set
+            {
+                _tasksDueSomeday = value;
+                NotifyPropertyChanged("TasksDueSomeday");
+            }
+        }
 
         private bool _isAuthorized;
         public bool IsAuthorized
@@ -128,6 +212,7 @@ namespace Mindsweep.ViewModels
                 IsolatedStorageSettings.ApplicationSettings["LastSync"] = _lastSync;
                 NotifyPropertyChanged("LastSync");
                 NotifyPropertyChanged("InboxOpenTaskCount");
+                NotifyPropertyChanged("NextActionsCount");
             }
         }
 
@@ -140,7 +225,20 @@ namespace Mindsweep.ViewModels
                 if (inbox == null)
                     return 0;
 
-                return inbox.TaskSeries.Count(Exp.IsOpen);
+                return AllTasks.Where(t => t.TaskSeries.Project.Id == inbox.Id).Count(Exp.IsOpen);
+            }
+        }
+
+        public int NextActionsCount
+        {
+            get
+            {
+                var inbox = AllProjects.Where(Exp.IsInbox).FirstOrDefault();
+
+                if (inbox == null)
+                    return 0;
+
+                return AllTasks.Count(Exp.IsNextAction);
             }
         }
 
@@ -155,12 +253,21 @@ namespace Mindsweep.ViewModels
         // Query database and load the collections and list used by the pivot pages.
         public void LoadCollectionsFromDatabase()
         {
-            AllProjects = new ObservableCollection<Project>(mainDB.Projects);
+            AllProjects = new ObservableCollection<Project>(mainDB.Projects.OrderBy(p => p.Position));
+            ActiveProjects = new ObservableCollection<Project>(mainDB.Projects.Where(Exp.IsActive).OrderBy(p => p.Position));
             AllTaskSeries = new ObservableCollection<TaskSeries>(mainDB.TaskSeries);
+            AllTasks = new ObservableCollection<Task>(mainDB.Tasks);
+
+            AllOverdueTasks = new ObservableCollection<Task>(mainDB.Tasks.Where(Exp.IsOverdue).OrderBy(t=>t.Due).ThenBy(t=> t.Priority).ThenBy(t => t.TaskSeries.Name));
+
+            TasksDueToday = new ObservableCollection<Task>(mainDB.Tasks.Where(Exp.IsDueToday).OrderBy(t => t.Due).ThenBy(t => t.Priority).ThenBy(t => t.TaskSeries.Name));
+            TasksDueTomorrow = new ObservableCollection<Task>(mainDB.Tasks.Where(Exp.IsDueTomorrow).OrderBy(t => t.Due).ThenBy(t => t.Priority).ThenBy(t => t.TaskSeries.Name));
+            TasksDueThisWeek = new ObservableCollection<Task>(mainDB.Tasks.Where(Exp.IsDueThisWeek).OrderBy(t => t.Due).ThenBy(t => t.Priority).ThenBy(t => t.TaskSeries.Name));
+
+            TasksDueSomeday = new ObservableCollection<Task>(mainDB.Tasks.Where(t => !t.Due.HasValue).OrderBy(t => t.Priority).ThenBy(t => t.TaskSeries.Name));
         }
 
         WebClient client;
-
 
         void client_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
@@ -169,15 +276,12 @@ namespace Mindsweep.ViewModels
             (e.UserState as Action<string>)(e.Result);   
         }
 
-
-
         public class UserInfo
         {
             public string Id { get; set; }
             public string Username { get; set; }
             public string FullName { get; set; }
         }
-
      
         public void Login(string token)
         {

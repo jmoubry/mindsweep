@@ -1,8 +1,5 @@
 ﻿using Mindsweep.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Mindsweep.Helpers
 {
@@ -11,8 +8,37 @@ namespace Mindsweep.Helpers
     /// </summary>
     public static class Exp
     {
-        public static Func<TaskSeries, bool> HasTags = t => !string.IsNullOrWhiteSpace(t.Tags);
+        #region Project Expressions
         public static Func<Project, bool> IsInbox = p => p.Name == "Inbox" && p.Locked;
-        public static Func<TaskSeries, bool> IsOpen = t => t.Tasks.Any(tt => !tt.Completed.HasValue && !tt.Deleted.HasValue);
+
+        
+        // Not archived, not smart, not inbox, not sent
+        public static Func<Project, bool> IsActive = p => !p.Archived && !p.Smart && !p.Locked;
+
+        #endregion
+
+        #region Task Expressions
+
+        public static Func<Task, bool> HasTags = t => !string.IsNullOrWhiteSpace(t.TaskSeries.Tags);
+
+        public static Func<Task, bool> IsOpen = t => !t.Completed.HasValue && !t.Deleted.HasValue;
+
+        public static Func<Task, bool> IsNextAction = t => !t.Completed.HasValue && !t.Deleted.HasValue && t.Due.HasValue 
+                                                           && t.Due.Value.ToLocalTime() <= DateTime.Now;
+
+        public static Func<Task, bool> IsDueToday = t => !t.Completed.HasValue && !t.Deleted.HasValue && t.Due.HasValue 
+                                                         && t.Due.Value.ToLocalTime().Date == DateTime.Now.Date;
+
+        public static Func<Task, bool> IsDueTomorrow = t => !t.Completed.HasValue && !t.Deleted.HasValue && t.Due.HasValue 
+                                                            && t.Due.Value.ToLocalTime().Date == DateTime.Now.Date.AddDays(1);
+
+        public static Func<Task, bool> IsDueThisWeek = t => !t.Completed.HasValue && !t.Deleted.HasValue && t.Due.HasValue 
+                                                            && t.Due.Value.ToLocalTime().Date > DateTime.Now.Date.AddDays(1)
+                                                            && t.Due.Value.ToLocalTime().Date < DateTime.Now.Date.AddDays(7);
+
+        public static Func<Task, bool> IsOverdue = t => !t.Completed.HasValue && !t.Deleted.HasValue
+                                                        && t.Due.HasValue && t.Due.Value < DateTime.UtcNow;
+
+        #endregion
     }
 }

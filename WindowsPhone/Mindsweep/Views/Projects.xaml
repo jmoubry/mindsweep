@@ -31,7 +31,8 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <telerikPrimitives:RadDataBoundListBox SelectionChanged="RadDataBoundListBox_SelectionChanged" IsItemReorderEnabled="True" ItemsSource="{Binding AllProjects}" Margin="14,0,-12,0">
+            <telerikPrimitives:RadDataBoundListBox SelectionChanged="RadDataBoundListBox_SelectionChanged" IsItemReorderEnabled="True" 
+                                                   ItemsSource="{Binding ActiveProjects}" Margin="14,0,-12,0">
                 <telerikPrimitives:RadDataBoundListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}" Style="{StaticResource JPhoneTextTitle2Style}" />
