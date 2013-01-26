@@ -2,11 +2,11 @@
 using Mindsweep.Model;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO.IsolatedStorage;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Net;
 using System.Windows.Controls;
 using Telerik.Windows.Controls;
@@ -27,7 +27,7 @@ namespace Mindsweep.ViewModels
             mainDB = new MainDataContext(deckDBConnectionString);
             client = new WebClient();
             client.DownloadStringCompleted += client_DownloadStringCompleted;
-            IsSynced = false;
+            IsSynced = LastSync > DateTime.UtcNow.AddMinutes(-15);
         }
 
         #region Public Members
@@ -165,7 +165,8 @@ namespace Mindsweep.ViewModels
         void client_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
             // TODO: handle error
-            (e.UserState as Action<string>)(e.Result);
+
+            (e.UserState as Action<string>)(e.Result);   
         }
 
 
@@ -189,48 +190,104 @@ namespace Mindsweep.ViewModels
 
         public void ParseJsonProjects(string json)
         {
-            JsonResponse response = JsonConvert.DeserializeObject<JsonResponse>(json);
+            var bw = new BackgroundWorker();
 
-            if (response.Status == StatusCodes.InvalidAuthToken)
-                Logout();
-
-            foreach (Project serverProject in response.Projects)
+            bw.DoWork += (s, args) =>
             {
-                var localProject = mainDB.Projects.Where(p => p.Id == serverProject.Id).FirstOrDefault();
+                // This runs on a background thread.
 
-                if (localProject == null)
+                JsonResponse response = JsonConvert.DeserializeObject<JsonResponse>(json);
+
+                if (response.Status == StatusCodes.InvalidAuthToken)
+                    Logout();
+
+                foreach (Project serverProject in response.Projects)
                 {
-                    AddProject(serverProject);
+                    var localProject = mainDB.Projects.Where(p => p.Id == serverProject.Id).FirstOrDefault();
+
+                    if (localProject == null)
+                    {
+                        AddProject(serverProject);
+                    }
+                    else
+                    {
+                        _SyncProject(localProject, serverProject);
+                    }
                 }
-                else
-                {
-                    _SyncProject(localProject, serverProject);
-                }
-            }
 
-            // TODO: delete projects that don't exist on the server.
+                // TODO: delete projects that don't exist on the server.
 
-            mainDB.SubmitChanges();
+            };
 
-            AllProjects = new ObservableCollection<Project>(mainDB.Projects);
+            bw.RunWorkerCompleted += (s, args) =>
+            {
+                // Do your UI work here this will run on the UI thread.
+                // Clear progress bar.
 
-            // If we haven't downloaded tasks for this user, just grab the incomplete ones.
-            if(mainDB.TaskSeries.Count() == 0 || LastSync == DateTime.MinValue)
-                client.DownloadStringAsync(RTM.SignJsonRequest(RTM.URI_GETTASKS + "&filter=status:incomplete"), new Action<string>(ParseJsonTasks));
-            else // Download the changes since the last sync.
-                client.DownloadStringAsync(RTM.SignJsonRequest(RTM.URI_GETTASKS + "&last_sync=" + LastSync.ToString("o")), new Action<string>(ParseJsonTasks));
+
+                mainDB.SubmitChanges();
+
+                AllProjects = new ObservableCollection<Project>(mainDB.Projects);
+
+                // If we haven't downloaded tasks for this user, just grab the incomplete ones.
+                if (mainDB.TaskSeries.Count() == 0 || LastSync == DateTime.MinValue)
+                    client.DownloadStringAsync(RTM.SignJsonRequest(RTM.URI_GETTASKS + "&filter=status:incomplete"), new Action<string>(ParseJsonTasks));
+                else // Download the changes since the last sync.
+                    client.DownloadStringAsync(RTM.SignJsonRequest(RTM.URI_GETTASKS + "&last_sync=" + LastSync.ToString("o")), new Action<string>(ParseJsonTasks));
+            };
+
+            // Set progress bar.
+
+
+            bw.RunWorkerAsync();
         }
 
-      
+        public event EventHandler SyncCompleted;
+
+        protected virtual void OnSyncCompleted(EventArgs e)
+        {
+            if (SyncCompleted != null)
+                SyncCompleted(this, e);
+        }
 
         public void ParseJsonTasks(string json)
         {
-            JsonResponse response = JsonConvert.DeserializeObject<JsonResponse>(json);
+            var bw = new BackgroundWorker();
 
-            if (response.Status == StatusCodes.InvalidAuthToken)
-                Logout();
+            bw.DoWork += (s, args) =>
+            {
+                // This runs on a background thread.
 
-            foreach (Project serverProject in response.TasksByProject)
+                JsonResponse response = JsonConvert.DeserializeObject<JsonResponse>(json);
+
+                if (response.Status == StatusCodes.InvalidAuthToken)
+                    Logout();
+
+                _UpdateTasks(response.TasksByProject);
+            };
+            bw.RunWorkerCompleted += (s, args) =>
+            {
+                mainDB.SubmitChanges();
+
+                IsSynced = true;
+                LastSync = DateTime.UtcNow;
+
+                LoadCollectionsFromDatabase();
+
+                OnSyncCompleted(EventArgs.Empty);
+
+                // Do your UI work here this will run on the UI thread.
+                // Clear progress bar.
+            };
+
+            // Set progress bar.
+
+            bw.RunWorkerAsync();
+        }
+
+        private void _UpdateTasks(List<Project> projects)
+        {
+            foreach (Project serverProject in projects)
             {
                 var localProject = mainDB.Projects.Where(p => p.Id == serverProject.Id).FirstOrDefault();
 
@@ -256,13 +313,6 @@ namespace Mindsweep.ViewModels
                     }
                 }
             }
-
-            mainDB.SubmitChanges();
-
-            IsSynced = true;
-            LastSync = DateTime.UtcNow;
-
-            LoadCollectionsFromDatabase();
         }
 
         private void _SyncProject(Project localProject, Project serverProject)

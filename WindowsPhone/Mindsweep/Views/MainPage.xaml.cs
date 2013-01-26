@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-using Microsoft.Phone.Controls;
-using System.IO.IsolatedStorage;
+﻿using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Mindsweep.Helpers;
+using System;
+using System.Linq;
+using System.Threading;
+using System.Windows;
+using System.Windows.Input;
 
 namespace Mindsweep.Views
 {
@@ -28,6 +21,8 @@ namespace Mindsweep.Views
 
             this.DataContext = App.ViewModel;
 
+            App.ViewModel.SyncCompleted += ViewModel_SyncCompleted;
+
 #if DEBUG
             App.ViewModel.Token = App.RtmDebugToken;
 #endif
@@ -35,10 +30,14 @@ namespace Mindsweep.Views
             FlurryWP7SDK.Api.LogEvent("Main");
         }
 
+        protected void ViewModel_SyncCompleted(object sender, EventArgs e)
+        {
+            _HideSystemStatus();
+        }
+
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
-            if (App.ViewModel.IsLoggedIn && !App.ViewModel.IsSynced)
-                App.ViewModel.Sync();
+            _SyncIfNeeded();
         }
 
         private void LogIn_Click(object sender, RoutedEventArgs e)
@@ -51,9 +50,72 @@ namespace Mindsweep.Views
             App.ViewModel.Token = null;
         }
 
+        private void _Sync()
+        {
+            if (App.ViewModel.IsLoggedIn)
+            {
+                ProgressIndicator prog = new ProgressIndicator()
+                {
+                    IsVisible = true,
+                    IsIndeterminate = true,
+                    Text = "Syncing..."
+                };
+
+                SystemTray.SetProgressIndicator(this, prog);
+                
+                App.ViewModel.Sync();
+            }
+        }
+
+        Timer statusUITimer;
+
+        private void _HideSystemStatus(object o = null)
+        {
+            Dispatcher.BeginInvoke(() =>
+            {
+
+                var prog = SystemTray.GetProgressIndicator(this);
+                if (prog != null)
+                {
+                    prog.IsIndeterminate = false;
+                    prog.IsVisible = false;
+                }
+            }
+            );
+        }
+
+        private void _SyncIfNeeded()
+        {
+            if (!App.ViewModel.IsSynced)
+            {
+                _Sync();
+            }
+            else
+            {
+                ProgressIndicator prog = new ProgressIndicator()
+                {
+                    IsVisible = true,
+                    IsIndeterminate = false
+                };
+
+                TimeSpan lastSynced = DateTime.UtcNow - App.ViewModel.LastSync;
+
+                if (lastSynced.TotalMinutes <= 1)
+                    prog.Text = string.Format("Last synced {0} seconds ago", Math.Round(lastSynced.TotalSeconds));
+                else
+                    prog.Text = string.Format("Last synced {0} minutes ago", Math.Round(lastSynced.TotalMinutes));
+
+                SystemTray.SetProgressIndicator(this, prog);
+
+                statusUITimer = new System.Threading.Timer(_HideSystemStatus, null, 5000, Timeout.Infinite);
+            }
+        }
+
+        #region UIEvents
+
         private void Sync_Click(object sender, EventArgs e)
         {
-            App.ViewModel.Sync();
+            _Sync();
         }
 
         private void Search_Click(object sender, EventArgs e)
@@ -105,5 +167,7 @@ namespace Mindsweep.Views
         {
             this.NavigationService.Navigate(new Uri("/Views/Flagged.xaml", UriKind.RelativeOrAbsolute));
         }
+
+        #endregion
     }
 }
