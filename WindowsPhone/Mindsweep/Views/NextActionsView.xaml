@@ -21,9 +21,9 @@
     <Grid x:Name="LayoutRoot">
 
         <!--Pivot Control-->
-        <controls:Pivot Title="{StaticResource AppTitleUppercase}" Foreground="Black">
+        <controls:Pivot x:Name="NextActionsPivot" Title="{StaticResource AppTitleUppercase}" Foreground="Black">
             <!--Pivot item one-->
-            <controls:PivotItem Header="overdue">
+            <controls:PivotItem Header="overdue" Visibility="{Binding AllOverdueTasks.Count, Converter={StaticResource CountVisibilityConverter}}">
                 <telerikPrimitives:RadDataBoundListBox
                        ItemsSource="{Binding AllOverdueTasks}"
                        IsItemReorderEnabled="False">

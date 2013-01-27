@@ -259,7 +259,7 @@ namespace Mindsweep.ViewModels
             AllTasks = new ObservableCollection<Task>(mainDB.Tasks);
 
             AllOverdueTasks = new ObservableCollection<Task>(mainDB.Tasks.Where(Exp.IsOverdue).OrderBy(t=>t.Due).ThenBy(t=> t.Priority).ThenBy(t => t.TaskSeries.Name));
-
+            
             TasksDueToday = new ObservableCollection<Task>(mainDB.Tasks.Where(Exp.IsDueToday).OrderBy(t => t.Due).ThenBy(t => t.Priority).ThenBy(t => t.TaskSeries.Name));
             TasksDueTomorrow = new ObservableCollection<Task>(mainDB.Tasks.Where(Exp.IsDueTomorrow).OrderBy(t => t.Due).ThenBy(t => t.Priority).ThenBy(t => t.TaskSeries.Name));
             TasksDueThisWeek = new ObservableCollection<Task>(mainDB.Tasks.Where(Exp.IsDueThisWeek).OrderBy(t => t.Due).ThenBy(t => t.Priority).ThenBy(t => t.TaskSeries.Name));

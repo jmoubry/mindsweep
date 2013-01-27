@@ -20,12 +20,15 @@ namespace Mindsweep.Views
 
             this.DataContext = App.ViewModel;
 
+            foreach (PivotItem item in NextActionsPivot.Items.ToList())
+                if (item.Visibility == Visibility.Collapsed)
+                    NextActionsPivot.Items.Remove(item);
+
             FlurryWP7SDK.Api.LogEvent("Next Actions");
         }
 
         private void Add_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

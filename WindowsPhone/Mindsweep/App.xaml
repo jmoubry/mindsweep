@@ -19,8 +19,9 @@
                 <ResourceDictionary Source="Styles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-        
+
         <converter:BoolToVisibilityConverter x:Key="BoolVisibilityConverter" />
+        <converter:CountToVisibilityConverter x:Key="CountVisibilityConverter" />
 
         <telerikCore:RadSlideAnimation  x:Key="fadeInAnimation" MoveDirection="LeftIn" />
         <telerikCore:RadSlideAnimation  x:Key="fadeOutAnimation"  MoveDirection="LeftOut"/>
