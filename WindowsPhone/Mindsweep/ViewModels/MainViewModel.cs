@@ -1,4 +1,5 @@
-﻿using Mindsweep.Helpers;
+﻿using Microsoft.Phone.Shell;
+using Mindsweep.Helpers;
 using Mindsweep.Model;
 using Newtonsoft.Json;
 using System;
@@ -265,6 +266,17 @@ namespace Mindsweep.ViewModels
             TasksDueThisWeek = new ObservableCollection<Task>(mainDB.Tasks.Where(Exp.IsDueThisWeek).OrderBy(t => t.Due).ThenBy(t => t.Priority).ThenBy(t => t.TaskSeries.Name));
 
             TasksDueSomeday = new ObservableCollection<Task>(mainDB.Tasks.Where(t => !t.Due.HasValue).OrderBy(t => t.Priority).ThenBy(t => t.TaskSeries.Name));
+
+            UpdateTile(AllOverdueTasks.Count + TasksDueToday.Count);
+        }
+
+        public void UpdateTile(int count)
+        {
+            var mainTile = ShellTile.ActiveTiles.First();
+            mainTile.Update(new StandardTileData
+            {
+                Count = count
+            });
         }
 
         WebClient client;
