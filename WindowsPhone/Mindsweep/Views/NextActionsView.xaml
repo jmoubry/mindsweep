@@ -16,7 +16,7 @@
     shell:SystemTray.IsVisible="True"
     shell:SystemTray.BackgroundColor="White"
     shell:SystemTray.ForegroundColor="Black">
-
+    
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot">
 
@@ -26,12 +26,8 @@
             <controls:PivotItem Header="overdue" Visibility="{Binding AllOverdueTasks.Count, Converter={StaticResource CountVisibilityConverter}}">
                 <telerikPrimitives:RadDataBoundListBox
                        ItemsSource="{Binding AllOverdueTasks}"
-                       IsItemReorderEnabled="False">
-                    <telerikPrimitives:RadDataBoundListBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding TaskSeries.Name}" Style="{StaticResource JPhoneTextTitle2Style}" />
-                        </DataTemplate>
-                    </telerikPrimitives:RadDataBoundListBox.ItemTemplate>
+                       IsItemReorderEnabled="False"
+                       ItemTemplate="{StaticResource TaskDataTemplate}">
                 </telerikPrimitives:RadDataBoundListBox>
             </controls:PivotItem>
 
@@ -39,55 +35,32 @@
             <controls:PivotItem Header="today">
                 <telerikPrimitives:RadDataBoundListBox
                        ItemsSource="{Binding TasksDueToday}"
-                       IsItemReorderEnabled="False">
-                    <telerikPrimitives:RadDataBoundListBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding TaskSeries.Name}" Style="{StaticResource JPhoneTextTitle2Style}" />
-                        </DataTemplate>
-                    </telerikPrimitives:RadDataBoundListBox.ItemTemplate>
+                       IsItemReorderEnabled="False"
+                       ItemTemplate="{StaticResource TaskDataTemplate}">
                 </telerikPrimitives:RadDataBoundListBox>
             </controls:PivotItem>
 
             <controls:PivotItem Header="tomorrow">
                 <telerikPrimitives:RadDataBoundListBox
                        ItemsSource="{Binding TasksDueTomorrow}"
-                       IsItemReorderEnabled="False">
-                    <telerikPrimitives:RadDataBoundListBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding TaskSeries.Name}" Style="{StaticResource JPhoneTextTitle2Style}" />
-                        </DataTemplate>
-                    </telerikPrimitives:RadDataBoundListBox.ItemTemplate>
+                       IsItemReorderEnabled="False"
+                       ItemTemplate="{StaticResource TaskDataTemplate}">
                 </telerikPrimitives:RadDataBoundListBox>
             </controls:PivotItem>
 
             <controls:PivotItem Header="this week">
                 <telerikPrimitives:RadDataBoundListBox
                        ItemsSource="{Binding TasksDueThisWeek}"
-                       IsItemReorderEnabled="False">
-                    <telerikPrimitives:RadDataBoundListBox.ItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" TextWrapping="Wrap" Text="{Binding TaskSeries.Name}" Style="{StaticResource JPhoneTextTitle2Style}" />
-                                <TextBlock Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{Binding DueString}" Style="{StaticResource JPhoneTextSmallStyle}" />
-                            </Grid>
-                        </DataTemplate>
-                    </telerikPrimitives:RadDataBoundListBox.ItemTemplate>
+                       IsItemReorderEnabled="False"
+                       ItemTemplate="{StaticResource TaskDataTemplate}">
                 </telerikPrimitives:RadDataBoundListBox>
             </controls:PivotItem>
             
             <controls:PivotItem Header="someday">
                 <telerikPrimitives:RadDataBoundListBox
                        ItemsSource="{Binding TasksDueSomeday}"
-                       IsItemReorderEnabled="False">
-                    <telerikPrimitives:RadDataBoundListBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding TaskSeries.Name}" Style="{StaticResource JPhoneTextTitle2Style}" />
-                        </DataTemplate>
-                    </telerikPrimitives:RadDataBoundListBox.ItemTemplate>
+                       IsItemReorderEnabled="False"
+                       ItemTemplate="{StaticResource TaskDataTemplateWithoutDate}">
                 </telerikPrimitives:RadDataBoundListBox>
             </controls:PivotItem>
         </controls:Pivot>

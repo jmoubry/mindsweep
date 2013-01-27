@@ -46,7 +46,7 @@ namespace Mindsweep.Views
             if (proj == null)
                 MessageBox.Show("Error loading project. Please try again later.");
             else
-                this.NavigationService.Navigate(new Uri("/Views/ProjectView.xaml?id=" + proj.Id, UriKind.RelativeOrAbsolute));
+                this.NavigationService.Navigate(new Uri("/Views/TasksView.xaml?id=" + proj.Id, UriKind.RelativeOrAbsolute));
         }
     }
 }

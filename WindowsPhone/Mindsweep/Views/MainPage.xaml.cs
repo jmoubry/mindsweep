@@ -145,7 +145,7 @@ namespace Mindsweep.Views
             if (inbox == null)
                 MessageBox.Show("Error accessing your Inbox. Try again later.");
             else
-                this.NavigationService.Navigate(new Uri("/Views/ProjectView.xaml?id=" + inbox.Id, UriKind.RelativeOrAbsolute));
+                this.NavigationService.Navigate(new Uri("/Views/TasksView.xaml?id=" + inbox.Id, UriKind.RelativeOrAbsolute));
         }
 
         private void GoToNextActions(object sender, GestureEventArgs e)

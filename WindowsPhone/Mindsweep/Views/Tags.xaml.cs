@@ -54,7 +54,7 @@ namespace Mindsweep.Views
             if (tag == null)
                 MessageBox.Show("Error loading tag. Please try again later.");
             else
-                this.NavigationService.Navigate(new Uri("/Views/ProjectView.xaml?tag=" + tag, UriKind.RelativeOrAbsolute));
+                this.NavigationService.Navigate(new Uri("/Views/TasksView.xaml?tag=" + tag, UriKind.RelativeOrAbsolute));
         }
     }
 }

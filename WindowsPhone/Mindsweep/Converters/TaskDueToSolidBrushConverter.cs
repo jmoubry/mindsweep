@@ -1,12 +1,14 @@
-﻿using System;
+﻿using Mindsweep.Model;
+using System;
 using System.Windows;
+using System.Windows.Media;
 
 namespace Mindsweep.Converters
 {
-    public class CountToVisibilityConverter : System.Windows.Data.IValueConverter
+    public class TaskDueToSolidBrushConverter : System.Windows.Data.IValueConverter
     {
         /// <summary>
-        /// If > 0, will result in visibiliity.
+        /// 
         /// </summary>
         /// <param name="value"></param>
         /// <param name="targetType"></param>
@@ -19,9 +21,20 @@ namespace Mindsweep.Converters
             object parameter,
             System.Globalization.CultureInfo culture)
         {
-            int count = (int)value;
+            Task task = value as Task;
 
-            return count > 0 ? Visibility.Visible : Visibility.Collapsed;
+            if (task != null && task.Due.HasValue)
+            {
+                if (task.HasDueTime)
+                {
+                    if (task.Due.Value < DateTime.UtcNow)
+                        return new SolidColorBrush(Color.FromArgb(255, 234, 82, 0));
+                }
+                else if (task.Due.Value.Date < DateTime.UtcNow.Date)
+                    return new SolidColorBrush(Color.FromArgb(255, 234, 82, 0));
+            }
+
+            return new SolidColorBrush(Colors.Black);
         }
 
         public object ConvertBack(

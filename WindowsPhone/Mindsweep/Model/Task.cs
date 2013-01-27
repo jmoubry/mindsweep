@@ -30,11 +30,13 @@ namespace Mindsweep.Model
             {
                 if (!Due.HasValue)
                     return string.Empty;
+                else if (Due.Value.ToLocalTime().Date == DateTime.Now.Date)
+                    return "Today";
                 else if (Due.Value.ToLocalTime().Date >= DateTime.Now.Date
                     && Due.Value.ToLocalTime() < DateTime.Now.Date.AddDays(7))
-                {
                     return Due.Value.ToLocalTime().DayOfWeek.ToString();
-                }
+                else if (Due.Value.ToLocalTime().Date.Year == DateTime.Now.Date.Year)
+                    return Due.Value.ToLocalTime().ToString("MMM dd");
                 else
                     return Due.Value.ToLocalTime().ToShortDateString();
             }
@@ -127,10 +129,10 @@ namespace Mindsweep.Model
             }
         }
 
-        private char _priority;
+        private string _priority;
 
         [Column]
-        public char Priority
+        public string Priority
         {
             get { return _priority; }
             set

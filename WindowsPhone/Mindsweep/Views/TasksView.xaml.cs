@@ -12,15 +12,13 @@ using Mindsweep.Helpers;
 
 namespace Mindsweep.Views
 {
-    public partial class ProjectView : PhoneApplicationPage
+    public partial class TasksView : PhoneApplicationPage
     {
-        public ProjectView()
+        public TasksView()
         {
             InitializeComponent();
 
             this.DataContext = App.ViewModel;
-
-            
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -38,7 +36,7 @@ namespace Mindsweep.Views
                 else
                 {
                     Title.Text = proj.Name;
-                    TaskListBox.ItemsSource = App.ViewModel.AllTasks.Where(t => t.TaskSeries.Project.Id == proj.Id).Where(Exp.IsOpen);
+                    TaskListBox.ItemsSource = App.ViewModel.AllTasks.Where(t => t.TaskSeries.Project.Id == proj.Id).Where(Exp.IsOpen).OrderBy(t => t.Due).ThenBy(t => t.Priority).ThenBy(t => t.TaskSeries.Name);
                 }
             }
             else
@@ -47,7 +45,7 @@ namespace Mindsweep.Views
 
                 Title.Text = tag;
 
-                var tasksForTag = App.ViewModel.AllTasks.Where(Exp.IsOpen).Where(Exp.HasTags).Where(t => t.TaskSeries.Tags.Split(',').Contains(tag)).ToList();
+                var tasksForTag = App.ViewModel.AllTasks.Where(Exp.IsOpen).Where(Exp.HasTags).Where(t => t.TaskSeries.Tags.Split(',').Contains(tag)).OrderBy(t => t.Due).ThenBy(t => t.Priority).ThenBy(t => t.TaskSeries.Name).ToList();
 
                 TaskListBox.ItemsSource = tasksForTag;
             }

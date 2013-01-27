@@ -57,19 +57,6 @@ namespace Mindsweep.ViewModels
             }
         }
 
-
-        // All task series.
-        private ObservableCollection<TaskSeries> _allTaskSeries;
-        public ObservableCollection<TaskSeries> AllTaskSeries
-        {
-            get { return _allTaskSeries; }
-            set
-            {
-                _allTaskSeries = value;
-                NotifyPropertyChanged("AllTaskSeries");
-            }
-        }
-
         // All tasks.
         private ObservableCollection<Task> _allTasks;
         public ObservableCollection<Task> AllTasks
@@ -256,7 +243,7 @@ namespace Mindsweep.ViewModels
         {
             AllProjects = new ObservableCollection<Project>(mainDB.Projects.OrderBy(p => p.Position));
             ActiveProjects = new ObservableCollection<Project>(mainDB.Projects.Where(Exp.IsActive).OrderBy(p => p.Position));
-            AllTaskSeries = new ObservableCollection<TaskSeries>(mainDB.TaskSeries);
+           
             AllTasks = new ObservableCollection<Task>(mainDB.Tasks);
 
             AllOverdueTasks = new ObservableCollection<Task>(mainDB.Tasks.Where(Exp.IsOverdue).OrderBy(t=>t.Due).ThenBy(t=> t.Priority).ThenBy(t => t.TaskSeries.Name));
@@ -515,7 +502,7 @@ namespace Mindsweep.ViewModels
             mainDB.SubmitChanges();
 
             // Add a project to the "all" observable collection.
-            AllTaskSeries.Add(newTaskSeries);
+            newTaskSeries.Tasks.ToList().ForEach(t => AllTasks.Add(t));
         }
 
         public void ConfirmAndDeleteProject(Page page, Project project)
@@ -543,7 +530,7 @@ namespace Mindsweep.ViewModels
 
             foreach (TaskSeries taskseries in projectForDelete.TaskSeries)
             {
-                AllTaskSeries.Remove(taskseries);
+                taskseries.Tasks.ToList().ForEach(t => AllTasks.Remove(t));
                 mainDB.TaskSeries.DeleteOnSubmit(taskseries);
             }
 

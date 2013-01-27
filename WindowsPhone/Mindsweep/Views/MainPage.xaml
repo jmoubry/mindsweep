@@ -86,7 +86,7 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock HorizontalAlignment="Stretch" Grid.Column="0" Text="Flagged"/>
-                        <Border Grid.Column="1" Background="Red" Style="{StaticResource NumberBadgeBorderStyle}">
+                        <Border Grid.Column="1" Background="#FFEA5200" Style="{StaticResource NumberBadgeBorderStyle}">
                             <TextBlock Text="1" Style="{StaticResource NumberBadgeTextStyle}"/>
                         </Border>
                     </Grid>
