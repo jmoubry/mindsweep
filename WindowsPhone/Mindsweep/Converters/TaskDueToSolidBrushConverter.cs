@@ -27,10 +27,10 @@ namespace Mindsweep.Converters
             {
                 if (task.HasDueTime)
                 {
-                    if (task.Due.Value < DateTime.UtcNow)
+                    if (task.Due.Value.ToLocalTime() < DateTime.Now)
                         return new SolidColorBrush(Color.FromArgb(255, 234, 82, 0));
                 }
-                else if (task.Due.Value.Date < DateTime.UtcNow.Date)
+                else if (task.Due.Value.ToLocalTime().Date < DateTime.Now.Date)
                     return new SolidColorBrush(Color.FromArgb(255, 234, 82, 0));
             }
 
