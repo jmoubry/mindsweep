@@ -173,7 +173,7 @@ namespace Mindsweep.Model
         {
             if (PropertyChanging != null)
             {
-                PropertyChanging(this, new PropertyChangingEventArgs(propertyName));
+                Deployment.Current.Dispatcher.BeginInvoke(() => PropertyChanging(this, new PropertyChangingEventArgs(propertyName)));
             }
         }
 

@@ -4,7 +4,7 @@ using System;
 using System.ComponentModel;
 using System.Data.Linq;
 using System.Data.Linq.Mapping;
-using System.Linq;
+using System.Windows;
 
 namespace Mindsweep.Model
 {
@@ -220,7 +220,7 @@ namespace Mindsweep.Model
         {
             if (PropertyChanged != null)
             {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                Deployment.Current.Dispatcher.BeginInvoke(() => PropertyChanged(this, new PropertyChangedEventArgs(propertyName)));
             }
         }
 
@@ -235,7 +235,7 @@ namespace Mindsweep.Model
         {
             if (PropertyChanging != null)
             {
-                PropertyChanging(this, new PropertyChangingEventArgs(propertyName));
+                Deployment.Current.Dispatcher.BeginInvoke(() => PropertyChanging(this, new PropertyChangingEventArgs(propertyName)));
             }
         }
 
