@@ -41,7 +41,9 @@
 
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar BackgroundColor="Gainsboro" ForegroundColor="Black" IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton IconUri="/Images/add.png" Text="new project" Click="Add_Click"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/check.png" Text="complete" Click="Complete_Click"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/next.png" Text="postpone" Click="Postpone_Click"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/add.png" Text="new task" Click="Add_Click"/>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
 </phone:PhoneApplicationPage>

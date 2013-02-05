@@ -27,6 +27,8 @@
                 <telerikPrimitives:RadDataBoundListBox
                        ItemsSource="{Binding AllOverdueTasks}"
                        IsItemReorderEnabled="False"
+                       IsCheckModeEnabled="True"   
+                       CheckBoxStyle="{StaticResource ListCheckboxStyle}"
                        ItemTemplate="{StaticResource TaskDataTemplate}">
                 </telerikPrimitives:RadDataBoundListBox>
             </controls:PivotItem>
@@ -36,6 +38,7 @@
                 <telerikPrimitives:RadDataBoundListBox
                        ItemsSource="{Binding TasksDueToday}"
                        IsItemReorderEnabled="False"
+                       IsCheckModeEnabled="True"                    
                        ItemTemplate="{StaticResource TaskDataTemplate}">
                 </telerikPrimitives:RadDataBoundListBox>
             </controls:PivotItem>
@@ -44,6 +47,7 @@
                 <telerikPrimitives:RadDataBoundListBox
                        ItemsSource="{Binding TasksDueTomorrow}"
                        IsItemReorderEnabled="False"
+                       IsCheckModeEnabled="True"
                        ItemTemplate="{StaticResource TaskDataTemplate}">
                 </telerikPrimitives:RadDataBoundListBox>
             </controls:PivotItem>
@@ -52,6 +56,7 @@
                 <telerikPrimitives:RadDataBoundListBox
                        ItemsSource="{Binding TasksDueThisWeek}"
                        IsItemReorderEnabled="False"
+                       IsCheckModeEnabled="True"
                        ItemTemplate="{StaticResource TaskDataTemplate}">
                 </telerikPrimitives:RadDataBoundListBox>
             </controls:PivotItem>
@@ -60,6 +65,7 @@
                 <telerikPrimitives:RadDataBoundListBox
                        ItemsSource="{Binding TasksDueSomeday}"
                        IsItemReorderEnabled="False"
+                       IsCheckModeEnabled="True"
                        ItemTemplate="{StaticResource TaskDataTemplateWithoutDate}">
                 </telerikPrimitives:RadDataBoundListBox>
             </controls:PivotItem>
@@ -68,6 +74,8 @@
 
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar BackgroundColor="Gainsboro" ForegroundColor="Black" IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Images/check.png" Text="complete" Click="Complete_Click"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/next.png" Text="postpone" Click="Postpone_Click"/>
             <shell:ApplicationBarIconButton IconUri="/Images/add.png" Text="new task" Click="Add_Click"/>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>

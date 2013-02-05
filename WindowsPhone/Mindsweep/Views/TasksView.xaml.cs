@@ -57,5 +57,13 @@ namespace Mindsweep.Views
         {
 
         }
+
+        private void Complete_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void Postpone_Click(object sender, EventArgs e)
+        {
+        }
     }
 }

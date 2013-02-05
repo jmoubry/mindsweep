@@ -3,12 +3,12 @@ using Mindsweep.Helpers;
 using Mindsweep.Model;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO.IsolatedStorage;
 using System.Linq;
 using System.Net;
+using System.Windows;
 using System.Windows.Controls;
 using Telerik.Windows.Controls;
 
@@ -213,7 +213,7 @@ namespace Mindsweep.ViewModels
                 if (inbox == null)
                     return 0;
 
-                return AllTasks.Where(t => t.TaskSeries.Project.Id == inbox.Id).Count(Exp.IsOpen);
+                return AllTasks.Where(t => t.TaskSeries != null && t.TaskSeries.Project != null && t.TaskSeries.Project.Id == inbox.Id).Count(Exp.IsOpen);
             }
         }
 
@@ -253,6 +253,17 @@ namespace Mindsweep.ViewModels
             TasksDueThisWeek = new ObservableCollection<Task>(mainDB.Tasks.Where(Exp.IsDueThisWeek).OrderBy(t => t.Due).ThenBy(t => t.Priority).ThenBy(t => t.TaskSeries.Name));
 
             TasksDueSomeday = new ObservableCollection<Task>(mainDB.Tasks.Where(t => !t.Due.HasValue).OrderBy(t => t.Priority).ThenBy(t => t.TaskSeries.Name));
+
+            NotifyPropertyChanged("AllProjects");
+            NotifyPropertyChanged("ActiveProjects");
+            NotifyPropertyChanged("AllTasks");
+            NotifyPropertyChanged("AllOverdueTasks");
+            NotifyPropertyChanged("TasksDueToday");
+            NotifyPropertyChanged("TasksDueTomorrow");
+            NotifyPropertyChanged("TasksDueThisWeek");
+            NotifyPropertyChanged("TasksDueSomeday");
+            NotifyPropertyChanged("NextActionsCount");
+            NotifyPropertyChanged("InboxOpenTaskCount");
 
             UpdateTile(AllOverdueTasks.Count + TasksDueToday.Count);
         }
@@ -366,7 +377,7 @@ namespace Mindsweep.ViewModels
                 if (response.Status == StatusCodes.InvalidAuthToken)
                     Logout();
 
-                _UpdateTasks(response.TasksByProject);
+                _UpdateTasks(response);
             };
             bw.RunWorkerCompleted += (s, args) =>
             {
@@ -388,9 +399,9 @@ namespace Mindsweep.ViewModels
             bw.RunWorkerAsync();
         }
 
-        private void _UpdateTasks(List<Project> projects)
+        private void _UpdateTasks(JsonResponse response)
         {
-            foreach (Project serverProject in projects)
+            foreach (Project serverProject in response.TasksByProject)
             {
                 var localProject = mainDB.Projects.Where(p => p.Id == serverProject.Id).FirstOrDefault();
 
@@ -413,6 +424,32 @@ namespace Mindsweep.ViewModels
                         {
                             _SyncTaskSeries(localProject, localTaskSeries, serverTaskSeries);
                         }
+                    }
+                }
+            }
+
+            // Handle deleted tasks.
+            foreach (Project serverProject in response.DeletedTasksByProject)
+            {
+                var localProject = mainDB.Projects.Where(p => p.Id == serverProject.Id).FirstOrDefault();
+
+                if (localProject != null)
+                {
+                    foreach (TaskSeries serverTaskSeries in serverProject.TaskSeries)
+                    {
+                        foreach (Task serverDeletedTask in serverTaskSeries.Tasks)
+                        {
+                            var localTaskToDelete = mainDB.Tasks.Where(t => t.Id == serverDeletedTask.Id && t.TaskSeries.Id == serverTaskSeries.Id).FirstOrDefault();
+
+                            if (localTaskToDelete != null)
+                            {
+                                mainDB.Tasks.DeleteOnSubmit(localTaskToDelete);
+
+                                // Save changes to the database.
+                                mainDB.SubmitChanges();
+                            }
+                        }
+
                     }
                 }
             }
@@ -454,16 +491,19 @@ namespace Mindsweep.ViewModels
                     else
                         _SyncTask(localTask, serverTask);
                 }
-
-                // Look for any tasks that need to be removed.
-                foreach (Task localTaskToRemove in localTaskSeries.Tasks.Except(serverTaskSeries.Tasks, new TaskComparer()).ToList())
-                    localTaskSeries.Tasks.Remove(localTaskToRemove);
             }
         }
 
         private void _SyncTask(Task localTask, Task serverTask)
         {
+            localTask.Added = serverTask.Added;
+            localTask.Completed = serverTask.Completed;
+            localTask.Deleted = serverTask.Deleted;
             localTask.Due = serverTask.Due;
+            localTask.Estimate = serverTask.Estimate;
+            localTask.HasDueTime = serverTask.HasDueTime;
+            localTask.Postponed = serverTask.Postponed;
+            localTask.Priority = serverTask.Priority;                        
         }
 
         public void Sync()
@@ -492,7 +532,7 @@ namespace Mindsweep.ViewModels
             AllProjects.Add(newProject);
         }
 
-        // Add a project to the database and collections.
+        // Add a task series to the database and collections.
         public void AddTaskSeries(TaskSeries newTaskSeries)
         {
             // Add a project to the data context.
@@ -505,22 +545,86 @@ namespace Mindsweep.ViewModels
             newTaskSeries.Tasks.ToList().ForEach(t => AllTasks.Add(t));
         }
 
+        // Mark task completed.
+        public void Complete(Task task)
+        {
+            task.Completed = DateTime.UtcNow;
+            task.TaskSeries.Modified = DateTime.UtcNow;
+
+            // Save changes to the database.
+            mainDB.SubmitChanges();
+
+            LoadCollectionsFromDatabase();
+        }
+
+        // Postpone task.
+        public void Postpone(Task task)
+        {
+            task.Postponed += 1;
+            task.Due = task.Due.HasValue ? task.Due.Value.AddDays(1) : DateTime.UtcNow;
+            task.TaskSeries.Modified = DateTime.UtcNow;
+
+            // Save changes to the database.
+            mainDB.SubmitChanges();
+
+            LoadCollectionsFromDatabase();
+
+            // Try to submit request.
+            // If no internet, queue up request
+
+        }
+
+        public void ConfirmAndDelete(Task task, Page page = null, bool navigateBack = false)
+        {
+            RadMessageBox.Show("Confirm delete", buttons: MessageBoxButtons.YesNo, message: "Are you sure you want to delete the task, \"" + task.TaskSeries.Name + "\"?", closedHandler: (args) =>
+            {
+                if (args.Result == DialogResult.OK)
+                {
+                    FlurryWP7SDK.Api.LogEvent("Delete Task");
+
+                    this._Delete(task);
+
+                    if (navigateBack && page.NavigationService.CanGoBack)
+                        page.NavigationService.GoBack();
+                }
+            });
+        }
+
+        // Mark task as deleted.
+        private void _Delete(Task task)
+        {
+            task.Deleted = DateTime.UtcNow;
+            task.TaskSeries.Modified = DateTime.UtcNow;
+
+            // Save changes to the database.
+            mainDB.SubmitChanges();
+
+            LoadCollectionsFromDatabase();
+            AllOverdueTasks.Remove(task);
+        }
+
         public void ConfirmAndDeleteProject(Page page, Project project)
         {
+            if (project.Locked)
+            {
+                RadMessageBox.Show("Cannot delete", MessageBoxButtons.OK, "Cannot delete a locked project.");
+                return;
+            }
+
             RadMessageBox.Show("Confirm delete", buttons: MessageBoxButtons.YesNo, message: "Are you sure you want to delete the \"" + project.Name + "\" project?", closedHandler: (args) =>
             {
                 if (args.Result == DialogResult.OK)
                 {
                     FlurryWP7SDK.Api.LogEvent("Delete Project");
 
-                    this.DeleteProject(project);
+                    this._DeleteProject(project);
                     page.NavigationService.Navigate(new Uri("/Views/MainPage.xaml", UriKind.RelativeOrAbsolute));
                 }
             });
         }
 
         // Remove a project from the database and collections.
-        public void DeleteProject(Project projectForDelete)
+        private void _DeleteProject(Project projectForDelete)
         {
             // Remove the deck from the "all" observable collection.
             AllProjects.Remove(projectForDelete);
@@ -530,14 +634,14 @@ namespace Mindsweep.ViewModels
 
             foreach (TaskSeries taskseries in projectForDelete.TaskSeries)
             {
+                // TODO: task should be moved to inbox.
                 taskseries.Tasks.ToList().ForEach(t => AllTasks.Remove(t));
                 mainDB.TaskSeries.DeleteOnSubmit(taskseries);
             }
 
             // Save changes to the database.
             mainDB.SubmitChanges();
-        }
-        
+        }        
 
         #region INotifyPropertyChanged Members
 
@@ -548,7 +652,7 @@ namespace Mindsweep.ViewModels
         {
             if (PropertyChanged != null)
             {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                Deployment.Current.Dispatcher.BeginInvoke(() => PropertyChanged(this, new PropertyChangedEventArgs(propertyName)));
             }
         }
         #endregion

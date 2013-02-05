@@ -9,6 +9,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Mindsweep.Model;
 using Mindsweep.Helpers;
+using Telerik.Windows.Controls;
 
 namespace Mindsweep.Views
 {
@@ -29,6 +30,33 @@ namespace Mindsweep.Views
 
         private void Add_Click(object sender, EventArgs e)
         {
+        }
+
+        private void Delete_Click(object sender, EventArgs e)
+        {
+           // ConfirmAndDelete
+        }
+
+        private void Complete_Click(object sender, EventArgs e)
+        {
+            PivotItem pivotItem = (PivotItem)NextActionsPivot.SelectedItem;
+            RadDataBoundListBox list = pivotItem.Content as RadDataBoundListBox;
+
+            foreach (var item in list.CheckedItems)
+                App.ViewModel.Complete(item as Task);
+
+            list.IsCheckModeActive = false;
+        }
+
+        private void Postpone_Click(object sender, EventArgs e)
+        {
+            PivotItem pivotItem = (PivotItem)NextActionsPivot.SelectedItem;
+            RadDataBoundListBox list = pivotItem.Content as RadDataBoundListBox;
+
+            foreach (var item in list.CheckedItems.ToList())
+                App.ViewModel.Postpone(item as Task);
+
+            list.IsCheckModeActive = false;
         }
     }
 }

@@ -147,6 +147,7 @@
     <Content Include="Images\feature.settings.png" />
     <Content Include="Images\filter.png" />
     <Content Include="Images\logo180.png" />
+    <Content Include="Images\next.png" />
     <Content Include="Images\sync.png" />
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>

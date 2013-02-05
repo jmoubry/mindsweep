@@ -54,6 +54,37 @@ namespace Mindsweep.Helpers
             }
         }
 
+        public List<Project> DeletedTasksByProject
+        {
+            get
+            {
+                List<Project> projects = new List<Project>();
+
+                if (rsp == null
+                    || rsp.tasks == null
+                    || rsp.tasks.list == null)
+                    return projects;
+
+                foreach (JsonTasksResultsList list in rsp.tasks.list)
+                {
+                    if (list.deleted != null && list.deleted.Count > 0)
+                    {
+                        foreach (JsonTasksResultsList lt in list.deleted)
+                        {
+                            if (lt.taskseries != null && lt.taskseries.Count > 0)
+                            {
+                                Project p = new Project() { Id = list.id };
+                                p.TaskSeries.AddRange(lt.taskseries);
+                                projects.Add(p);
+                            }
+                        }
+                    }
+                }
+
+                return projects;
+            }
+        }
+
         public StatusCodes Status
         {
             get
@@ -113,5 +144,8 @@ namespace Mindsweep.Helpers
 
         [JsonConverter(typeof(ObjectToArrayConverter<TaskSeries>))]
         public List<TaskSeries> taskseries { get; set; }
+
+        [JsonConverter(typeof(ObjectToArrayConverter<JsonTasksResultsList>))]
+        public List<JsonTasksResultsList> deleted { get; set; }
     }
 }
