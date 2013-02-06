@@ -527,6 +527,8 @@ namespace Mindsweep.ViewModels
 
         public void Sync()
         {
+            App.ViewModel.ProcessRequestQueue();
+
             client.DownloadStringAsync(RTM.SignJsonRequest(RTM.URI_GETLISTS), new Action<string>(ParseJsonProjects));
 
             // TODO: Sync the other way -- send updates to RTM.
