@@ -38,7 +38,8 @@
                 <telerikPrimitives:RadDataBoundListBox
                        ItemsSource="{Binding TasksDueToday}"
                        IsItemReorderEnabled="False"
-                       IsCheckModeEnabled="True"                    
+                       IsCheckModeEnabled="True"    
+                       CheckBoxStyle="{StaticResource ListCheckboxStyle}"                  
                        ItemTemplate="{StaticResource TaskDataTemplate}">
                 </telerikPrimitives:RadDataBoundListBox>
             </controls:PivotItem>
@@ -47,7 +48,8 @@
                 <telerikPrimitives:RadDataBoundListBox
                        ItemsSource="{Binding TasksDueTomorrow}"
                        IsItemReorderEnabled="False"
-                       IsCheckModeEnabled="True"
+                       IsCheckModeEnabled="True"  
+                       CheckBoxStyle="{StaticResource ListCheckboxStyle}"
                        ItemTemplate="{StaticResource TaskDataTemplate}">
                 </telerikPrimitives:RadDataBoundListBox>
             </controls:PivotItem>
@@ -56,7 +58,8 @@
                 <telerikPrimitives:RadDataBoundListBox
                        ItemsSource="{Binding TasksDueThisWeek}"
                        IsItemReorderEnabled="False"
-                       IsCheckModeEnabled="True"
+                       IsCheckModeEnabled="True"  
+                       CheckBoxStyle="{StaticResource ListCheckboxStyle}"
                        ItemTemplate="{StaticResource TaskDataTemplate}">
                 </telerikPrimitives:RadDataBoundListBox>
             </controls:PivotItem>
@@ -65,7 +68,8 @@
                 <telerikPrimitives:RadDataBoundListBox
                        ItemsSource="{Binding TasksDueSomeday}"
                        IsItemReorderEnabled="False"
-                       IsCheckModeEnabled="True"
+                       IsCheckModeEnabled="True"  
+                       CheckBoxStyle="{StaticResource ListCheckboxStyle}"
                        ItemTemplate="{StaticResource TaskDataTemplateWithoutDate}">
                 </telerikPrimitives:RadDataBoundListBox>
             </controls:PivotItem>

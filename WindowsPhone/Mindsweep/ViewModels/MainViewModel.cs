@@ -28,6 +28,10 @@ namespace Mindsweep.ViewModels
             mainDB = new MainDataContext(deckDBConnectionString);
             client = new WebClient();
             client.DownloadStringCompleted += client_DownloadStringCompleted;
+            clientForUpdates = new WebClient();
+            clientForUpdates.DownloadStringCompleted += clientForUpdates_DownloadStringCompleted;
+            clientForTimeline = new WebClient();
+            clientForTimeline.DownloadStringCompleted += clientForTimeline_DownloadStringCompleted;
             IsSynced = LastSync > DateTime.UtcNow.AddMinutes(-15);
         }
 
@@ -244,7 +248,7 @@ namespace Mindsweep.ViewModels
             AllProjects = new ObservableCollection<Project>(mainDB.Projects.OrderBy(p => p.Position));
             ActiveProjects = new ObservableCollection<Project>(mainDB.Projects.Where(Exp.IsActive).OrderBy(p => p.Position));
            
-            AllTasks = new ObservableCollection<Task>(mainDB.Tasks);
+            AllTasks = new ObservableCollection<Task>(mainDB.Tasks.Where(Exp.IsOpen));
 
             AllOverdueTasks = new ObservableCollection<Task>(mainDB.Tasks.Where(Exp.IsOverdue).OrderBy(t=>t.Due).ThenBy(t=> t.Priority).ThenBy(t => t.TaskSeries.Name));
             
@@ -278,13 +282,28 @@ namespace Mindsweep.ViewModels
         }
 
         WebClient client;
+        WebClient clientForUpdates;
+        WebClient clientForTimeline;
 
         void client_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
             // TODO: handle error
-
-            (e.UserState as Action<string>)(e.Result);   
+            if (e.Error != null) // TODO: && Error = No Internet
+            {
+            }
+            else
+                (e.UserState as Action<string>)(e.Result);
         }
+
+        void clientForTimeline_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
+        {
+            // TODO: handle error
+            if (e.Error != null) // TODO: && Error = No Internet
+            {
+            }
+            else
+                (e.UserState as Action<string>)(e.Result);
+        }        
 
         public class UserInfo
         {
@@ -545,16 +564,111 @@ namespace Mindsweep.ViewModels
             newTaskSeries.Tasks.ToList().ForEach(t => AllTasks.Add(t));
         }
 
+        public string Timeline;
+
+        public void QueueRequest(string requestUri)
+        {
+            // Add a project to the data context.
+            mainDB.RequestQueue.InsertOnSubmit(new Request { RequestUri = requestUri, Requested = DateTime.UtcNow });
+
+            // Save changes to the database.
+            mainDB.SubmitChanges();
+
+            ProcessRequestQueue();
+        }
+
+
+        private void RequestTimeline()
+        {
+            if (string.IsNullOrEmpty(Timeline))
+                clientForTimeline.DownloadStringAsync(RTM.SignJsonRequest(RTM.URI_GET_TIMELINE), new Action<string>(SetTimeline));
+        }
+
+        private bool _isProcessingRequests = false;
+
+        public void ProcessRequestQueue()
+        {
+            if (_isProcessingRequests)
+                return;
+
+            if (string.IsNullOrEmpty(Timeline))
+            {
+                RequestTimeline();
+                return;
+            }
+
+            _isProcessingRequests = true;
+
+            var nextRequest = mainDB.RequestQueue.OrderBy(r => r.Requested).Skip(skipRequests).FirstOrDefault();
+
+            if (nextRequest != null)
+                clientForUpdates.DownloadStringAsync(RTM.SignJsonRequest(nextRequest.RequestUri + "&timeline=" + Timeline), nextRequest);
+            else
+                _isProcessingRequests = false;
+        }
+
+        void clientForUpdates_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
+        {
+            if (e.Error != null) // and is related to no internet
+            {
+                _isProcessingRequests = false;
+                return;
+            }
+
+            JsonResponse response = JsonConvert.DeserializeObject<JsonResponse>(e.Result);
+
+            if (response.Status == StatusCodes.InvalidAuthToken)
+            {
+                _isProcessingRequests = false;
+                Logout();
+            }
+
+            if (response.Status == StatusCodes.Success)
+            {
+                mainDB.RequestQueue.DeleteOnSubmit(e.UserState as Request);
+                mainDB.SubmitChanges();
+            }
+            else
+            {
+                // Skip this request and try other ones.
+                skipRequests++;
+            }
+
+            _isProcessingRequests = false;
+
+            ProcessRequestQueue();
+        }
+
+        private int skipRequests = 0;
+
+        public void SetTimeline(string json)
+        {
+            JsonResponse response = JsonConvert.DeserializeObject<JsonResponse>(json);
+
+            if (response.Status == StatusCodes.InvalidAuthToken)
+                Logout();
+
+            this.Timeline = response.rsp.timeline;
+
+            ProcessRequestQueue();
+        }
+
+
+
         // Mark task completed.
         public void Complete(Task task)
         {
             task.Completed = DateTime.UtcNow;
             task.TaskSeries.Modified = DateTime.UtcNow;
 
+            // Handle repeat logic.
+
             // Save changes to the database.
             mainDB.SubmitChanges();
 
             LoadCollectionsFromDatabase();
+            
+            QueueRequest(string.Format("{0}&list_id={1}&taskseries_id={2}&task_id={3}", RTM.URI_SETCOMPLETE, task.TaskSeries.Project.Id, task.TaskSeries.Id, task.Id));
         }
 
         // Postpone task.

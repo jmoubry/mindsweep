@@ -83,6 +83,7 @@
     <Compile Include="Converters\PriorityToSolidBrushConverter.cs" />
     <Compile Include="Converters\CountToVisibilityConverter.cs" />
     <Compile Include="Helpers\Exp.cs" />
+    <Compile Include="Model\Request.cs" />
     <Compile Include="Views\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>

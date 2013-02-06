@@ -13,6 +13,9 @@ namespace Mindsweep.Model
         { }
 
         // Specify a table for the to-do items.
+        public Table<Request> RequestQueue;
+
+        // Specify a table for the to-do items.
         public Table<Task> Tasks;
 
         // Specify a table for the to-do items.

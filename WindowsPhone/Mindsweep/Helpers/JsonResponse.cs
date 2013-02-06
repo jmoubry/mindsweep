@@ -111,6 +111,7 @@ namespace Mindsweep.Helpers
 
     public class JsonResult
     {
+        public string timeline { get; set; }
         public string stat { get; set; }
         public JsonError err { get; set; }
         public JsonListsResults lists { get; set; }
