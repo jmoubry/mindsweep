@@ -527,7 +527,7 @@ namespace Mindsweep.ViewModels
 
         public void Sync()
         {
-            App.ViewModel.ProcessRequestQueue();
+            ProcessRequestQueue();
 
             client.DownloadStringAsync(RTM.SignJsonRequest(RTM.URI_GETLISTS), new Action<string>(ParseJsonProjects));
 
