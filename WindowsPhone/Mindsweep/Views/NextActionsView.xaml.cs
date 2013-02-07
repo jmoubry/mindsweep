@@ -32,9 +32,18 @@ namespace Mindsweep.Views
         {
         }
 
+        private void Edit_Click(object sender, EventArgs e)
+        {
+        }
+
         private void Delete_Click(object sender, EventArgs e)
         {
-           // ConfirmAndDelete
+            PivotItem pivotItem = (PivotItem)NextActionsPivot.SelectedItem;
+            RadDataBoundListBox list = pivotItem.Content as RadDataBoundListBox;
+
+            App.ViewModel.ConfirmAndDelete(list.CheckedItems.Cast<Task>().ToList(), this);
+
+            list.IsCheckModeActive = false;
         }
 
         private void Complete_Click(object sender, EventArgs e)

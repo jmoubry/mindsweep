@@ -3,6 +3,7 @@ using Mindsweep.Helpers;
 using Mindsweep.Model;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO.IsolatedStorage;
@@ -464,14 +465,17 @@ namespace Mindsweep.ViewModels
                             {
                                 mainDB.Tasks.DeleteOnSubmit(localTaskToDelete);
 
-                                // Save changes to the database.
-                                mainDB.SubmitChanges();
                             }
                         }
 
                     }
                 }
             }
+
+            // Save changes to the database.
+            mainDB.SubmitChanges();
+
+            ProcessRequestQueue();
         }
 
         private void _SyncProject(Project localProject, Project serverProject)
@@ -527,8 +531,6 @@ namespace Mindsweep.ViewModels
 
         public void Sync()
         {
-            ProcessRequestQueue();
-
             client.DownloadStringAsync(RTM.SignJsonRequest(RTM.URI_GETLISTS), new Action<string>(ParseJsonProjects));
 
             // TODO: Sync the other way -- send updates to RTM.
@@ -537,7 +539,6 @@ namespace Mindsweep.ViewModels
         public void DeleteDB()
         {
             mainDB.DeleteDatabase();
-            LoadCollectionsFromDatabase();
         }
 
         // Add a project to the database and collections.
@@ -566,6 +567,8 @@ namespace Mindsweep.ViewModels
             newTaskSeries.Tasks.ToList().ForEach(t => AllTasks.Add(t));
         }
 
+        #region Code for Updates
+
         public string Timeline;
 
         public void QueueRequest(string requestUri)
@@ -578,7 +581,6 @@ namespace Mindsweep.ViewModels
 
             ProcessRequestQueue();
         }
-
 
         private void RequestTimeline()
         {
@@ -655,8 +657,6 @@ namespace Mindsweep.ViewModels
             ProcessRequestQueue();
         }
 
-
-
         // Mark task completed.
         public void Complete(Task task)
         {
@@ -685,20 +685,23 @@ namespace Mindsweep.ViewModels
 
             LoadCollectionsFromDatabase();
 
-            // Try to submit request.
-            // If no internet, queue up request
-
+            QueueRequest(string.Format("{0}&list_id={1}&taskseries_id={2}&task_id={3}", RTM.URI_POSTPONE, task.TaskSeries.Project.Id, task.TaskSeries.Id, task.Id));
         }
 
-        public void ConfirmAndDelete(Task task, Page page = null, bool navigateBack = false)
+        public void ConfirmAndDelete(List<Task> tasks, Page page = null, bool navigateBack = false)
         {
-            RadMessageBox.Show("Confirm delete", buttons: MessageBoxButtons.YesNo, message: "Are you sure you want to delete the task, \"" + task.TaskSeries.Name + "\"?", closedHandler: (args) =>
+            string message = string.Format("Are you sure you want to delete the selected {0} tasks?", tasks.Count);
+
+            if (tasks.Count == 1)
+                message = "Are you sure you want to delete the task, \"" + tasks.First().TaskSeries.Name + "\"?";
+
+            RadMessageBox.Show("Confirm delete", buttons: MessageBoxButtons.YesNo, message: message, closedHandler: (args) =>
             {
                 if (args.Result == DialogResult.OK)
                 {
                     FlurryWP7SDK.Api.LogEvent("Delete Task");
 
-                    this._Delete(task);
+                    tasks.ForEach(task => this._Delete(task));
 
                     if (navigateBack && page.NavigationService.CanGoBack)
                         page.NavigationService.GoBack();
@@ -716,7 +719,8 @@ namespace Mindsweep.ViewModels
             mainDB.SubmitChanges();
 
             LoadCollectionsFromDatabase();
-            AllOverdueTasks.Remove(task);
+
+            QueueRequest(string.Format("{0}&list_id={1}&taskseries_id={2}&task_id={3}", RTM.URI_DELETETASK, task.TaskSeries.Project.Id, task.TaskSeries.Id, task.Id));
         }
 
         public void ConfirmAndDeleteProject(Page page, Project project)
@@ -757,7 +761,9 @@ namespace Mindsweep.ViewModels
 
             // Save changes to the database.
             mainDB.SubmitChanges();
-        }        
+        }
+
+        #endregion
 
         #region INotifyPropertyChanged Members
 

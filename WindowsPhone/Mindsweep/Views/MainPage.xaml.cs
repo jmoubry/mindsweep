@@ -62,7 +62,7 @@ namespace Mindsweep.Views
                 };
 
                 SystemTray.SetProgressIndicator(this, prog);
-                
+
                 App.ViewModel.Sync();
             }
         }

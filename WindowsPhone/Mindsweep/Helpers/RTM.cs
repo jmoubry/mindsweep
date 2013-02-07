@@ -17,7 +17,9 @@ namespace Mindsweep.Helpers
         public const string URI_GETLISTS = "http://www.rememberthemilk.com/services/rest/?method=rtm.lists.getList";
         public const string URI_GETTASKS = "http://www.rememberthemilk.com/services/rest/?method=rtm.tasks.getList";
         public const string URI_SETCOMPLETE = "http://www.rememberthemilk.com/services/rest/?method=rtm.tasks.complete";
-        
+        public const string URI_POSTPONE = "http://www.rememberthemilk.com/services/rest/?method=rtm.tasks.postpone";
+        public const string URI_DELETETASK = "http://www.rememberthemilk.com/services/rest/?method=rtm.tasks.delete";
+
         public static Uri SignRequest(string url, bool formatJson = false, bool authToken = false)
         {
             Dictionary<string, string> qparams = new Dictionary<string, string>();
