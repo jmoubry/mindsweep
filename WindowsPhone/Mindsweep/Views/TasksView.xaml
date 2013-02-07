@@ -33,7 +33,9 @@
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <telerikPrimitives:RadDataBoundListBox x:Name="TaskListBox" 
                                                    IsItemReorderEnabled="False" 
-                                                   Margin="14,0,-12,0"
+                                                   Margin="14,0,-12,0"        
+                                                   IsCheckModeEnabled="True"  
+                                                   CheckBoxStyle="{StaticResource ListCheckboxStyle}"
                                                    ItemTemplate="{StaticResource TaskDataTemplate}">
             </telerikPrimitives:RadDataBoundListBox>
         </Grid>
@@ -43,7 +45,11 @@
         <shell:ApplicationBar BackgroundColor="Gainsboro" ForegroundColor="Black" IsVisible="True" IsMenuEnabled="True">
             <shell:ApplicationBarIconButton IconUri="/Images/check.png" Text="complete" Click="Complete_Click"/>
             <shell:ApplicationBarIconButton IconUri="/Images/next.png" Text="postpone" Click="Postpone_Click"/>
-            <shell:ApplicationBarIconButton IconUri="/Images/add.png" Text="new task" Click="Add_Click"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/edit.png" Text="edit" Click="Edit_Click"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/delete.png" Text="delete task" Click="Delete_Click"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="new task" Click="Add_Click"/>
+            </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
 </phone:PhoneApplicationPage>

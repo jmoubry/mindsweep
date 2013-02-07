@@ -53,17 +53,36 @@ namespace Mindsweep.Views
             FlurryWP7SDK.Api.LogEvent("Project");
         }
 
+
         private void Add_Click(object sender, EventArgs e)
         {
+        }
 
+        private void Edit_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void Delete_Click(object sender, EventArgs e)
+        {
+            App.ViewModel.ConfirmAndDelete(TaskListBox.CheckedItems.Cast<Task>().ToList(), this);
+
+            TaskListBox.IsCheckModeActive = false;
         }
 
         private void Complete_Click(object sender, EventArgs e)
         {
+            foreach (var item in TaskListBox.CheckedItems)
+                App.ViewModel.Complete(item as Task);
+
+            TaskListBox.IsCheckModeActive = false;
         }
 
         private void Postpone_Click(object sender, EventArgs e)
         {
+            foreach (var item in TaskListBox.CheckedItems.ToList())
+                App.ViewModel.Postpone(item as Task);
+
+            TaskListBox.IsCheckModeActive = false;
         }
     }
 }
