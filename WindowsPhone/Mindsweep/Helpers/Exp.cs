@@ -13,7 +13,7 @@ namespace Mindsweep.Helpers
 
         
         // Not archived, not smart, not inbox, not sent
-        public static Func<Project, bool> IsActive = p => !p.Archived && !p.Smart && !p.Locked;
+        public static Func<Project, bool> IsActive = p => !p.Archived && !p.Smart && !p.Locked && !p.Deleted;
 
         #endregion
 

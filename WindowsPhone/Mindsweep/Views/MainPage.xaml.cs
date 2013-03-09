@@ -47,7 +47,7 @@ namespace Mindsweep.Views
 
         private void LogOut_Click(object sender, EventArgs e)
         {
-            App.ViewModel.Token = null;
+            App.ViewModel.Logout();
         }
 
         private void _Sync()

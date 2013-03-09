@@ -134,17 +134,6 @@ namespace Mindsweep.ViewModels
             }
         }
 
-        private bool _isAuthorized;
-        public bool IsAuthorized
-        {
-            get { return _isAuthorized; }
-            set
-            {
-                _isAuthorized = value;
-                NotifyPropertyChanged("IsAuthorized");
-            }
-        }
-
         public bool IsLoggedIn
         {
             get { return !string.IsNullOrEmpty(this.Token); }
@@ -317,9 +306,13 @@ namespace Mindsweep.ViewModels
         {
             this.Token = token;
         }
+
         public void Logout()
         {
             this.Token = null;
+            this.LastSync = DateTime.MinValue;
+            this.IsSynced = false;
+            this.DeleteDB();
         }
 
         public void ParseJsonProjects(string json)
@@ -337,28 +330,37 @@ namespace Mindsweep.ViewModels
 
                 foreach (Project serverProject in response.Projects)
                 {
+                    // See if project is stored locally.
                     var localProject = mainDB.Projects.Where(p => p.Id == serverProject.Id).FirstOrDefault();
 
-                    if (localProject == null)
+                    if (localProject == null && !serverProject.Deleted)
                     {
                         AddProject(serverProject);
+                    }
+                    else if (serverProject.Deleted)
+                    {
+                        mainDB.Projects.DeleteOnSubmit(localProject);
                     }
                     else
                     {
                         _SyncProject(localProject, serverProject);
-                    }
+                    } 
                 }
 
-                // TODO: delete projects that don't exist on the server.
-
+                foreach (Project toDelete in mainDB.Projects.ToList().Except(response.Projects, new ProjectComparer()).ToList())
+                {
+                    // Cheap way to avoid null task references...don't delete the project from the db if it has tasks.
+                    // The tasks will have been moved to Inbox, so the next time the sync occurs, the project will have 0 tasks and will be deleted from db.
+                    if (toDelete.TaskSeries.Count == 0)
+                        mainDB.Projects.DeleteOnSubmit(toDelete);
+                    else
+                        toDelete.Deleted = true;
+                }
             };
 
             bw.RunWorkerCompleted += (s, args) =>
             {
                 // Do your UI work here this will run on the UI thread.
-                // Clear progress bar.
-
-
                 mainDB.SubmitChanges();
 
                 AllProjects = new ObservableCollection<Project>(mainDB.Projects);
@@ -369,9 +371,6 @@ namespace Mindsweep.ViewModels
                 else // Download the changes since the last sync.
                     client.DownloadStringAsync(RTM.SignJsonRequest(RTM.URI_GETTASKS + "&last_sync=" + LastSync.ToString("o")), new Action<string>(ParseJsonTasks));
             };
-
-            // Set progress bar.
-
 
             bw.RunWorkerAsync();
         }

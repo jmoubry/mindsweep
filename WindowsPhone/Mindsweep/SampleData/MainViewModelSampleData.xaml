@@ -1,4 +1,4 @@
-﻿<ViewModels:MainViewModel xmlns:ViewModels="clr-namespace:Mindsweep.ViewModels" xmlns:Model="clr-namespace:Mindsweep.Model" xmlns:System="clr-namespace:System;assembly=mscorlib" IsAuthorized="True" IsSynced="True" InboxOpenTaskCount="54" IsLoggedIn="True" LastSync="03/09/2013 10:53:32" NextActionsCount="50" Token="Lacinia etiam suscipit parturient torquent">
+﻿<ViewModels:MainViewModel xmlns:ViewModels="clr-namespace:Mindsweep.ViewModels" xmlns:Model="clr-namespace:Mindsweep.Model" xmlns:System="clr-namespace:System;assembly=mscorlib" IsSynced="True" InboxOpenTaskCount="54" IsLoggedIn="True" LastSync="03/09/2013 10:53:32" NextActionsCount="50" Token="Lacinia etiam suscipit parturient torquent">
 	<ViewModels:MainViewModel.AllProjects>
 		<Model:Project Archived="False" Deleted="False" Id="Varius parturient" Locked="False" Name="Enim hac neque netus erat" Position="91" Smart="False"/>
 		<Model:Project Archived="False" Deleted="False" Id="Dictumst leo venenatis mus" Locked="False" Name="Aliquam nec eleifend vulputate aenean" Position="74" Smart="False"/>

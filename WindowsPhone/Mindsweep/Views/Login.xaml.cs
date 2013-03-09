@@ -74,7 +74,7 @@ namespace Mindsweep.Views
                 };
             }
 
-            this.DoneButton.IsEnabled = App.ViewModel.IsLoggedIn;
+            this.NavigationService.Navigate(new Uri("/Views/MainPage.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void Retry_Click(object sender, RoutedEventArgs e)
@@ -85,12 +85,12 @@ namespace Mindsweep.Views
 
         private void Done_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("/Views/MainPage.xaml", UriKind.RelativeOrAbsolute));
+            client.DownloadStringAsync(RTM.SignRequest(RTM.URI_GET_TOKEN + "&frob=" + _frob), new Action<XDocument>(Done));
         }
 
         private void wbLogin_Navigating(object sender, NavigatingEventArgs e)
         {
-            client.DownloadStringAsync(RTM.SignRequest(RTM.URI_GET_TOKEN + "&frob=" + _frob), new Action<XDocument>(Done));
+            
         }
 
     }

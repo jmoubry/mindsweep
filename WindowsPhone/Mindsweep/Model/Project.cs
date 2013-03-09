@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.Linq;
 using System.Data.Linq.Mapping;
@@ -154,5 +155,18 @@ namespace Mindsweep.Model
         }
 
         #endregion
+    }
+
+    public class ProjectComparer : IEqualityComparer<Project>
+    {
+        public bool Equals(Project x, Project y)
+        {
+            return x.Id == y.Id;
+        }
+
+        public int GetHashCode(Project obj)
+        {
+            return obj.Id.GetHashCode();
+        }
     }
 }
