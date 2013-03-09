@@ -15,7 +15,8 @@
     mc:Ignorable="d"
     shell:SystemTray.IsVisible="True"
     shell:SystemTray.BackgroundColor="White"
-    shell:SystemTray.ForegroundColor="Black">
+    shell:SystemTray.ForegroundColor="Black"
+    d:DataContext="{d:DesignData Source=../SampleData/MainViewModelSampleData.xaml}">
     
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot">
@@ -29,7 +30,8 @@
                        IsItemReorderEnabled="False"
                        IsCheckModeEnabled="True"   
                        CheckBoxStyle="{StaticResource ListCheckboxStyle}"
-                       ItemTemplate="{StaticResource TaskDataTemplate}">
+                       ItemTemplate="{StaticResource TaskDataTemplate}"
+                       SelectionChanged="TaskListBox_SelectionChanged">
                 </telerikPrimitives:RadDataBoundListBox>
             </controls:PivotItem>
 
@@ -40,7 +42,8 @@
                        IsItemReorderEnabled="False"
                        IsCheckModeEnabled="True"    
                        CheckBoxStyle="{StaticResource ListCheckboxStyle}"                  
-                       ItemTemplate="{StaticResource TaskDataTemplate}">
+                       ItemTemplate="{StaticResource TaskDataTemplate}"
+                       SelectionChanged="TaskListBox_SelectionChanged">
                 </telerikPrimitives:RadDataBoundListBox>
             </controls:PivotItem>
 
@@ -50,7 +53,8 @@
                        IsItemReorderEnabled="False"
                        IsCheckModeEnabled="True"  
                        CheckBoxStyle="{StaticResource ListCheckboxStyle}"
-                       ItemTemplate="{StaticResource TaskDataTemplate}">
+                       ItemTemplate="{StaticResource TaskDataTemplate}"
+                       SelectionChanged="TaskListBox_SelectionChanged">
                 </telerikPrimitives:RadDataBoundListBox>
             </controls:PivotItem>
 
@@ -60,7 +64,8 @@
                        IsItemReorderEnabled="False"
                        IsCheckModeEnabled="True"  
                        CheckBoxStyle="{StaticResource ListCheckboxStyle}"
-                       ItemTemplate="{StaticResource TaskDataTemplate}">
+                       ItemTemplate="{StaticResource TaskDataTemplate}"
+                       SelectionChanged="TaskListBox_SelectionChanged">
                 </telerikPrimitives:RadDataBoundListBox>
             </controls:PivotItem>
             
@@ -70,7 +75,8 @@
                        IsItemReorderEnabled="False"
                        IsCheckModeEnabled="True"  
                        CheckBoxStyle="{StaticResource ListCheckboxStyle}"
-                       ItemTemplate="{StaticResource TaskDataTemplateWithoutDate}">
+                       ItemTemplate="{StaticResource TaskDataTemplateWithoutDate}"
+                       SelectionChanged="TaskListBox_SelectionChanged">
                 </telerikPrimitives:RadDataBoundListBox>
             </controls:PivotItem>
         </controls:Pivot>

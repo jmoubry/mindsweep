@@ -12,24 +12,27 @@
 	<!--Application Resources-->
     <Application.Resources>
 
-        <ResourceDictionary x:Key="resources">
+        <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="AppConfig.xaml"/>
                 <ResourceDictionary Source="AppConfig_Sensitive.xaml"/>
                 <ResourceDictionary Source="Styles.xaml"/>
                 <ResourceDictionary Source="Templates.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-
-        <converter:BoolToVisibilityConverter x:Key="BoolVisibilityConverter" />
-        <converter:CountToVisibilityConverter x:Key="CountVisibilityConverter" />
-        <converter:PriorityToSolidBrushConverter x:Key="PrioritySolidBrushConverter" />
-        <converter:TaskDueToSolidBrushConverter x:Key="TaskDueSolidBrushConverter" />
         
-        <telerikCore:RadSlideAnimation  x:Key="fadeInAnimation" MoveDirection="LeftIn" />
-        <telerikCore:RadSlideAnimation  x:Key="fadeOutAnimation"  MoveDirection="LeftOut"/>
-        <telerikCore:RadSlideAnimation  x:Key="RightInAnimation" MoveDirection="RightIn" />
-        <telerikCore:RadSlideAnimation  x:Key="RightOutAnimation"  MoveDirection="RightOut"/>
+
+            <converter:BoolToVisibilityConverter x:Key="BoolVisibilityConverter" />
+            <converter:CountToVisibilityConverter x:Key="CountVisibilityConverter" />
+            <converter:TextToVisibilityConverter x:Key="TextVisibilityConverter" />
+            <converter:PriorityToSolidBrushConverter x:Key="PrioritySolidBrushConverter" />
+            <converter:TaskDueToSolidBrushConverter x:Key="TaskDueSolidBrushConverter" />
+        
+            <telerikCore:RadSlideAnimation  x:Key="fadeInAnimation" MoveDirection="LeftIn" />
+            <telerikCore:RadSlideAnimation  x:Key="fadeOutAnimation"  MoveDirection="LeftOut"/>
+            <telerikCore:RadSlideAnimation  x:Key="RightInAnimation" MoveDirection="RightIn" />
+            <telerikCore:RadSlideAnimation  x:Key="RightOutAnimation"  MoveDirection="RightOut"/>
+
+        </ResourceDictionary>
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>

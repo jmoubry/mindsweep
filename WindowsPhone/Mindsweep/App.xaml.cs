@@ -6,6 +6,7 @@ using System;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Navigation;
+using System.Windows.Threading;
 using Telerik.Windows.Controls;
 
 namespace Mindsweep
@@ -150,7 +151,6 @@ namespace Mindsweep
 
             //Initializes this instance.
             diagnostics.Init();
-    
 
             // Specify the local database connection string.
             string DBConnectionString = "Data Source=isostore:/Mindsweep.sdf";

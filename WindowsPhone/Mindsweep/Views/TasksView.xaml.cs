@@ -9,6 +9,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Mindsweep.Model;
 using Mindsweep.Helpers;
+using Telerik.Windows.Controls;
 
 namespace Mindsweep.Views
 {
@@ -83,6 +84,22 @@ namespace Mindsweep.Views
                 App.ViewModel.Postpone(item as Task);
 
             TaskListBox.IsCheckModeActive = false;
+        }
+
+        private void TaskListBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender == null)
+                return;
+
+            Task task = (sender as RadDataBoundListBox).SelectedItem as Task;
+
+            // De-select so that it may be re-selected.
+            (sender as RadDataBoundListBox).SelectedItem = null;
+
+            if (task == null)
+                MessageBox.Show("Error loading task. Please try again later.");
+            else
+                this.NavigationService.Navigate(new Uri("/Views/TaskView.xaml?taskseriesid=" + task.TaskSeries.Id + "&taskid=" + task.Id, UriKind.RelativeOrAbsolute));
         }
     }
 }

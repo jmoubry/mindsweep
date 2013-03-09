@@ -8,7 +8,7 @@ using System.Windows;
 namespace Mindsweep.Model
 {
     [Table]
-    public class Project : INotifyPropertyChanged, INotifyPropertyChanging
+    public class Project : INotifyPropertyChanged
     {
         private string _id;
 
@@ -18,7 +18,6 @@ namespace Mindsweep.Model
             get { return _id; }
             set
             {
-                NotifyPropertyChanging("Id");
                 _id = value;
                 NotifyPropertyChanged("Id");
             }
@@ -32,7 +31,6 @@ namespace Mindsweep.Model
             get { return _name; }
             set
             {
-                NotifyPropertyChanging("Name");
                 _name = value;
                 NotifyPropertyChanged("Name");
             }
@@ -47,7 +45,6 @@ namespace Mindsweep.Model
             get { return _deleted; }
             set
             {
-                NotifyPropertyChanging("Deleted");
                 _deleted = value;
                 NotifyPropertyChanged("Deleted");
             }
@@ -62,7 +59,6 @@ namespace Mindsweep.Model
             get { return _locked; }
             set
             {
-                NotifyPropertyChanging("Locked");
                 _locked = value;
                 NotifyPropertyChanged("Locked");
             }
@@ -77,7 +73,6 @@ namespace Mindsweep.Model
             get { return _archived; }
             set
             {
-                NotifyPropertyChanging("Archived");
                 _archived = value;
                 NotifyPropertyChanged("Archived");
             }
@@ -92,7 +87,6 @@ namespace Mindsweep.Model
             get { return _smart; }
             set
             {
-                NotifyPropertyChanging("Smart");
                 _smart = value;
                 NotifyPropertyChanged("Smart");
             }
@@ -106,7 +100,6 @@ namespace Mindsweep.Model
             get { return _position; }
             set
             {
-                NotifyPropertyChanging("Position");
                 _position = value;
                 NotifyPropertyChanged("Position");
             }
@@ -134,14 +127,12 @@ namespace Mindsweep.Model
         // Called during an add operation
         private void attach_TaskSeries(TaskSeries taskseries)
         {
-            NotifyPropertyChanging("TaskSeries");
             taskseries.Project = this;
         }
 
         // Called during a remove operation
         private void detach_TaskSeries(TaskSeries taskseries)
         {
-            NotifyPropertyChanging("TaskSeries");
             taskseries.Project = null;
         }
 
@@ -159,21 +150,6 @@ namespace Mindsweep.Model
             if (PropertyChanged != null)
             {
                 Deployment.Current.Dispatcher.BeginInvoke(() => PropertyChanged(this, new PropertyChangedEventArgs(propertyName)));
-            }
-        }
-
-        #endregion
-
-        #region INotifyPropertyChanging Members
-
-        public event PropertyChangingEventHandler PropertyChanging;
-
-        // Used to notify that a property is about to change
-        private void NotifyPropertyChanging(string propertyName)
-        {
-            if (PropertyChanging != null)
-            {
-                Deployment.Current.Dispatcher.BeginInvoke(() => PropertyChanging(this, new PropertyChangingEventArgs(propertyName)));
             }
         }
 

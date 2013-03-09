@@ -9,7 +9,7 @@ using System.Windows;
 namespace Mindsweep.Model
 {
     [Table]
-    public class Task : INotifyPropertyChanged, INotifyPropertyChanging
+    public class Task : INotifyPropertyChanged
     {
         private string _id;
 
@@ -19,9 +19,21 @@ namespace Mindsweep.Model
             get { return _id; }
             set
             {
-                NotifyPropertyChanging("Id");
                 _id = value;
                 NotifyPropertyChanged("Id");
+            }
+        }
+
+        public string DueStringLong
+        {
+            get
+            {
+                if (!Due.HasValue)
+                    return "No due date";
+                else if (Due.Value.ToLocalTime().Year == DateTime.Now.Year)
+                    return string.Format("{0:ddd M/d}{1}", Due.Value.ToLocalTime(), HasDueTime ? ", " + Due.Value.ToLocalTime().ToShortTimeString() : string.Empty);
+                else
+                    return string.Format("{0:ddd M/d/yyyy}{1}", Due.Value.ToLocalTime(), HasDueTime ? ", " + Due.Value.ToLocalTime().ToShortTimeString() : string.Empty);
             }
         }
         
@@ -37,7 +49,7 @@ namespace Mindsweep.Model
                     && Due.Value.ToLocalTime() < DateTime.Now.Date.AddDays(7))
                     return Due.Value.ToLocalTime().DayOfWeek.ToString();
                 else if (Due.Value.ToLocalTime().Date.Year == DateTime.Now.Date.Year)
-                    return Due.Value.ToLocalTime().ToString("MMM dd");
+                    return Due.Value.ToLocalTime().ToString("MMM d");
                 else
                     return Due.Value.ToLocalTime().ToShortDateString();
             }
@@ -51,7 +63,6 @@ namespace Mindsweep.Model
             get { return _due; }
             set
             {
-                NotifyPropertyChanging("Due");
                 _due = value;
                 NotifyPropertyChanged("Due");
             }
@@ -67,7 +78,6 @@ namespace Mindsweep.Model
             get { return _hasDueTime; }
             set
             {
-                NotifyPropertyChanging("HasDueTime");
                 _hasDueTime = value;
                 NotifyPropertyChanged("HasDueTime");
             }
@@ -82,7 +92,6 @@ namespace Mindsweep.Model
             get { return _added; }
             set
             {
-                NotifyPropertyChanging("Added");
                 _added = value;
                 NotifyPropertyChanged("Added");
             }
@@ -96,7 +105,6 @@ namespace Mindsweep.Model
             get { return _completed; }
             set
             {
-                NotifyPropertyChanging("Completed");
                 _completed = value;
                 NotifyPropertyChanged("Completed");
             }
@@ -110,7 +118,6 @@ namespace Mindsweep.Model
             get { return _deleted; }
             set
             {
-                NotifyPropertyChanging("Deleted");
                 _deleted = value;
                 NotifyPropertyChanged("Deleted");
             }
@@ -124,7 +131,6 @@ namespace Mindsweep.Model
             get { return _postponed; }
             set
             {
-                NotifyPropertyChanging("Postponed");
                 _postponed = value;
                 NotifyPropertyChanged("Postponed");
             }
@@ -138,7 +144,6 @@ namespace Mindsweep.Model
             get { return _priority; }
             set
             {
-                NotifyPropertyChanging("Priority");
                 _priority = value;
                 NotifyPropertyChanged("Priority");
             }
@@ -153,9 +158,20 @@ namespace Mindsweep.Model
             get { return _estimate; }
             set
             {
-                NotifyPropertyChanging("Estimate");
                 _estimate = value;
                 NotifyPropertyChanged("Estimate");
+            }
+        }
+
+
+        private string _projectNameHack;
+        public string ProjectName
+        {
+            get { return this._projectNameHack; }
+            set
+            {
+                this._projectNameHack = value;
+                NotifyPropertyChanged("ProjectName");
             }
         }
 
@@ -174,15 +190,12 @@ namespace Mindsweep.Model
             get { return _taskseries.Entity; }
             set
             {
-                NotifyPropertyChanging("TaskSeries");
                 _taskseries.Entity = value;
 
                 if (value != null)
                 {
                     _taskseriesId = value.Id;
                 }
-
-                NotifyPropertyChanging("TaskSeries");
             }
         }
 
@@ -200,21 +213,6 @@ namespace Mindsweep.Model
             if (PropertyChanged != null)
             {
                 Deployment.Current.Dispatcher.BeginInvoke(() => PropertyChanged(this, new PropertyChangedEventArgs(propertyName)));
-            }
-        }
-
-        #endregion
-
-        #region INotifyPropertyChanging Members
-
-        public event PropertyChangingEventHandler PropertyChanging;
-
-        // Used to notify that a property is about to change
-        private void NotifyPropertyChanging(string propertyName)
-        {
-            if (PropertyChanging != null)
-            {
-                Deployment.Current.Dispatcher.BeginInvoke(() => PropertyChanging(this, new PropertyChangingEventArgs(propertyName)));
             }
         }
 

@@ -30,13 +30,14 @@
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="0,0,12,0">
             <telerikPrimitives:RadDataBoundListBox x:Name="TaskListBox" 
                                                    IsItemReorderEnabled="False" 
                                                    Margin="14,0,-12,0"        
                                                    IsCheckModeEnabled="True"  
                                                    CheckBoxStyle="{StaticResource ListCheckboxStyle}"
-                                                   ItemTemplate="{StaticResource TaskDataTemplate}">
+                                                   ItemTemplate="{StaticResource TaskDataTemplate}"
+                                                   SelectionChanged="TaskListBox_SelectionChanged_1">
             </telerikPrimitives:RadDataBoundListBox>
         </Grid>
     </Grid>

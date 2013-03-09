@@ -1,6 +1,7 @@
 ﻿using Mindsweep.Helpers;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.Linq;
 using System.Data.Linq.Mapping;
@@ -9,7 +10,7 @@ using System.Windows;
 namespace Mindsweep.Model
 {
     [Table]
-    public class TaskSeries : INotifyPropertyChanged, INotifyPropertyChanging
+    public class TaskSeries : INotifyPropertyChanged
     {
         private string _id;
 
@@ -19,7 +20,6 @@ namespace Mindsweep.Model
             get { return _id; }
             set
             {
-                NotifyPropertyChanging("Id");
                 _id = value;
                 NotifyPropertyChanged("Id");
             }
@@ -33,7 +33,6 @@ namespace Mindsweep.Model
             get { return _name; }
             set
             {
-                NotifyPropertyChanging("Name");
                 _name = value;
                 NotifyPropertyChanged("Name");
             }
@@ -47,7 +46,6 @@ namespace Mindsweep.Model
             get { return _created; }
             set
             {
-                NotifyPropertyChanging("Created");
                 _created = value;
                 NotifyPropertyChanged("Created");
             }
@@ -61,7 +59,6 @@ namespace Mindsweep.Model
             get { return _modified; }
             set
             {
-                NotifyPropertyChanging("Modified");
                 _modified = value;
                 NotifyPropertyChanged("Modified");
             }
@@ -75,7 +72,6 @@ namespace Mindsweep.Model
             get { return _source; }
             set
             {
-                NotifyPropertyChanging("Source");
                 _source = value;
                 NotifyPropertyChanged("Source");
             }
@@ -90,9 +86,24 @@ namespace Mindsweep.Model
             get { return _tags; }
             set
             {
-                NotifyPropertyChanging("Tags");
                 _tags = value;
                 NotifyPropertyChanged("Tags");
+                NotifyPropertyChanged("TagsList");
+            }
+        }
+
+        public List<string> TagsList
+        {
+            get
+            {
+                List<string> lst = new List<string>();
+
+                if (!string.IsNullOrEmpty(Tags))
+                    lst.AddRange(Tags.Split(','));
+
+                lst.Sort();
+
+                return lst;
             }
         }
 
@@ -104,7 +115,6 @@ namespace Mindsweep.Model
             get { return _url; }
             set
             {
-                NotifyPropertyChanging("Url");
                 _url = value;
                 NotifyPropertyChanged("Url");
             }
@@ -124,15 +134,12 @@ namespace Mindsweep.Model
             get { return _project.Entity; }
             set
             {
-                NotifyPropertyChanging("Project");
                 _project.Entity = value;
 
                 if (value != null)
                 {
                     _projectId = value.Id;
                 }
-
-                NotifyPropertyChanging("Project");
             }
         }
 
@@ -163,14 +170,12 @@ namespace Mindsweep.Model
         // Called during an add operation
         private void attach_Task(Task task)
         {
-            NotifyPropertyChanging("Task");
             task.TaskSeries = this;
         }
 
         // Called during a remove operation
         private void detach_Task(Task task)
         {
-            NotifyPropertyChanging("Task");
             task.TaskSeries = null;
         }
 
@@ -190,10 +195,10 @@ namespace Mindsweep.Model
         [Association(Storage = "_repeatrule", ThisKey = "_repeatruleId", OtherKey = "Id")]
         public RepeatRule RepeatRule
         {
-            get { return _repeatrule.HasLoadedOrAssignedValue ? _repeatrule.Entity : null; }
+            //get { return _repeatrule.HasLoadedOrAssignedValue ? _repeatrule.Entity : null; }
+            get { return _repeatrule.Entity; }
             set
             {
-                NotifyPropertyChanging("RepeatRule");
                 _repeatrule.Entity = value;
 
                 if (value != null)
@@ -221,21 +226,6 @@ namespace Mindsweep.Model
             if (PropertyChanged != null)
             {
                 Deployment.Current.Dispatcher.BeginInvoke(() => PropertyChanged(this, new PropertyChangedEventArgs(propertyName)));
-            }
-        }
-
-        #endregion
-
-        #region INotifyPropertyChanging Members
-
-        public event PropertyChangingEventHandler PropertyChanging;
-
-        // Used to notify that a property is about to change
-        private void NotifyPropertyChanging(string propertyName)
-        {
-            if (PropertyChanging != null)
-            {
-                Deployment.Current.Dispatcher.BeginInvoke(() => PropertyChanging(this, new PropertyChangingEventArgs(propertyName)));
             }
         }
 

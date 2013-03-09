@@ -412,6 +412,8 @@ namespace Mindsweep.ViewModels
 
                 // Do your UI work here this will run on the UI thread.
                 // Clear progress bar.
+
+                ProcessRequestQueue();
             };
 
             // Set progress bar.
@@ -474,8 +476,6 @@ namespace Mindsweep.ViewModels
 
             // Save changes to the database.
             mainDB.SubmitChanges();
-
-            ProcessRequestQueue();
         }
 
         private void _SyncProject(Project localProject, Project serverProject)
@@ -532,8 +532,6 @@ namespace Mindsweep.ViewModels
         public void Sync()
         {
             client.DownloadStringAsync(RTM.SignJsonRequest(RTM.URI_GETLISTS), new Action<string>(ParseJsonProjects));
-
-            // TODO: Sync the other way -- send updates to RTM.
         }
 
         public void DeleteDB()

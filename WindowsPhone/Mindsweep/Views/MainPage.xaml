@@ -13,10 +13,11 @@
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="True"
     shell:SystemTray.BackgroundColor="White"
-    shell:SystemTray.ForegroundColor="Black">
+    shell:SystemTray.ForegroundColor="Black"
+    d:DataContext="{d:DesignData Source=../SampleData/MainViewModelSampleData.xaml}">
 
 	<!--LayoutRoot is the root grid where all page content is placed-->
-	<Grid x:Name="LayoutRoot">
+    <Grid x:Name="LayoutRoot">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>

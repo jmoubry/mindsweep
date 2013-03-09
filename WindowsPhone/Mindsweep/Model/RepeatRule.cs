@@ -9,7 +9,7 @@ using System.Windows;
 namespace Mindsweep.Model
 {
     [Table]
-    public class RepeatRule : INotifyPropertyChanged, INotifyPropertyChanging
+    public class RepeatRule : INotifyPropertyChanged
     {
         private int _Id;
 
@@ -21,7 +21,6 @@ namespace Mindsweep.Model
             {
                 if (_Id != value)
                 {
-                    NotifyPropertyChanging("Id");
                     _Id = value;
                     NotifyPropertyChanged("Id");
                 }
@@ -37,7 +36,6 @@ namespace Mindsweep.Model
             get { return _every; }
             set
             {
-                NotifyPropertyChanging("Every");
                 _every = value;
                 NotifyPropertyChanged("Every");
             }
@@ -60,7 +58,6 @@ namespace Mindsweep.Model
             get { return _rule; }
             set
             {
-                NotifyPropertyChanging("Rule");
                 _rule = value;
                 NotifyPropertyChanged("Rule");
                 NotifyPropertyChanged("Frequency");
@@ -69,6 +66,7 @@ namespace Mindsweep.Model
                 NotifyPropertyChanged("End");
                 NotifyPropertyChanged("MonthlyByDayOfWeek");
                 NotifyPropertyChanged("MonthlyByDayOfMonth");
+                NotifyPropertyChanged("Description");
             }
         }
 
@@ -154,6 +152,37 @@ namespace Mindsweep.Model
             Unknown
         }
 
+        public string Description
+        {
+            get
+            {
+                string desc = "";
+
+                desc = desc + (Every ? "every " : "after ");
+
+                if (Interval >= 1)
+                    desc = desc + Interval + " ";
+
+                string s = Interval > 1 ? "s " : " ";
+
+                switch(Frequency)
+                {
+                    case Frequencies.Daily: desc = desc + "day" + s; break;
+                    case Frequencies.Weekly: desc = desc + "week" + s; break;
+                    case Frequencies.Monthly: desc = desc + "month" + s; break;
+                    case Frequencies.Yearly: desc = desc + "year" + s; break;
+                }
+
+                switch (End)
+                {
+                    case EndTypes.Count: desc = desc + "for " + Count.GetValueOrDefault() + " times"; break;
+                    case EndTypes.Date: desc = desc + "until " + Until.GetValueOrDefault().ToShortDateString(); break;
+                }
+
+                return desc;
+            }
+        }
+
         public Frequencies Frequency
         {
             get
@@ -207,7 +236,7 @@ namespace Mindsweep.Model
                 Match m = Regex.Match(Rule, @"UNTIL=(\d*)");
 
                 if (m.Success && m.Groups.Count == 2)
-                    return Convert.ToDateTime(m.Groups[1].Value);
+                    return DateTime.ParseExact(m.Groups[1].Value, "yyyyMMdd", null);
 
                 return null;
             }
@@ -230,15 +259,12 @@ namespace Mindsweep.Model
             get { return _taskseries.Entity; }
             set
             {
-                NotifyPropertyChanging("TaskSeries");
                 _taskseries.Entity = value;
 
                 if (value != null)
                 {
                     _taskseriesId = value.Id;
                 }
-
-                NotifyPropertyChanging("TaskSeries");
             }
         }
 
@@ -258,21 +284,6 @@ namespace Mindsweep.Model
             if (PropertyChanged != null)
             {
                 Deployment.Current.Dispatcher.BeginInvoke(() => PropertyChanged(this, new PropertyChangedEventArgs(propertyName)));
-            }
-        }
-
-        #endregion
-
-        #region INotifyPropertyChanging Members
-
-        public event PropertyChangingEventHandler PropertyChanging;
-
-        // Used to notify that a property is about to change
-        private void NotifyPropertyChanging(string propertyName)
-        {
-            if (PropertyChanging != null)
-            {
-                Deployment.Current.Dispatcher.BeginInvoke(() => PropertyChanging(this, new PropertyChangingEventArgs(propertyName)));
             }
         }
 

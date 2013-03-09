@@ -1,0 +1,16 @@
+<Model:Task xmlns:Model="clr-namespace:Mindsweep.Model" DueString="Jan 25" DueStringLong="Wed 2/27, 9:02 AM"  Estimate="10 minutes" HasDueTime="True" Id="Curae bibendum curabitur aenean" Postponed="22" Priority="1">
+	<Model:Task.TaskSeries>
+		<Model:TaskSeries Created="02/08/2013 18:34:58" Id="9" Modified="02/08/2013 18:34:58" Name="Do laundry - wash color clothes on cold and dry on medium" Source="Inceptos fermentum parturient" Tags="Diam interdum vestibulum" Url="http://www.google.com">
+			<Model:TaskSeries.Project>
+				<Model:Project Archived="False" Deleted="False" Id="13245" Locked="False" Name="Inbox" Position="94" Smart="True"/>
+			</Model:TaskSeries.Project>
+			<Model:TaskSeries.RepeatRule>
+				<Model:RepeatRule End="Count" Every="False" Frequency="Monthly" Id="63" Interval="54" Rule="every 1 day">
+					<Model:RepeatRule.TaskSeries>
+						<Model:TaskSeries Created="02/08/2013 18:34:58" Id="Amet eleifend convallis" Modified="02/08/2013 18:34:58" Name="Dignissim ante" Source="Blandit facilisi faucibus habitant" Tags="Lorem elementum vestibulum adipiscing dis" Url="Commodo facilisis arcu"/>
+					</Model:RepeatRule.TaskSeries>
+				</Model:RepeatRule>
+			</Model:TaskSeries.RepeatRule>
+		</Model:TaskSeries>
+	</Model:Task.TaskSeries>
+</Model:Task>

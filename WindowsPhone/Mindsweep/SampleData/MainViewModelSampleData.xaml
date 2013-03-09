@@ -1,0 +1,1178 @@
+﻿<ViewModels:MainViewModel xmlns:ViewModels="clr-namespace:Mindsweep.ViewModels" xmlns:Model="clr-namespace:Mindsweep.Model" xmlns:System="clr-namespace:System;assembly=mscorlib" IsAuthorized="True" IsSynced="True" InboxOpenTaskCount="54" IsLoggedIn="True" LastSync="03/09/2013 10:53:32" NextActionsCount="50" Token="Lacinia etiam suscipit parturient torquent">
+	<ViewModels:MainViewModel.AllProjects>
+		<Model:Project Archived="False" Deleted="False" Id="Varius parturient" Locked="False" Name="Enim hac neque netus erat" Position="91" Smart="False"/>
+		<Model:Project Archived="False" Deleted="False" Id="Dictumst leo venenatis mus" Locked="False" Name="Aliquam nec eleifend vulputate aenean" Position="74" Smart="False"/>
+		<Model:Project Archived="False" Deleted="False" Id="Nulla vestibulum facilisi mauris porta" Locked="False" Name="Purus aliquet nullam blandit" Position="29" Smart="False"/>
+		<Model:Project Archived="False" Deleted="False" Id="Curabitur non risus" Locked="False" Name="Faucibus phasellus" Position="34" Smart="False"/>
+		<Model:Project Archived="False" Deleted="False" Id="Per consequat" Locked="False" Name="Convallis habitant eros vestibulum commodo" Position="54" Smart="False"/>
+		<Model:Project Archived="False" Deleted="False" Id="Conubia sed dignissim velit" Locked="False" Name="Inceptos sem cubilia nibh nisi" Position="92" Smart="False"/>
+		<Model:Project Archived="False" Deleted="False" Id="Aptent elementum vitae" Locked="False" Name="Facilisis adipiscing sit" Position="84" Smart="False"/>
+		<Model:Project Archived="False" Deleted="False" Id="Dapibus fermentum auctor nisl congue" Locked="False" Name="Interdum cursus" Position="71" Smart="False"/>
+		<Model:Project Archived="False" Deleted="False" Id="Egestas nunc parturient vestibulum odio" Locked="False" Name="Fringilla orci lobortis" Position="13" Smart="False"/>
+		<Model:Project Archived="False" Deleted="False" Id="Class euismod vestibulum habitasse hendrerit" Locked="False" Name="Himenaeos imperdiet" Position="11" Smart="False"/>
+	</ViewModels:MainViewModel.AllProjects>
+	<ViewModels:MainViewModel.ActiveProjects>
+		<Model:Project Archived="False" Deleted="False" Id="Curabitur aenean vestibulum" Locked="False" Name="Nam adipiscing sed mauris aliquam" Position="35" Smart="False"/>
+		<Model:Project Archived="False" Deleted="False" Id="Dis nullam phasellus class" Locked="False" Name="Maecenas aptent est" Position="83" Smart="False"/>
+		<Model:Project Archived="False" Deleted="False" Id="Auctor praesent hac accumsan" Locked="False" Name="Cras consequat leo bibendum congue" Position="58" Smart="False"/>
+		<Model:Project Archived="False" Deleted="False" Id="Mus parturient vestibulum curae integer" Locked="False" Name="Dictumst eleifend" Position="53" Smart="False"/>
+		<Model:Project Archived="False" Deleted="False" Id="Nec quisque duis vestibulum" Locked="False" Name="Cursus facilisi faucibus" Position="58" Smart="False"/>
+		<Model:Project Archived="False" Deleted="False" Id="Donec convallis" Locked="False" Name="Dignissim etiam" Position="85" Smart="False"/>
+		<Model:Project Archived="False" Deleted="False" Id="Non fusce habitant" Locked="False" Name="Elementum adipiscing" Position="80" Smart="False"/>
+		<Model:Project Archived="False" Deleted="False" Id="Vivamus nunc" Locked="False" Name="Aliquam lorem" Position="24" Smart="False"/>
+		<Model:Project Archived="False" Deleted="False" Id="Inceptos dictum interdum per lobortis" Locked="False" Name="Nascetur lectus" Position="71" Smart="False"/>
+		<Model:Project Archived="False" Deleted="False" Id="Sed sem" Locked="False" Name="Amet sit vel" Position="42" Smart="False"/>
+	</ViewModels:MainViewModel.ActiveProjects>
+	<ViewModels:MainViewModel.AllTasks>
+		<Model:Task DueString="Vel feugiat pede" DueStringLong="Adipiscing curae dictum lectus" Estimate="Quam nam parturient" HasDueTime="True" Id="Vestibulum vestibulum donec adipiscing" Postponed="68" Priority="Quis sed libero malesuada" ProjectName="Dis gravida nascetur ligula pharetra">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Parturient placerat vestibulum" Modified="03/09/2013 10:53:32" Name="Litora est etiam fusce vestibulum" Source="Senectus duis iaculis" Tags="Magnis mus sociosqu nulla" Url="Sem mollis">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="False" Deleted="True" Id="Urna lorem pulvinar sagittis" Locked="False" Name="Penatibus adipiscing luctus morbi hac" Position="22" Smart="True"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Leo parturient" End="Count" Every="False" Frequency="Monthly" Id="95" Interval="56" Rule="Porttitor vestibulum cras tincidunt vestibulum"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Nunc lacinia tristique proin</System:String>
+						<System:String>Augue mattis nec dolor adipiscing</System:String>
+						<System:String>Suscipit non</System:String>
+						<System:String>Ultricies torquent laoreet fames</System:String>
+						<System:String>Felis per sed mauris</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Monday" DueStringLong="Parturient sit volutpat vestibulum vulputate" Estimate="Vestibulum curabitur montes" HasDueTime="True" Id="Vel posuere" Postponed="91" Priority="1" ProjectName="Maecenas ante">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Parturient vestibulum phasellus nam" Modified="03/09/2013 10:53:32" Name="Arcu consequat ipsum diam" Source="Rutrum lorem" Tags="Dis elementum eget sapien accumsan" Url="Tempor tempus">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="False" Deleted="True" Id="Justo nostra" Locked="False" Name="Convallis ornare" Position="52" Smart="True"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Platea potenti praesent dignissim pretium" End="Date" Every="False" Frequency="Weekly" Id="50" Interval="83" Rule="Vestibulum sed rhoncus primis lacus"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Est hac</System:String>
+						<System:String>Magna semper facilisis</System:String>
+						<System:String>Sociis elit sodales</System:String>
+						<System:String>Viverra taciti adipiscing tellus bibendum</System:String>
+						<System:String>Dictumst enim leo</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Massa eleifend" DueStringLong="Erat mus eros" Estimate="Parturient nec fermentum" HasDueTime="True" Id="Aliquam tortor turpis" Postponed="73" Priority="1" ProjectName="Quisque nibh metus aenean">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Non facilisi per" Modified="03/09/2013 10:53:32" Name="Vivamus nisi adipiscing aliquam sed" Source="Nulla vestibulum adipiscing lobortis nunc" Tags="Blandit sit nullam aptent" Url="Quis purus sed">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="False" Deleted="True" Id="Nisl faucibus habitant morbi" Locked="False" Name="Neque inceptos netus parturient interdum" Position="95" Smart="True"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Aliquet sem" End="Date" Every="False" Frequency="Unknown" Id="25" Interval="31" Rule="Vestibulum mauris"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Odio auctor fringilla nascetur</System:String>
+						<System:String>Porta habitasse orci</System:String>
+						<System:String>Pede parturient vel</System:String>
+						<System:String>Pharetra vestibulum</System:String>
+						<System:String>Vestibulum nam adipiscing quam</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Commodo urna" DueStringLong="Dis cras congue est" Estimate="Placerat pulvinar duis parturient hac" HasDueTime="True" Id="Risus cursus sagittis" Postponed="83" Priority="2" ProjectName="Nunc dictum cubilia">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Velit lectus hendrerit libero" Modified="03/09/2013 10:53:32" Name="Dapibus vestibulum vitae ligula" Source="Donec magnis egestas" Tags="Sociosqu ante parturient" Url="Mus iaculis enim">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="False" Deleted="True" Id="Litora himenaeos vestibulum" Locked="False" Name="Luctus adipiscing" Position="43" Smart="True"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Class leo imperdiet" End="Count" Every="False" Frequency="Weekly" Id="74" Interval="41" Rule="Curae amet"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Etiam malesuada</System:String>
+						<System:String>Penatibus arcu</System:String>
+						<System:String>Diam eget euismod</System:String>
+						<System:String>Porttitor tincidunt feugiat vestibulum gravida</System:String>
+						<System:String>Tristique suscipit mattis elit</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Ultricies erat lacinia eros nec" DueStringLong="Mauris vestibulum mollis montes venenatis" Estimate="Non per" HasDueTime="True" Id="Torquent fusce" Postponed="55" Priority="Vulputate nibh" ProjectName="Curabitur nisi sed lorem">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Nisl morbi sem laoreet nulla" Modified="03/09/2013 10:53:32" Name="Proin nostra adipiscing natoque" Source="Fames elementum nunc" Tags="Nam volutpat posuere felis odio" Url="Parturient praesent accumsan">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="False" Deleted="True" Id="Ultrices sit" Locked="False" Name="Augue vel ornare dolor" Position="55" Smart="True"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Phasellus consequat" End="Never" Every="False" Frequency="Monthly" Id="40" Interval="55" Rule="Vehicula convallis dignissim"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Parturient potenti</System:String>
+						<System:String>Pretium sed vestibulum</System:String>
+						<System:String>Ipsum dis platea est</System:String>
+						<System:String>Vestibulum facilisis</System:String>
+						<System:String>Maecenas hac adipiscing</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Fermentum leo" DueStringLong="Orci vestibulum mus primis" Estimate="Pede rutrum justo" HasDueTime="True" Id="Vestibulum lacus nec" Postponed="32" Priority="Non adipiscing fringilla per" ProjectName="Quam parturient vestibulum sed sem">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Lorem bibendum sapien habitasse" Modified="03/09/2013 10:53:32" Name="Dictumst hendrerit himenaeos sit" Source="Tempor sed dis vestibulum" Tags="Faucibus malesuada vestibulum" Url="Vestibulum hac adipiscing">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="False" Deleted="True" Id="Imperdiet semper vestibulum sociis" Locked="False" Name="Magna adipiscing rhoncus vel" Position="15" Smart="True"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Massa parturient nam taciti sodales" End="Count" Every="False" Frequency="Unknown" Id="88" Interval="71" Rule="Eleifend tellus facilisi"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Adipiscing viverra habitant tempus</System:String>
+						<System:String>Metus penatibus est</System:String>
+						<System:String>Tortor aliquam morbi neque</System:String>
+						<System:String>Integer turpis varius quisque porttitor</System:String>
+						<System:String>Parturient netus vestibulum</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Inceptos aenean vivamus" DueStringLong="Nulla interdum" Estimate="Mauris lobortis tincidunt" HasDueTime="True" Id="Parturient nullam vestibulum aliquam vestibulum" Postponed="33" Priority="Adipiscing nascetur" ProjectName="Aliquet quis">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Porta urna blandit commodo cras" Modified="03/09/2013 10:53:32" Name="Duis leo parturient nunc" Source="Pulvinar vulputate sagittis aptent" Tags="Adipiscing senectus" Url="Ultrices dictum">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="False" Deleted="True" Id="Tristique amet" Locked="False" Name="Ante pharetra placerat vestibulum" Position="76" Smart="True"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Ultricies mus vestibulum arcu" End="Never" Every="False" Frequency="Yearly" Id="50" Interval="39" Rule="Venenatis nec non"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Parturient conubia</System:String>
+						<System:String>Sociosqu diam</System:String>
+						<System:String>Auctor eget suscipit</System:String>
+						<System:String>Torquent cubilia congue dapibus</System:String>
+						<System:String>Elit egestas purus cursus</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Vehicula enim" DueStringLong="Curabitur vestibulum volutpat" Estimate="Vestibulum adipiscing lectus maecenas per" HasDueTime="True" Id="Erat euismod praesent phasellus" Postponed="25" Priority="Accumsan risus libero sed" ProjectName="Bibendum sem sit dictumst">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Ligula vel eros velit" Modified="03/09/2013 10:53:32" Name="Eleifend litora parturient vitae consequat" Source="Interdum elementum vestibulum dis" Tags="Curae facilisis" Url="Mauris pharetra natoque">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="False" Deleted="True" Id="Facilisi vestibulum class" Locked="False" Name="Nam nibh nisi faucibus nisl" Position="52" Smart="True"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Feugiat convallis habitant inceptos" End="Date" Every="False" Frequency="Daily" Id="45" Interval="30" Rule="Sed luctus nunc dignissim"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Lobortis magnis</System:String>
+						<System:String>Adipiscing fermentum</System:String>
+						<System:String>Nascetur fringilla mattis</System:String>
+						<System:String>Donec gravida iaculis etiam</System:String>
+						<System:String>Fusce lacinia laoreet</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Odio habitasse" DueStringLong="Hendrerit est" Estimate="Lorem morbi hac" HasDueTime="True" Id="Nulla posuere parturient mollis leo" Postponed="69" Priority="Potenti mus" ProjectName="Proin pretium himenaeos orci">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Vestibulum nec montes nostra imperdiet" Modified="03/09/2013 10:53:32" Name="Malesuada augue pede" Source="Primis non parturient" Tags="Rutrum per" Url="Cras sociosqu aliquam">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="False" Deleted="True" Id="Quam dolor" Locked="False" Name="Penatibus vestibulum rhoncus" Position="35" Smart="True"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Ornare adipiscing fames placerat quis" End="Count" Every="False" Frequency="Weekly" Id="27" Interval="46" Rule="Platea pulvinar"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Porttitor vestibulum urna</System:String>
+						<System:String>Vestibulum sodales sed tincidunt sagittis</System:String>
+						<System:String>Sapien viverra</System:String>
+						<System:String>Senectus sem tristique adipiscing parturient</System:String>
+						<System:String>Ultricies sit</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Suscipit semper vel nam" DueStringLong="Duis sociis sed dis nunc" Estimate="Venenatis vulputate" HasDueTime="True" Id="Est hac felis" Postponed="21" Priority="Leo vestibulum" ProjectName="Mus amet torquent ipsum nec">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Ante arcu vestibulum diam justo" Modified="03/09/2013 10:53:32" Name="Curabitur lacus taciti adipiscing" Source="Quisque volutpat" Tags="Vivamus sed" Url="Eros vestibulum">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="False" Deleted="True" Id="Lorem parturient" Locked="False" Name="Magna vestibulum" Position="40" Smart="True"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Tellus tempor phasellus eget ultrices" End="Date" Every="False" Frequency="Weekly" Id="61" Interval="13" Rule="Non per vehicula integer"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Tempus vestibulum sem maecenas adipiscing</System:String>
+						<System:String>Aliquam massa tortor turpis elit</System:String>
+						<System:String>Enim parturient</System:String>
+						<System:String>Vestibulum aliquet consequat blandit erat</System:String>
+						<System:String>Commodo convallis dignissim</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+	</ViewModels:MainViewModel.AllTasks>
+	<ViewModels:MainViewModel.AllOverdueTasks>
+		<Model:Task DueString="Monday" DueStringLong="3/23" Estimate="6 min" HasDueTime="True" Id="Ligula conubia sed litora fringilla" Postponed="22" Priority="1" ProjectName="Arcu dis nulla vestibulum">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Sagittis habitasse" Modified="03/09/2013 10:53:32" Name="Est diam hendrerit proin" Source="Sociosqu imperdiet augue vestibulum" Tags="Magnis dolor euismod suscipit" Url="Montes iaculis felis nostra vestibulum">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="False" Deleted="True" Id="Senectus eget" Locked="False" Name="Cubilia himenaeos" Position="14" Smart="True"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Elit dapibus egestas" End="Date" Every="False" Frequency="Daily" Id="53" Interval="18" Rule="Adipiscing hac luctus parturient"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Enim feugiat malesuada</System:String>
+						<System:String>Erat vestibulum</System:String>
+						<System:String>Penatibus adipiscing leo torquent mus</System:String>
+						<System:String>Parturient mattis mauris ultrices</System:String>
+						<System:String>Mollis fames gravida</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Porttitor eros ornare ipsum" DueStringLong="Platea justo" Estimate="Nec non nibh lacinia laoreet" HasDueTime="True" Id="Primis vehicula volutpat" Postponed="25" Priority="Tincidunt per maecenas vestibulum" ProjectName="Lacus rutrum tristique adipiscing nisi">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Sed natoque parturient" Modified="03/09/2013 10:53:32" Name="Lorem vestibulum" Source="Parturient vulputate" Tags="Potenti pretium curabitur" Url="Tellus dis">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="False" Deleted="True" Id="Magna sem praesent nisl massa" Locked="False" Name="Nunc ultricies accumsan bibendum" Position="16" Smart="True"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Posuere sapien dictumst sit eleifend" End="Never" Every="False" Frequency="Monthly" Id="94" Interval="20" Rule="Vestibulum metus venenatis adipiscing"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Facilisi vel vestibulum</System:String>
+						<System:String>Nam phasellus vestibulum semper consequat</System:String>
+						<System:String>Rhoncus adipiscing odio faucibus sed</System:String>
+						<System:String>Parturient sociis orci taciti</System:String>
+						<System:String>Convallis pede</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Sodales viverra tempor quam" DueStringLong="Est vestibulum" Estimate="Morbi habitant vestibulum aliquam tempus" HasDueTime="True" Id="Dignissim quis adipiscing urna" Postponed="28" Priority="Tortor cras parturient inceptos duis" ProjectName="Interdum vestibulum elementum">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Vestibulum hac facilisis" Modified="03/09/2013 10:53:32" Name="Turpis varius lobortis aenean adipiscing" Source="Pharetra vestibulum vestibulum adipiscing arcu" Tags="Placerat nulla parturient" Url="Vestibulum purus elit suscipit">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="False" Deleted="True" Id="Neque nunc nascetur amet" Locked="False" Name="Integer mauris parturient fermentum leo" Position="33" Smart="True"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Ante mus" End="Date" Every="False" Frequency="Unknown" Id="47" Interval="42" Rule="Quisque netus"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Nullam diam aptent pulvinar</System:String>
+						<System:String>Sagittis vivamus eget</System:String>
+						<System:String>Porta aliquam fringilla vestibulum</System:String>
+						<System:String>Aliquet senectus nec blandit</System:String>
+						<System:String>Auctor habitasse sociosqu</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Non commodo congue" DueStringLong="Conubia enim" Estimate="Per hendrerit cursus erat adipiscing" HasDueTime="True" Id="Eros parturient vestibulum vestibulum" Postponed="98" Priority="Risus cubilia himenaeos" ProjectName="Adipiscing imperdiet dictum lectus">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Velit nibh parturient" Modified="03/09/2013 10:53:32" Name="Dapibus torquent vitae" Source="Sem class sit ligula" Tags="Vel euismod vestibulum" Url="Dis gravida">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="False" Deleted="True" Id="Egestas nisi" Locked="False" Name="Libero malesuada sed" Position="86" Smart="True"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Penatibus ultrices nisl" End="Never" Every="False" Frequency="Weekly" Id="50" Interval="57" Rule="Porttitor nunc"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Curae tincidunt</System:String>
+						<System:String>Odio vehicula nam</System:String>
+						<System:String>Orci tristique</System:String>
+						<System:String>Sed feugiat volutpat</System:String>
+						<System:String>Donec maecenas litora luctus</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Ultricies etiam pede" DueStringLong="Venenatis quam est" Estimate="Hac quis vulputate" HasDueTime="True" Id="Iaculis fusce praesent lacinia accumsan" Postponed="27" Priority="Leo magnis bibendum" ProjectName="Urna dictumst curabitur laoreet">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Eleifend mattis vestibulum natoque facilisi" Modified="03/09/2013 10:53:32" Name="Posuere cras mauris mollis lorem" Source="Montes parturient amet" Tags="Nostra facilisis inceptos fermentum" Url="Rhoncus himenaeos">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="False" Deleted="True" Id="Phasellus mus consequat duis" Locked="False" Name="Nunc convallis" Position="67" Smart="True"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Dignissim faucibus morbi" End="Date" Every="False" Frequency="Daily" Id="29" Interval="24" Rule="Habitant adipiscing elementum"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Nec ante fringilla arcu vestibulum</System:String>
+						<System:String>Diam habitasse nulla eget</System:String>
+						<System:String>Ornare potenti vestibulum</System:String>
+						<System:String>Hendrerit platea proin</System:String>
+						<System:String>Primis pretium interdum</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Sodales imperdiet" DueStringLong="Rutrum augue" Estimate="Non viverra malesuada adipiscing" HasDueTime="True" Id="Per sapien" Postponed="51" Priority="Elit lobortis aliquam integer" ProjectName="Semper sed sem penatibus porttitor">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Sit dolor quisque nascetur" Modified="03/09/2013 10:53:32" Name="Enim pharetra placerat erat" Source="Tristique tellus nisi tempor ipsum" Tags="Ultricies nisl sagittis" Url="Aenean mauris curabitur sociosqu">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="False" Deleted="True" Id="Sociis eros" Locked="False" Name="Taciti vivamus pulvinar" Position="69" Smart="True"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Fames tincidunt" End="Never" Every="False" Frequency="Weekly" Id="64" Interval="70" Rule="Felis nibh"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Nunc venenatis</System:String>
+						<System:String>Tempus odio parturient orci tortor</System:String>
+						<System:String>Vulputate vestibulum turpis varius</System:String>
+						<System:String>Vestibulum pede</System:String>
+						<System:String>Quam senectus justo</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Adipiscing aliquam nullam suscipit quis" DueStringLong="Lacus lorem torquent ultrices" Estimate="Aptent vehicula auctor magna parturient" HasDueTime="True" Id="Vestibulum vestibulum" Postponed="45" Priority="Massa adipiscing" ProjectName="Congue vel">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Nam phasellus consequat convallis metus" Modified="03/09/2013 10:53:32" Name="Cursus parturient" Source="Dis dictum" Tags="Bibendum vestibulum commodo" Url="Parturient fringilla libero">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="False" Deleted="True" Id="Aliquet dignissim elementum vestibulum" Locked="False" Name="Vestibulum sed blandit facilisis" Position="30" Smart="True"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Volutpat morbi" End="Never" Every="False" Frequency="Monthly" Id="91" Interval="72" Rule="Maecenas adipiscing praesent parturient accumsan"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Urna cras</System:String>
+						<System:String>Dictumst vestibulum lectus</System:String>
+						<System:String>Adipiscing eleifend conubia duis facilisi</System:String>
+						<System:String>Cubilia neque</System:String>
+						<System:String>Fermentum netus faucibus</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Habitasse ligula" DueStringLong="Hendrerit nunc nulla" Estimate="Dapibus habitant est himenaeos" HasDueTime="True" Id="Hac porta" Postponed="36" Priority="Inceptos litora amet luctus imperdiet" ProjectName="Malesuada purus">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Leo penatibus egestas" Modified="03/09/2013 10:53:32" Name="Vestibulum risus" Source="Eget vitae mattis elit lobortis" Tags="Enim mauris class mollis" Url="Curae parturient iaculis">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="False" Deleted="True" Id="Mus interdum nec porttitor" Locked="False" Name="Velit ante magnis arcu tincidunt" Position="85" Smart="True"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Diam vestibulum adipiscing euismod tristique" End="Never" Every="False" Frequency="Monthly" Id="58" Interval="16" Rule="Non parturient"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Vestibulum per feugiat</System:String>
+						<System:String>Montes ultricies vestibulum</System:String>
+						<System:String>Adipiscing venenatis sed</System:String>
+						<System:String>Vulputate gravida erat curabitur</System:String>
+						<System:String>Nostra phasellus</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Ornare platea" DueStringLong="Eros consequat sem" Estimate="Convallis primis" HasDueTime="True" Id="Vestibulum lacinia nibh dignissim" Postponed="86" Priority="Nascetur elementum" ProjectName="Nisi facilisis donec">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Etiam sit" Modified="03/09/2013 10:53:32" Name="Vestibulum fermentum adipiscing nisl" Source="Odio adipiscing habitasse dis parturient" Tags="Rutrum sagittis vestibulum lorem vestibulum" Url="Pretium mus nec quam dolor">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="False" Deleted="True" Id="Vel nam laoreet" Locked="False" Name="Sed natoque pharetra fusce" Position="53" Smart="True"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Parturient posuere fringilla placerat pulvinar" End="Count" Every="False" Frequency="Unknown" Id="55" Interval="95" Rule="Vestibulum vestibulum nunc"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Morbi sapien semper</System:String>
+						<System:String>Est senectus sociis</System:String>
+						<System:String>Hac sociosqu nulla proin orci</System:String>
+						<System:String>Augue leo pede suscipit</System:String>
+						<System:String>Potenti torquent</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Adipiscing non quis urna" DueStringLong="Cras hendrerit parturient himenaeos fames" Estimate="Per felis sed duis" HasDueTime="True" Id="Ipsum imperdiet malesuada penatibus" Postponed="34" Priority="Taciti rhoncus vestibulum ultrices" ProjectName="Sodales sem porttitor vestibulum viverra">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Justo tellus vehicula nunc adipiscing" Modified="03/09/2013 10:53:32" Name="Lacus tincidunt sit" Source="Nam vestibulum" Tags="Sed massa maecenas vestibulum ultricies" Url="Adipiscing eget elit bibendum">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="False" Deleted="True" Id="Aliquam tempor" Locked="False" Name="Tristique integer lorem magna" Position="21" Smart="True"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Volutpat tempus" End="Date" Every="False" Frequency="Daily" Id="78" Interval="57" Rule="Parturient vel"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Praesent tortor amet</System:String>
+						<System:String>Quisque metus dis morbi</System:String>
+						<System:String>Ante accumsan turpis</System:String>
+						<System:String>Vivamus est</System:String>
+						<System:String>Arcu diam</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+	</ViewModels:MainViewModel.AllOverdueTasks>
+	<ViewModels:MainViewModel.TasksDueTomorrow>
+		<Model:Task DueString="Quisque himenaeos vestibulum vivamus adipiscing" DueStringLong="Aliquam habitant ipsum imperdiet parturient" Estimate="Justo aliquet malesuada" HasDueTime="False" Id="Vestibulum lacus lorem" Postponed="75" Priority="Inceptos nisl" ProjectName="Blandit penatibus nunc litora interdum">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Vestibulum nam sed" Modified="03/09/2013 10:53:32" Name="Dis adipiscing porttitor" Source="Mauris vestibulum metus odio" Tags="Pharetra adipiscing mollis commodo" Url="Parturient morbi platea">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Tincidunt parturient tristique vestibulum luctus" Locked="False" Name="Lobortis magnis est" Position="90" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Magna nascetur" End="Date" Every="True" Frequency="Unknown" Id="98" Interval="55" Rule="Hac massa mattis"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Ultricies montes</System:String>
+						<System:String>Orci parturient</System:String>
+						<System:String>Placerat pede quam vestibulum conubia</System:String>
+						<System:String>Vestibulum cubilia venenatis nostra adipiscing</System:String>
+						<System:String>Leo dapibus pulvinar ornare quis</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Egestas primis rutrum" DueStringLong="Vulputate vestibulum sagittis euismod" Estimate="Curabitur neque" HasDueTime="False" Id="Mus sapien netus" Postponed="47" Priority="Vestibulum semper feugiat" ProjectName="Nec phasellus gravida">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Nulla non" Modified="03/09/2013 10:53:32" Name="Consequat senectus sociis taciti" Source="Urna tempus risus" Tags="Torquent natoque posuere velit" Url="Volutpat facilisis vitae">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Adipiscing iaculis parturient sociosqu" Locked="False" Name="Lacinia porta convallis laoreet purus" Position="10" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Tellus vestibulum" End="Date" Every="True" Frequency="Daily" Id="24" Interval="85" Rule="Suscipit tempor dignissim"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Cras per</System:String>
+						<System:String>Ultrices sed potenti pretium vehicula</System:String>
+						<System:String>Rhoncus duis sodales</System:String>
+						<System:String>Vestibulum sem sit</System:String>
+						<System:String>Elementum tortor</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Vel class adipiscing parturient viverra" DueStringLong="Aliquam fermentum maecenas vestibulum" Estimate="Curae fringilla habitasse nunc amet" HasDueTime="False" Id="Vestibulum ante hendrerit turpis" Postponed="56" Priority="Donec praesent" ProjectName="Adipiscing accumsan nam parturient arcu">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Vestibulum sed" Modified="03/09/2013 10:53:32" Name="Bibendum etiam dis" Source="Faucibus aptent augue habitant" Tags="Diam himenaeos" Url="Congue mus erat cursus nec">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Dictumst eleifend varius" Locked="False" Name="Fusce aenean lorem mauris" Position="84" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Morbi nullam est nulla vestibulum" End="Count" Every="True" Frequency="Monthly" Id="53" Interval="40" Rule="Facilisi proin"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Hac adipiscing auctor eget</System:String>
+						<System:String>Dolor fames elit</System:String>
+						<System:String>Parturient inceptos integer quisque</System:String>
+						<System:String>Leo felis imperdiet vivamus enim</System:String>
+						<System:String>Ipsum malesuada interdum aliquam lobortis</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Non nascetur justo penatibus" DueStringLong="Aliquet lacus blandit commodo per" Estimate="Porttitor lorem magna sed eros" HasDueTime="False" Id="Sem conubia" Postponed="79" Priority="Cubilia vestibulum" ProjectName="Dapibus nibh pharetra tincidunt tristique">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Egestas sit dictum vestibulum euismod" Modified="03/09/2013 10:53:32" Name="Nisi feugiat adipiscing nisl ultricies" Source="Orci adipiscing nam posuere" Tags="Pede lectus quam parturient" Url="Dis parturient senectus est">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Nunc massa gravida iaculis" Locked="False" Name="Parturient vestibulum odio" Position="28" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Lacinia venenatis vulputate curabitur vestibulum" End="Count" Every="True" Frequency="Weekly" Id="84" Interval="53" Rule="Vel phasellus laoreet natoque"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Placerat pulvinar quis</System:String>
+						<System:String>Metus vestibulum morbi libero consequat</System:String>
+						<System:String>Sed potenti convallis dignissim pretium</System:String>
+						<System:String>Vestibulum rhoncus adipiscing</System:String>
+						<System:String>Ligula sagittis elementum</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Sociosqu litora" DueStringLong="Vestibulum hac suscipit facilisis sodales" Estimate="Viverra fermentum urna" HasDueTime="False" Id="Aliquam vestibulum cras fringilla habitasse" Postponed="90" Priority="Integer luctus" ProjectName="Neque leo">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Hendrerit magnis adipiscing himenaeos" Modified="03/09/2013 10:53:32" Name="Mus duis" Source="Imperdiet vestibulum mattis" Tags="Adipiscing sed aliquet" Url="Ante sed conubia">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Netus nunc" Locked="False" Name="Amet quisque vivamus nec parturient" Position="30" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Non torquent" End="Never" Every="True" Frequency="Daily" Id="48" Interval="69" Rule="Aliquam vestibulum per nulla"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Parturient sem mauris sit</System:String>
+						<System:String>Blandit vel</System:String>
+						<System:String>Mollis malesuada vestibulum penatibus commodo</System:String>
+						<System:String>Ultrices vehicula vestibulum porttitor porta</System:String>
+						<System:String>Volutpat montes nam</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Tincidunt cubilia purus adipiscing dapibus" DueStringLong="Arcu nostra" Estimate="Dis ornare egestas parturient" HasDueTime="False" Id="Diam eget est vestibulum elit" Postponed="48" Priority="Euismod platea enim risus hac" ProjectName="Velit leo tristique">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Vitae mus primis rutrum" Modified="03/09/2013 10:53:32" Name="Class vestibulum" Source="Accumsan iaculis vulputate bibendum" Tags="Semper lacinia curabitur" Url="Tempor vestibulum">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Adipiscing ultricies feugiat curae" Locked="False" Name="Donec venenatis maecenas praesent gravida" Position="75" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Erat etiam parturient" End="Count" Every="True" Frequency="Daily" Id="64" Interval="80" Rule="Sapien nec"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Laoreet non phasellus natoque</System:String>
+						<System:String>Posuere potenti sociis dictumst taciti</System:String>
+						<System:String>Consequat per eleifend</System:String>
+						<System:String>Tellus facilisi eros pretium convallis</System:String>
+						<System:String>Dignissim sed</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Vestibulum sem" DueStringLong="Sit nibh elementum vel nisi" Estimate="Facilisis fusce faucibus adipiscing fermentum" HasDueTime="False" Id="Nam lorem fringilla habitasse habitant" Postponed="47" Priority="Inceptos morbi" ProjectName="Nulla parturient">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Sed proin" Modified="03/09/2013 10:53:32" Name="Nisl nunc dis" Source="Nascetur sodales dolor vestibulum odio" Tags="Orci hac" Url="Pulvinar tincidunt turpis tristique">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Augue rhoncus vestibulum vestibulum hendrerit" Locked="False" Name="Tempus est adipiscing" Position="97" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Interdum parturient" End="Date" Every="True" Frequency="Yearly" Id="61" Interval="85" Rule="Lobortis tortor"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Vestibulum fames felis ipsum</System:String>
+						<System:String>Himenaeos pede</System:String>
+						<System:String>Quam imperdiet</System:String>
+						<System:String>Quis adipiscing malesuada</System:String>
+						<System:String>Pharetra penatibus leo porttitor placerat</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Viverra sagittis urna senectus" DueStringLong="Ultricies mus justo" Estimate="Parturient venenatis vestibulum nec" HasDueTime="False" Id="Vestibulum cras" Postponed="23" Priority="Duis nunc sociosqu" ProjectName="Non amet">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Per vulputate suscipit aliquam adipiscing" Modified="03/09/2013 10:53:32" Name="Parturient curabitur" Source="Diam vestibulum adipiscing mauris" Tags="Volutpat dignissim vel" Url="Est eget fringilla accumsan">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Lacus phasellus lorem vestibulum" Locked="False" Name="Consequat integer sed torquent varius" Position="81" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Aenean ante sem ultrices" End="Count" Every="True" Frequency="Monthly" Id="51" Interval="61" Rule="Quisque vehicula convallis arcu sit"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Maecenas nullam</System:String>
+						<System:String>Elementum praesent</System:String>
+						<System:String>Nam sed</System:String>
+						<System:String>Facilisis magna fermentum vivamus massa</System:String>
+						<System:String>Parturient dis vestibulum metus</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Vestibulum bibendum" DueStringLong="Morbi dictumst" Estimate="Neque adipiscing aliquam" HasDueTime="False" Id="Aliquet eleifend" Postponed="70" Priority="Hac parturient habitasse leo blandit" ProjectName="Hendrerit elit enim">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Netus mus" Modified="03/09/2013 10:53:32" Name="Nulla aptent auctor" Source="Dictum habitant" Tags="Commodo lectus sed" Url="Luctus magnis">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Himenaeos vestibulum vestibulum congue" Locked="False" Name="Imperdiet nec non" Position="83" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Malesuada penatibus facilisi faucibus" End="Date" Every="True" Frequency="Unknown" Id="21" Interval="74" Rule="Per porttitor cursus porta tincidunt"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Erat tristique inceptos eros</System:String>
+						<System:String>Libero nibh interdum nisi</System:String>
+						<System:String>Ultricies sem ligula</System:String>
+						<System:String>Nisl conubia venenatis litora</System:String>
+						<System:String>Lobortis adipiscing nunc</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Parturient odio orci" DueStringLong="Pede vestibulum vulputate mattis vestibulum" Estimate="Purus curabitur mauris phasellus" HasDueTime="False" Id="Adipiscing mollis cubilia sit risus" Postponed="60" Priority="Quam montes consequat nostra dapibus" ProjectName="Vel nascetur">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Quis parturient velit" Modified="03/09/2013 10:53:32" Name="Egestas vestibulum nam euismod" Source="Vestibulum pulvinar sagittis cras" Tags="Leo duis" Url="Curae fermentum fringilla adipiscing donec">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Feugiat sed dis est hac" Locked="False" Name="Pharetra gravida urna" Position="25" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Placerat convallis" End="Count" Every="True" Frequency="Yearly" Id="56" Interval="93" Rule="Dignissim elementum"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Ornare platea senectus facilisis</System:String>
+						<System:String>Sociosqu adipiscing vitae</System:String>
+						<System:String>Mus iaculis</System:String>
+						<System:String>Parturient nec primis</System:String>
+						<System:String>Vestibulum vestibulum class</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+	</ViewModels:MainViewModel.TasksDueTomorrow>
+	<ViewModels:MainViewModel.TasksDueThisWeek>
+		<Model:Task DueString="Leo inceptos quisque interdum" DueStringLong="Penatibus vivamus primis" Estimate="Rutrum porttitor mus sapien" HasDueTime="False" Id="Nulla tincidunt" Postponed="79" Priority="Adipiscing parturient vestibulum" ProjectName="Nec lobortis">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Porta semper non nascetur pharetra" Modified="03/09/2013 10:53:32" Name="Tristique aliquam sociis per" Source="Sem tempor purus tempus vestibulum" Tags="Risus pulvinar" Url="Etiam varius nibh fusce">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Eget ultricies elit taciti venenatis" Locked="False" Name="Vestibulum enim aliquet adipiscing blandit" Position="13" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Placerat tellus" End="Count" Every="True" Frequency="Yearly" Id="15" Interval="17" Rule="Parturient sed"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Velit commodo sit vel erat</System:String>
+						<System:String>Tortor eros vitae</System:String>
+						<System:String>Nam sagittis sed class conubia</System:String>
+						<System:String>Curae senectus cubilia dapibus egestas</System:String>
+						<System:String>Donec sociosqu turpis dis</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Aenean vestibulum lorem morbi" DueStringLong="Nulla euismod nisi mauris" Estimate="Vulputate nisl nunc nullam" HasDueTime="False" Id="Suscipit feugiat adipiscing odio" Postponed="89" Priority="Curabitur phasellus gravida orci proin" ProjectName="Consequat aptent convallis">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Dignissim elementum iaculis lacinia" Modified="03/09/2013 10:53:32" Name="Pede augue dolor torquent parturient" Source="Habitasse felis quis laoreet hendrerit" Tags="Nec non" Url="Posuere himenaeos mauris potenti per">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Facilisis est fames" Locked="False" Name="Hac fermentum auctor" Position="22" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Congue leo quam cursus dictum" End="Never" Every="True" Frequency="Monthly" Id="56" Interval="65" Rule="Lectus mus vestibulum fringilla"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Ultrices libero</System:String>
+						<System:String>Ligula litora</System:String>
+						<System:String>Luctus vestibulum natoque</System:String>
+						<System:String>Urna magnis</System:String>
+						<System:String>Adipiscing mattis</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Sed ipsum cras" DueStringLong="Sem duis justo" Estimate="Sit mollis vehicula" HasDueTime="False" Id="Imperdiet malesuada penatibus parturient" Postponed="23" Priority="Nunc volutpat vestibulum vestibulum porttitor" ProjectName="Montes tincidunt">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Maecenas nostra adipiscing" Modified="03/09/2013 10:53:32" Name="Ornare pretium parturient vestibulum" Source="Lorem primis nam accumsan sodales" Tags="Eget ultricies magna massa" Url="Erat eleifend">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Platea vestibulum rhoncus amet lacus" Locked="False" Name="Ante arcu" Position="87" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Vel diam" End="Date" Every="True" Frequency="Weekly" Id="17" Interval="47" Rule="Praesent adipiscing tristique"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Elit viverra aliquam parturient</System:String>
+						<System:String>Sed venenatis</System:String>
+						<System:String>Rutrum bibendum sapien dictumst</System:String>
+						<System:String>Integer enim</System:String>
+						<System:String>Metus quisque semper</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Sociis vivamus facilisi dis" DueStringLong="Aliquam eros vestibulum vestibulum est" Estimate="Taciti aliquet faucibus" HasDueTime="False" Id="Morbi neque vulputate" Postponed="10" Priority="Habitant inceptos" ProjectName="Netus tellus adipiscing nibh">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Nulla porta curabitur" Modified="03/09/2013 10:53:32" Name="Tempor phasellus hac tempus interdum" Source="Tortor dignissim adipiscing mus" Tags="Turpis elementum conubia placerat" Url="Pede aenean mauris egestas sed">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Leo consequat" Locked="False" Name="Lobortis blandit parturient convallis nisi" Position="43" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Commodo nisl" End="Never" Every="True" Frequency="Weekly" Id="82" Interval="27" Rule="Nascetur purus pharetra vestibulum vestibulum"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Risus nec nunc</System:String>
+						<System:String>Varius non odio</System:String>
+						<System:String>Parturient pulvinar sagittis</System:String>
+						<System:String>Orci cubilia</System:String>
+						<System:String>Velit per dapibus vestibulum</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Nullam euismod sem vitae class" DueStringLong="Curae vestibulum" Estimate="Adipiscing aptent facilisis senectus feugiat" HasDueTime="False" Id="Quam donec gravida" Postponed="34" Priority="Iaculis auctor congue" ProjectName="Sociosqu parturient suscipit">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Lacinia vestibulum quis sit laoreet" Modified="03/09/2013 10:53:32" Name="Vestibulum fermentum adipiscing" Source="Fusce vestibulum duis adipiscing" Tags="Posuere parturient" Url="Dis maecenas ante">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Fringilla natoque parturient" Locked="False" Name="Urna cursus" Position="47" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Etiam torquent vestibulum" End="Count" Every="True" Frequency="Weekly" Id="18" Interval="42" Rule="Habitasse cras hendrerit"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Nunc ultrices vel</System:String>
+						<System:String>Lorem himenaeos nam</System:String>
+						<System:String>Imperdiet potenti</System:String>
+						<System:String>Dictum malesuada vehicula penatibus amet</System:String>
+						<System:String>Volutpat lectus sed</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Porttitor libero praesent est tincidunt" DueStringLong="Pretium rhoncus morbi" Estimate="Vestibulum accumsan bibendum" HasDueTime="False" Id="Ligula vestibulum" Postponed="71" Priority="Dictumst arcu" ProjectName="Litora diam">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Tristique sodales adipiscing viverra hac" Modified="03/09/2013 10:53:32" Name="Aliquam leo" Source="Eleifend enim facilisi" Tags="Erat faucibus vestibulum adipiscing" Url="Interdum curabitur lobortis aliquet parturient">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Integer parturient" Locked="False" Name="Eget quisque luctus" Position="31" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Magnis elit vestibulum mattis" End="Never" Every="True" Frequency="Unknown" Id="92" Interval="31" Rule="Ultricies venenatis vivamus mauris"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Habitant nulla</System:String>
+						<System:String>Vulputate eros mus</System:String>
+						<System:String>Proin nibh</System:String>
+						<System:String>Augue mollis</System:String>
+						<System:String>Inceptos aliquam</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Montes vestibulum phasellus blandit" DueStringLong="Nostra consequat nec non vestibulum" Estimate="Commodo adipiscing ornare conubia" HasDueTime="False" Id="Convallis nascetur" Postponed="44" Priority="Dignissim nisi pharetra" ProjectName="Dolor nisl nunc per cubilia">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Odio orci" Modified="03/09/2013 10:53:32" Name="Elementum platea placerat pede" Source="Fermentum lacus sagittis quis" Tags="Dapibus lorem" Url="Netus nulla feugiat">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Sed facilisis pulvinar" Locked="False" Name="Quam fames" Position="12" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Felis ipsum" End="Date" Every="True" Frequency="Monthly" Id="57" Interval="97" Rule="Parturient justo primis"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Senectus sociosqu egestas vestibulum suscipit</System:String>
+						<System:String>Rutrum sem magna massa</System:String>
+						<System:String>Torquent sapien semper euismod metus</System:String>
+						<System:String>Ultrices morbi neque fringilla habitasse</System:String>
+						<System:String>Vehicula urna</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Sociis vestibulum hendrerit cras" DueStringLong="Gravida adipiscing iaculis himenaeos parturient" Estimate="Vestibulum taciti" HasDueTime="False" Id="Duis vestibulum volutpat lacinia maecenas" Postponed="95" Priority="Praesent tellus adipiscing" ProjectName="Laoreet imperdiet malesuada porta">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Sit penatibus natoque parturient porttitor" Modified="03/09/2013 10:53:32" Name="Tempor tincidunt" Source="Bibendum turpis potenti adipiscing pretium" Tags="Varius rhoncus risus" Url="Habitant parturient">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Vel tempus" Locked="False" Name="Tortor vestibulum" Position="28" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Posuere tristique" End="Date" Every="True" Frequency="Yearly" Id="93" Interval="69" Rule="Accumsan vestibulum ultricies purus nunc"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Amet nam venenatis velit</System:String>
+						<System:String>Dictumst vulputate eleifend sodales curabitur</System:String>
+						<System:String>Aenean parturient sed facilisi vitae</System:String>
+						<System:String>Ante vestibulum</System:String>
+						<System:String>Vestibulum faucibus adipiscing arcu</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Phasellus viverra aliquam mauris diam" DueStringLong="Class consequat" Estimate="Dis curae est donec" HasDueTime="False" Id="Nullam etiam" Postponed="39" Priority="Inceptos eget" ProjectName="Elit interdum enim">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Convallis erat dignissim integer vestibulum" Modified="03/09/2013 10:53:32" Name="Fusce aptent" Source="Dolor facilisis pharetra hac fermentum" Tags="Placerat fames leo cursus" Url="Libero ligula suscipit aliquet litora">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Lorem morbi lobortis vestibulum" Locked="False" Name="Elementum auctor congue quisque" Position="48" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Eros nulla proin nascetur" End="Date" Every="True" Frequency="Daily" Id="41" Interval="64" Rule="Augue vivamus"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Pulvinar fringilla mus</System:String>
+						<System:String>Sagittis felis aliquam nibh ipsum</System:String>
+						<System:String>Senectus justo adipiscing parturient nec</System:String>
+						<System:String>Non nisi dictum sociosqu</System:String>
+						<System:String>Vestibulum habitasse per lectus vestibulum</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Sed luctus" DueStringLong="Sem torquent" Estimate="Nisl nunc hendrerit sit" HasDueTime="False" Id="Vel himenaeos ultrices" Postponed="24" Priority="Nam sed dis est vehicula" ProjectName="Magnis lacus volutpat">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Lorem maecenas blandit praesent" Modified="03/09/2013 10:53:32" Name="Odio imperdiet mattis" Source="Dictumst orci vestibulum" Tags="Nec eleifend" Url="Habitant magna">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Adipiscing parturient accumsan" Locked="False" Name="Mauris commodo" Position="51" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Hac malesuada leo mus" End="Date" Every="True" Frequency="Unknown" Id="15" Interval="49" Rule="Penatibus bibendum conubia porttitor"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Vestibulum tincidunt tristique</System:String>
+						<System:String>Non mollis pede</System:String>
+						<System:String>Adipiscing quam</System:String>
+						<System:String>Parturient quis</System:String>
+						<System:String>Facilisi cubilia faucibus ultricies venenatis</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+	</ViewModels:MainViewModel.TasksDueThisWeek>
+	<ViewModels:MainViewModel.TasksDueToday>
+		<Model:Task DueString="Vestibulum massa inceptos urna dapibus" DueStringLong="Metus vestibulum adipiscing cras" Estimate="Per parturient montes sed" HasDueTime="False" Id="Duis interdum egestas" Postponed="12" Priority="Vestibulum morbi vestibulum lobortis" ProjectName="Adipiscing nostra">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Euismod feugiat" Modified="03/09/2013 10:53:32" Name="Ornare nunc" Source="Sit netus arcu" Tags="Vel pharetra parturient nam vestibulum" Url="Porta sagittis adipiscing leo mus">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Gravida platea iaculis amet vulputate" Locked="False" Name="Curabitur sem primis ante nascetur" Position="60" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Rutrum sapien" End="Count" Every="True" Frequency="Daily" Id="25" Interval="42" Rule="Neque lacinia phasellus"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Vestibulum consequat</System:String>
+						<System:String>Semper convallis sed nulla sociis</System:String>
+						<System:String>Dignissim dis placerat taciti</System:String>
+						<System:String>Pulvinar laoreet tellus</System:String>
+						<System:String>Est diam hac</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Tempor parturient tempus vestibulum" DueStringLong="Elementum eget purus natoque" Estimate="Facilisis risus tortor posuere" HasDueTime="False" Id="Potenti velit turpis vestibulum" Postponed="18" Priority="Nec non fermentum adipiscing vitae" ProjectName="Fringilla parturient habitasse class senectus">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Curae vestibulum vestibulum donec" Modified="03/09/2013 10:53:32" Name="Elit enim adipiscing parturient" Source="Nisi lorem suscipit sed nisl" Tags="Himenaeos torquent sem ultrices sodales" Url="Maecenas quisque odio tincidunt">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Etiam varius aenean" Locked="False" Name="Erat pretium" Position="56" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Fusce mauris rhoncus vestibulum eros" End="Never" Every="True" Frequency="Weekly" Id="37" Interval="66" Rule="Nibh per vestibulum sociosqu hendrerit"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Nunc imperdiet nullam vehicula aptent</System:String>
+						<System:String>Sit morbi viverra</System:String>
+						<System:String>Volutpat vel adipiscing</System:String>
+						<System:String>Aliquam malesuada</System:String>
+						<System:String>Auctor integer congue penatibus porttitor</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Praesent orci" DueStringLong="Accumsan nam vivamus sed" Estimate="Bibendum dis aliquam" HasDueTime="False" Id="Cursus dictumst aliquet dictum" Postponed="98" Priority="Lectus est parturient libero pede" ProjectName="Vestibulum ligula quam">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Blandit vestibulum eleifend" Modified="03/09/2013 10:53:32" Name="Litora quis commodo facilisi" Source="Ultricies augue nec non" Tags="Montes vestibulum nostra cubilia faucibus" Url="Interdum euismod lobortis nam">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Hac tristique nulla leo proin" Locked="False" Name="Luctus mus urna" Position="49" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Adipiscing magnis mattis cras" End="Date" Every="True" Frequency="Daily" Id="80" Interval="92" Rule="Parturient conubia mauris mollis"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Venenatis dapibus duis</System:String>
+						<System:String>Dolor per egestas</System:String>
+						<System:String>Ornare platea sed sem vulputate</System:String>
+						<System:String>Sit habitant nunc vestibulum fames</System:String>
+						<System:String>Curabitur adipiscing vel inceptos</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Primis parturient sed" DueStringLong="Dis feugiat felis" Estimate="Est rutrum phasellus ipsum" HasDueTime="False" Id="Gravida consequat vestibulum vestibulum convallis" Postponed="54" Priority="Dignissim adipiscing" ProjectName="Nascetur elementum">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Sapien pharetra semper hac" Modified="03/09/2013 10:53:32" Name="Amet leo placerat" Source="Pulvinar nec tellus vestibulum" Tags="Arcu diam habitasse vestibulum" Url="Neque tempor imperdiet">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Iaculis parturient justo vestibulum vestibulum" Locked="False" Name="Lacus facilisis mus fermentum ante" Position="53" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Sociis taciti adipiscing fringilla" End="Never" Every="True" Frequency="Unknown" Id="92" Interval="57" Rule="Parturient lorem magna massa"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Sagittis eget metus adipiscing hendrerit</System:String>
+						<System:String>Parturient vestibulum vestibulum senectus elit</System:String>
+						<System:String>Non adipiscing</System:String>
+						<System:String>Morbi enim</System:String>
+						<System:String>Per himenaeos sed sociosqu</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Sem lacinia tempus" DueStringLong="Erat suscipit" Estimate="Tortor parturient eros laoreet malesuada" HasDueTime="False" Id="Nibh sit" Postponed="20" Priority="Vel torquent ultrices" ProjectName="Penatibus vestibulum">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Netus natoque" Modified="03/09/2013 10:53:32" Name="Posuere nam sed vehicula nisi" Source="Hac rhoncus parturient" Tags="Maecenas leo" Url="Accumsan adipiscing parturient bibendum dictumst">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Nulla dis turpis" Locked="False" Name="Est potenti vestibulum varius" Position="84" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Porttitor porta nisl" End="Date" Every="True" Frequency="Monthly" Id="72" Interval="87" Rule="Pretium volutpat adipiscing tincidunt"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Aenean vestibulum tristique</System:String>
+						<System:String>Purus sodales mauris mus</System:String>
+						<System:String>Nunc nullam</System:String>
+						<System:String>Ultricies vestibulum praesent</System:String>
+						<System:String>Nec venenatis odio vulputate</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Risus velit curabitur phasellus non" DueStringLong="Vestibulum vestibulum" Estimate="Orci pede adipiscing eleifend aptent" HasDueTime="False" Id="Parturient vitae" Postponed="64" Priority="Class viverra facilisi vestibulum faucibus" ProjectName="Aliquam consequat">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Per sed curae auctor integer" Modified="03/09/2013 10:53:32" Name="Vestibulum habitant" Source="Quis adipiscing urna" Tags="Convallis cras donec" Url="Ante elementum litora interdum luctus">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Adipiscing congue" Locked="False" Name="Quisque parturient vestibulum" Position="59" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Cursus quam" End="Date" Every="True" Frequency="Monthly" Id="70" Interval="94" Rule="Inceptos vestibulum dictum lectus libero"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Sem vivamus</System:String>
+						<System:String>Dignissim etiam sit</System:String>
+						<System:String>Vel duis nunc parturient</System:String>
+						<System:String>Fusce lorem ligula</System:String>
+						<System:String>Morbi aliquam nam amet</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Aliquet arcu" DueStringLong="Lobortis blandit diam commodo" Estimate="Nulla magnis facilisis fermentum eget" HasDueTime="False" Id="Sed elit mattis" Postponed="94" Priority="Proin fringilla conubia" ProjectName="Augue cubilia habitasse hendrerit mauris">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Himenaeos dolor" Modified="03/09/2013 10:53:32" Name="Mollis enim imperdiet fames" Source="Eros primis dis" Tags="Rutrum nibh est pharetra ipsum" Url="Nisl adipiscing">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Vestibulum malesuada" Locked="False" Name="Felis montes" Position="48" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Dapibus vestibulum nostra ornare erat" End="Date" Every="True" Frequency="Unknown" Id="17" Interval="61" Rule="Nascetur penatibus platea adipiscing porttitor"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Egestas sapien parturient vestibulum</System:String>
+						<System:String>Euismod hac justo</System:String>
+						<System:String>Lacus nisi leo</System:String>
+						<System:String>Tincidunt vestibulum semper mus</System:String>
+						<System:String>Feugiat tristique gravida</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Parturient placerat" DueStringLong="Vestibulum iaculis nec ultricies non" Estimate="Lorem magna massa per" HasDueTime="False" Id="Vestibulum pulvinar" Postponed="11" Priority="Lacinia laoreet nunc" ProjectName="Venenatis sociis sagittis">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Metus taciti sed" Modified="03/09/2013 10:53:32" Name="Vulputate natoque" Source="Potenti dignissim vestibulum nam sed" Tags="Orci dis netus elementum" Url="Quam vestibulum rhoncus fringilla vestibulum">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Curabitur senectus adipiscing morbi odio" Locked="False" Name="Parturient neque" Position="28" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Phasellus sem sit consequat posuere" End="Date" Every="True" Frequency="Monthly" Id="12" Interval="82" Rule="Sociosqu vestibulum convallis vel"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Facilisis suscipit nulla adipiscing</System:String>
+						<System:String>Parturient pretium</System:String>
+						<System:String>Vestibulum vestibulum</System:String>
+						<System:String>Tellus torquent tempor adipiscing</System:String>
+						<System:String>Fermentum pede tempus parturient</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Tortor adipiscing" DueStringLong="Sodales viverra habitasse" Estimate="Aliquam est ultrices turpis vehicula" HasDueTime="False" Id="Integer quisque" Postponed="41" Priority="Varius porta quis hac" ProjectName="Parturient leo vivamus">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Hendrerit volutpat purus" Modified="03/09/2013 10:53:32" Name="Risus aenean urna" Source="Class duis" Tags="Mus porttitor nunc" Url="Adipiscing conubia">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Himenaeos aliquam aliquet cras" Locked="False" Name="Imperdiet velit blandit mauris" Position="69" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Malesuada vitae" End="Count" Every="True" Frequency="Daily" Id="40" Interval="20" Rule="Penatibus maecenas"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Vestibulum nec tincidunt curae</System:String>
+						<System:String>Donec tristique</System:String>
+						<System:String>Amet ultricies</System:String>
+						<System:String>Etiam venenatis non vestibulum fusce</System:String>
+						<System:String>Ante commodo arcu nullam per</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Cubilia dapibus aptent sed" DueStringLong="Diam egestas parturient auctor lorem" Estimate="Euismod vestibulum feugiat sem" HasDueTime="False" Id="Congue morbi" Postponed="16" Priority="Eget gravida" ProjectName="Vestibulum cursus vulputate">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Nulla proin iaculis dictum lectus" Modified="03/09/2013 10:53:32" Name="Lacinia laoreet elit enim natoque" Source="Dictumst consequat potenti vestibulum convallis" Tags="Dignissim libero pretium" Url="Faucibus hendrerit">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Adipiscing erat" Locked="False" Name="Sit eros praesent" Position="59" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Augue accumsan curabitur" End="Date" Every="True" Frequency="Daily" Id="23" Interval="88" Rule="Nibh phasellus parturient bibendum posuere"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Rhoncus sodales nisi dolor fames</System:String>
+						<System:String>Vestibulum adipiscing viverra aliquam vel</System:String>
+						<System:String>Elementum felis facilisis eleifend fermentum</System:String>
+						<System:String>Ligula parturient fringilla vestibulum</System:String>
+						<System:String>Integer facilisi habitasse</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+	</ViewModels:MainViewModel.TasksDueToday>
+	<ViewModels:MainViewModel.TasksDueSomeday>
+		<Model:Task DueString="Conubia sit adipiscing varius cubilia" DueStringLong="Metus aenean" Estimate="Praesent accumsan nibh bibendum nisi" HasDueTime="False" Id="Mauris morbi neque nisl nullam" Postponed="48" Priority="Aptent parturient auctor vel nunc" ProjectName="Dictumst odio elementum dapibus">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Netus nam nulla" Modified="03/09/2013 10:53:32" Name="Sed vestibulum eleifend" Source="Nec dictum pede" Tags="Non quam lectus adipiscing habitant" Url="Feugiat sed">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Vestibulum congue porta dis" Locked="False" Name="Facilisi cursus" Position="83" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Est hac leo faucibus egestas" End="Never" Every="True" Frequency="Yearly" Id="42" Interval="69" Rule="Mus orci facilisis"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Parturient purus libero inceptos interdum</System:String>
+						<System:String>Vestibulum vestibulum risus</System:String>
+						<System:String>Ligula euismod quis adipiscing velit</System:String>
+						<System:String>Parturient per vitae litora vestibulum</System:String>
+						<System:String>Class fermentum curae donec lobortis</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Vestibulum luctus adipiscing fringilla" DueStringLong="Etiam parturient" Estimate="Magnis habitasse urna" HasDueTime="False" Id="Gravida vestibulum" Postponed="90" Priority="Nascetur sem hendrerit sit" ProjectName="Vel himenaeos fusce">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Vestibulum imperdiet lorem iaculis cras" Modified="03/09/2013 10:53:32" Name="Morbi adipiscing lacinia" Source="Nunc senectus penatibus est" Tags="Hac proin" Url="Ultrices vehicula montes tristique">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Duis nam" Locked="False" Name="Sed nulla pharetra" Position="86" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Placerat malesuada pulvinar sagittis laoreet" End="Count" Every="True" Frequency="Monthly" Id="59" Interval="22" Rule="Dis mattis"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Leo sociosqu mauris amet</System:String>
+						<System:String>Augue porttitor natoque</System:String>
+						<System:String>Parturient suscipit</System:String>
+						<System:String>Torquent tincidunt mollis</System:String>
+						<System:String>Dolor posuere vestibulum</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Ultricies vestibulum ante venenatis" DueStringLong="Fames mus potenti" Estimate="Adipiscing felis arcu diam nec" HasDueTime="False" Id="Eget nostra" Postponed="46" Priority="Vulputate elit" ProjectName="Ipsum non per curabitur">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Justo phasellus" Modified="03/09/2013 10:53:32" Name="Volutpat parturient sed" Source="Sit eros" Tags="Elementum facilisis magna" Url="Fringilla neque sociis habitasse">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Consequat lacus" Locked="False" Name="Enim pretium ornare platea" Position="38" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Sem primis lorem erat rutrum" End="Count" Every="True" Frequency="Daily" Id="40" Interval="57" Rule="Convallis dignissim"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Maecenas sapien praesent</System:String>
+						<System:String>Accumsan vestibulum semper massa</System:String>
+						<System:String>Bibendum rhoncus dictumst eleifend</System:String>
+						<System:String>Sodales vel metus morbi</System:String>
+						<System:String>Fermentum viverra</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Hendrerit nibh facilisi vestibulum" DueStringLong="Nisi taciti" Estimate="Netus aliquam nam" HasDueTime="False" Id="Adipiscing parturient integer" Postponed="78" Priority="Quisque vestibulum" ProjectName="Tellus tempor nisl nulla">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Faucibus nunc himenaeos imperdiet" Modified="03/09/2013 10:53:32" Name="Tempus malesuada habitant" Source="Penatibus porttitor sed" Tags="Vestibulum pede aliquet" Url="Class venenatis">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Odio orci" Locked="False" Name="Vivamus vestibulum aliquam porta" Position="62" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Tortor purus turpis" End="Never" Every="True" Frequency="Monthly" Id="33" Interval="33" Rule="Adipiscing risus parturient"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Tincidunt inceptos dis</System:String>
+						<System:String>Blandit velit tristique</System:String>
+						<System:String>Varius vitae aenean</System:String>
+						<System:String>Interdum quam est</System:String>
+						<System:String>Vestibulum ultricies adipiscing quis hac</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Commodo mauris" DueStringLong="Conubia cubilia urna leo" Estimate="Mus cras" HasDueTime="False" Id="Nullam aptent auctor dapibus" Postponed="32" Priority="Duis lobortis curae" ProjectName="Nascetur nec pharetra placerat">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Parturient vulputate" Modified="03/09/2013 10:53:32" Name="Egestas donec" Source="Amet ante convallis" Tags="Cursus arcu gravida vestibulum dignissim" Url="Facilisis suscipit fermentum">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Vestibulum curabitur non congue" Locked="False" Name="Per euismod" Position="24" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Sed feugiat phasellus consequat" End="Count" Every="True" Frequency="Yearly" Id="12" Interval="21" Rule="Nunc pulvinar sem"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Adipiscing sit parturient etiam iaculis</System:String>
+						<System:String>Diam elementum dictum lectus</System:String>
+						<System:String>Libero vestibulum</System:String>
+						<System:String>Vestibulum eget sagittis senectus</System:String>
+						<System:String>Vel sociosqu nam lacinia fusce</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Sed dis lorem ligula adipiscing" DueStringLong="Fringilla elit torquent enim laoreet" Estimate="Litora parturient" HasDueTime="False" Id="Habitasse est hac luctus" Postponed="67" Priority="Magnis morbi erat" ProjectName="Mattis mauris nulla ultrices">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Hendrerit natoque mollis himenaeos" Modified="03/09/2013 10:53:32" Name="Imperdiet leo vestibulum vehicula" Source="Vestibulum eleifend facilisi nisi" Tags="Mus faucibus" Url="Sodales lacus non">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Vestibulum proin eros adipiscing augue" Locked="False" Name="Dolor volutpat malesuada maecenas nibh" Position="30" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Praesent accumsan fames" End="Count" Every="True" Frequency="Weekly" Id="59" Interval="95" Rule="Bibendum dictumst parturient"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Felis ipsum habitant justo</System:String>
+						<System:String>Montes penatibus posuere nec nostra</System:String>
+						<System:String>Potenti nisl vestibulum ornare inceptos</System:String>
+						<System:String>Pretium nunc porttitor odio</System:String>
+						<System:String>Interdum platea rhoncus orci tincidunt</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Adipiscing primis tristique" DueStringLong="Pede rutrum ultricies viverra" Estimate="Lorem parturient vestibulum magna" HasDueTime="False" Id="Vestibulum venenatis" Postponed="61" Priority="Vulputate massa aliquam curabitur per" ProjectName="Sapien semper">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Quam sed" Modified="03/09/2013 10:53:32" Name="Sociis phasellus consequat taciti" Source="Nunc nascetur quisque convallis" Tags="Dignissim neque elementum amet" Url="Fringilla porta ante parturient vivamus">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Tellus lobortis quis" Locked="False" Name="Urna integer sem sit metus" Position="58" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Adipiscing cras duis" End="Date" Every="True" Frequency="Daily" Id="25" Interval="38" Rule="Morbi vel tempor tempus"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Parturient tortor pharetra</System:String>
+						<System:String>Nam vestibulum vestibulum</System:String>
+						<System:String>Facilisis sed dis</System:String>
+						<System:String>Netus adipiscing nulla</System:String>
+						<System:String>Fermentum est</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Vestibulum hac" DueStringLong="Turpis varius vestibulum leo" Estimate="Adipiscing mus purus" HasDueTime="False" Id="Habitasse parturient nec arcu" Postponed="30" Priority="Placerat aliquam diam hendrerit vestibulum" ProjectName="Non eget aenean">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Per elit enim sed" Modified="03/09/2013 10:53:32" Name="Sem sit aliquet" Source="Eros dis nibh malesuada" Tags="Senectus risus penatibus" Url="Curae tristique conubia">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Vel vestibulum erat" Locked="False" Name="Pulvinar adipiscing himenaeos parturient nam" Position="25" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Mauris vestibulum sagittis sed" End="Date" Every="True" Frequency="Weekly" Id="93" Interval="37" Rule="Vestibulum imperdiet blandit"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Adipiscing nullam nisi sociosqu est</System:String>
+						<System:String>Porttitor parturient velit</System:String>
+						<System:String>Aptent tincidunt</System:String>
+						<System:String>Vestibulum auctor</System:String>
+						<System:String>Vestibulum vitae commodo class hac</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Ultricies adipiscing nisl" DueStringLong="Parturient nunc" Estimate="Cubilia dapibus vestibulum" HasDueTime="False" Id="Leo venenatis donec congue etiam" Postponed="10" Priority="Odio vestibulum vulputate egestas" ProjectName="Orci suscipit mus nec">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Pede cursus curabitur non euismod" Modified="03/09/2013 10:53:32" Name="Adipiscing quam" Source="Sem cras torquent iaculis" Tags="Libero sit ultrices morbi convallis" Url="Luctus vel vestibulum magnis">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Feugiat phasellus quis dictum" Locked="False" Name="Parturient consequat" Position="81" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Per sed fusce urna" End="Count" Every="True" Frequency="Unknown" Id="67" Interval="15" Rule="Gravida lectus lorem"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Vehicula vestibulum lacinia</System:String>
+						<System:String>Volutpat ligula laoreet litora nulla</System:String>
+						<System:String>Dignissim maecenas</System:String>
+						<System:String>Praesent proin augue dolor accumsan</System:String>
+						<System:String>Elementum natoque</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+		<Model:Task DueString="Mattis bibendum fames" DueStringLong="Facilisis nam adipiscing fermentum felis" Estimate="Posuere mauris" HasDueTime="False" Id="Duis fringilla habitasse" Postponed="39" Priority="Sed ipsum" ProjectName="Hendrerit nunc">
+			<Model:Task.TaskSeries>
+				<Model:TaskSeries Created="03/09/2013 10:53:32" Id="Justo potenti" Modified="03/09/2013 10:53:32" Name="Dictumst parturient" Source="Lorem magna amet massa" Tags="Imperdiet montes rhoncus habitant est" Url="Vestibulum netus">
+					<Model:TaskSeries.Project>
+						<Model:Project Archived="True" Deleted="False" Id="Lacus vestibulum himenaeos vestibulum" Locked="False" Name="Eleifend adipiscing" Position="63" Smart="False"/>
+					</Model:TaskSeries.Project>
+					<Model:TaskSeries.RepeatRule>
+						<Model:RepeatRule Description="Dis facilisi parturient" End="Count" Every="True" Frequency="Daily" Id="85" Interval="63" Rule="Faucibus pretium mollis"/>
+					</Model:TaskSeries.RepeatRule>
+					<Model:TaskSeries.TagsList>
+						<System:String>Metus ante sodales nostra</System:String>
+						<System:String>Viverra arcu ornare vestibulum morbi</System:String>
+						<System:String>Diam aliquam</System:String>
+						<System:String>Neque integer hac</System:String>
+						<System:String>Malesuada platea</System:String>
+					</Model:TaskSeries.TagsList>
+				</Model:TaskSeries>
+			</Model:Task.TaskSeries>
+		</Model:Task>
+	</ViewModels:MainViewModel.TasksDueSomeday>
+</ViewModels:MainViewModel>

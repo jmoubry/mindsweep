@@ -7,7 +7,7 @@ using System.Windows;
 namespace Mindsweep.Model
 {
     [Table]
-    public class Request : INotifyPropertyChanged, INotifyPropertyChanging
+    public class Request : INotifyPropertyChanged
     {
         private string _id;
 
@@ -17,7 +17,6 @@ namespace Mindsweep.Model
             get { return _id; }
             set
             {
-                NotifyPropertyChanging("Id");
                 _id = value;
                 NotifyPropertyChanged("Id");
             }
@@ -31,7 +30,6 @@ namespace Mindsweep.Model
             get { return _requestUri; }
             set
             {
-                NotifyPropertyChanging("RequestUri");
                 _requestUri = value;
                 NotifyPropertyChanged("RequestUri");
             }
@@ -45,7 +43,6 @@ namespace Mindsweep.Model
             get { return _requested; }
             set
             {
-                NotifyPropertyChanging("Requested");
                 _requested = value;
                 NotifyPropertyChanged("Requested");
             }
@@ -65,21 +62,6 @@ namespace Mindsweep.Model
             if (PropertyChanged != null)
             {
                 Deployment.Current.Dispatcher.BeginInvoke(() => PropertyChanged(this, new PropertyChangedEventArgs(propertyName)));
-            }
-        }
-
-        #endregion
-
-        #region INotifyPropertyChanging Members
-
-        public event PropertyChangingEventHandler PropertyChanging;
-
-        // Used to notify that a property is about to change
-        private void NotifyPropertyChanging(string propertyName)
-        {
-            if (PropertyChanging != null)
-            {
-                Deployment.Current.Dispatcher.BeginInvoke(() => PropertyChanging(this, new PropertyChangingEventArgs(propertyName)));
             }
         }
 
