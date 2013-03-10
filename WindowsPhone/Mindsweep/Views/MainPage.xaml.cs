@@ -133,6 +133,13 @@ namespace Mindsweep.Views
             App.ViewModel.DeleteDB();
         }
 
+        private void ForceWipeAndSync_Click(object sender, EventArgs e)
+        {
+            App.ViewModel.WipeDB();
+            App.ViewModel.LastSync = DateTime.MinValue;
+            App.ViewModel.Sync();
+        }
+
         private void About_Click(object sender, EventArgs e)
         {
             this.NavigationService.Navigate(new Uri("/Views/About.xaml", UriKind.RelativeOrAbsolute));

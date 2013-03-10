@@ -237,14 +237,14 @@ namespace Mindsweep.ViewModels
         {
             AllProjects = new ObservableCollection<Project>(mainDB.Projects.OrderBy(p => p.Position));
             ActiveProjects = new ObservableCollection<Project>(mainDB.Projects.Where(Exp.IsActive).OrderBy(p => p.Position));
-           
+
             AllTasks = new ObservableCollection<Task>(mainDB.Tasks.Where(Exp.IsOpen));
 
-            AllOverdueTasks = new ObservableCollection<Task>(mainDB.Tasks.Where(Exp.IsOverdue).OrderBy(t=>t.Due).ThenBy(t=> t.Priority).ThenBy(t => t.TaskSeries.Name));
-            
-            TasksDueToday = new ObservableCollection<Task>(mainDB.Tasks.Where(Exp.IsDueToday).OrderBy(t => t.Due).ThenBy(t => t.Priority).ThenBy(t => t.TaskSeries.Name));
-            TasksDueTomorrow = new ObservableCollection<Task>(mainDB.Tasks.Where(Exp.IsDueTomorrow).OrderBy(t => t.Due).ThenBy(t => t.Priority).ThenBy(t => t.TaskSeries.Name));
-            TasksDueThisWeek = new ObservableCollection<Task>(mainDB.Tasks.Where(Exp.IsDueThisWeek).OrderBy(t => t.Due).ThenBy(t => t.Priority).ThenBy(t => t.TaskSeries.Name));
+            AllOverdueTasks = new ObservableCollection<Task>(mainDB.Tasks.Where(Exp.IsOverdue).OrderBy(t=>t.DueInLocalTime).ThenBy(t=> t.Priority).ThenBy(t => t.TaskSeries.Name));
+
+            TasksDueToday = new ObservableCollection<Task>(mainDB.Tasks.Where(Exp.IsDueToday).OrderBy(t => t.DueInLocalTime).ThenBy(t => t.Priority).ThenBy(t => t.TaskSeries.Name));
+            TasksDueTomorrow = new ObservableCollection<Task>(mainDB.Tasks.Where(Exp.IsDueTomorrow).OrderBy(t => t.DueInLocalTime).ThenBy(t => t.Priority).ThenBy(t => t.TaskSeries.Name));
+            TasksDueThisWeek = new ObservableCollection<Task>(mainDB.Tasks.Where(Exp.IsDueThisWeek).OrderBy(t => t.DueInLocalTime).ThenBy(t => t.Priority).ThenBy(t => t.TaskSeries.Name));
 
             TasksDueSomeday = new ObservableCollection<Task>(mainDB.Tasks.Where(t => !t.Due.HasValue).OrderBy(t => t.Priority).ThenBy(t => t.TaskSeries.Name));
 
@@ -312,7 +312,7 @@ namespace Mindsweep.ViewModels
             this.Token = null;
             this.LastSync = DateTime.MinValue;
             this.IsSynced = false;
-            this.DeleteDB();
+            this.WipeDB();
         }
 
         public void ParseJsonProjects(string json)
@@ -356,13 +356,13 @@ namespace Mindsweep.ViewModels
                     else
                         toDelete.Deleted = true;
                 }
+
+                mainDB.SubmitChanges();
             };
 
             bw.RunWorkerCompleted += (s, args) =>
             {
                 // Do your UI work here this will run on the UI thread.
-                mainDB.SubmitChanges();
-
                 AllProjects = new ObservableCollection<Project>(mainDB.Projects);
 
                 // If we haven't downloaded tasks for this user, just grab the incomplete ones.
@@ -425,13 +425,11 @@ namespace Mindsweep.ViewModels
             foreach (Project serverProject in response.TasksByProject)
             {
                 var localProject = mainDB.Projects.Where(p => p.Id == serverProject.Id).FirstOrDefault();
-
                 if (localProject != null)
                 {
                     foreach (TaskSeries serverTaskSeries in serverProject.TaskSeries)
                     {
                         var localTaskSeries = mainDB.TaskSeries.Where(t => t.Id == serverTaskSeries.Id).FirstOrDefault();
-
                         if (localTaskSeries == null)
                         {
                             serverTaskSeries.Project = localProject;
@@ -453,22 +451,18 @@ namespace Mindsweep.ViewModels
             foreach (Project serverProject in response.DeletedTasksByProject)
             {
                 var localProject = mainDB.Projects.Where(p => p.Id == serverProject.Id).FirstOrDefault();
-
                 if (localProject != null)
                 {
                     foreach (TaskSeries serverTaskSeries in serverProject.TaskSeries)
                     {
                         foreach (Task serverDeletedTask in serverTaskSeries.Tasks)
                         {
+                            // Mark task deleted.
+                            // Note: tried deleting task from db but it caused other tasks in the series to have null references.
                             var localTaskToDelete = mainDB.Tasks.Where(t => t.Id == serverDeletedTask.Id && t.TaskSeries.Id == serverTaskSeries.Id).FirstOrDefault();
-
                             if (localTaskToDelete != null)
-                            {
-                                mainDB.Tasks.DeleteOnSubmit(localTaskToDelete);
-
-                            }
+                                localTaskToDelete.Deleted = DateTime.UtcNow;
                         }
-
                     }
                 }
             }
@@ -536,6 +530,17 @@ namespace Mindsweep.ViewModels
         public void DeleteDB()
         {
             mainDB.DeleteDatabase();
+        }
+
+        public void WipeDB()
+        {
+            mainDB.RequestQueue.DeleteAllOnSubmit(mainDB.RequestQueue);
+            mainDB.Tasks.DeleteAllOnSubmit(mainDB.Tasks);
+            mainDB.TaskSeries.DeleteAllOnSubmit(mainDB.TaskSeries);
+            mainDB.Projects.DeleteAllOnSubmit(mainDB.Projects);
+            mainDB.RepeatRules.DeleteAllOnSubmit(mainDB.RepeatRules);
+
+            mainDB.SubmitChanges();
         }
 
         // Add a project to the database and collections.

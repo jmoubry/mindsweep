@@ -35,9 +35,9 @@ namespace Mindsweep.Views
                     TaskListBox.ItemsSource = null;
                 }
                 else
-                {
+                {  
                     Title.Text = proj.Name;
-                    TaskListBox.ItemsSource = App.ViewModel.AllTasks.Where(t => t.TaskSeries.Project.Id == proj.Id).Where(Exp.IsOpen).OrderBy(t => t.Due).ThenBy(t => t.Priority).ThenBy(t => t.TaskSeries.Name);
+                    TaskListBox.ItemsSource = App.ViewModel.AllTasks.Where(t => t.TaskSeries.Project.Id == proj.Id).Where(Exp.IsOpen).OrderBy(t => t.DueInLocalTime).ThenBy(t => t.Priority).ThenBy(t => t.TaskSeries.Name);
                 }
             }
             else
@@ -46,7 +46,7 @@ namespace Mindsweep.Views
 
                 Title.Text = tag;
 
-                var tasksForTag = App.ViewModel.AllTasks.Where(Exp.IsOpen).Where(Exp.HasTags).Where(t => t.TaskSeries.Tags.Split(',').Contains(tag)).OrderBy(t => t.Due).ThenBy(t => t.Priority).ThenBy(t => t.TaskSeries.Name).ToList();
+                var tasksForTag = App.ViewModel.AllTasks.Where(Exp.IsOpen).Where(Exp.HasTags).Where(t => t.TaskSeries.Tags.Split(',').Contains(tag)).OrderBy(t => t.DueInLocalTime).ThenBy(t => t.Priority).ThenBy(t => t.TaskSeries.Name).ToList();
 
                 TaskListBox.ItemsSource = tasksForTag;
             }

@@ -105,6 +105,7 @@
                 <shell:ApplicationBarMenuItem Text="about" Click="About_Click"/>
                 <shell:ApplicationBarMenuItem Text="logout" Click="LogOut_Click"/>
                 <shell:ApplicationBarMenuItem Text="delete db" Click="DeleteDB_Click"/>
+                <shell:ApplicationBarMenuItem Text="force wipe and sync" Click="ForceWipeAndSync_Click"/>
             </shell:ApplicationBar.MenuItems>
 		</shell:ApplicationBar>
 	</phone:PhoneApplicationPage.ApplicationBar>

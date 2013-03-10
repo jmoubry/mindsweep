@@ -36,22 +36,99 @@ namespace Mindsweep.Model
                     return string.Format("{0:ddd M/d/yyyy}{1}", Due.Value.ToLocalTime(), HasDueTime ? ", " + Due.Value.ToLocalTime().ToShortTimeString() : string.Empty);
             }
         }
-        
+
+        public DateTime DueInLocalTime
+        {
+            get
+            {
+                if (!Due.HasValue)
+                    return DateTime.MaxValue;
+                else if (HasDueTime)
+                {
+                    return Due.Value.ToLocalTime();
+                }
+                else
+                {
+                    return Due.Value.Date;
+                }
+            }
+        }
+
+        public string DueDayString
+        {
+            get
+            {
+                if (!Due.HasValue)
+                    return string.Empty;
+                else if (HasDueTime)
+                {
+                    if (Due.Value.ToLocalTime().Date == DateTime.Now.Date)
+                        return "Today";
+                    else if (Due.Value.ToLocalTime().Date >= DateTime.Now.Date
+                        && Due.Value.ToLocalTime() < DateTime.Now.Date.AddDays(7))
+                        return Due.Value.ToLocalTime().ToString("dddd");
+                    else if (Due.Value.ToLocalTime().Date.Year == DateTime.Now.Date.Year)
+                        return Due.Value.ToLocalTime().ToString("MMM d");
+                    else
+                        return Due.Value.ToLocalTime().ToShortDateString();
+                }
+                else
+                {
+                    if (Due.Value.Date == DateTime.Now.Date)
+                        return "Today";
+                    else if (Due.Value.Date >= DateTime.Now.Date
+                        && Due.Value.Date < DateTime.Now.Date.AddDays(7))
+                        return Due.Value.Date.ToString("dddd");
+                    else if (Due.Value.Date.Year == DateTime.Now.Date.Year)
+                        return Due.Value.Date.ToString("MMM d");
+                    else
+                        return Due.Value.Date.ToShortDateString();
+                }
+            }
+        }
+
+        public string DueTimeString
+        {
+            get
+            {
+                if (!Due.HasValue || !HasDueTime)
+                    return string.Empty;
+                else
+                    return Due.Value.ToLocalTime().ToString("h:mm tt");
+            }
+        }
+
+
         public string DueString
         {
             get
             {
                 if (!Due.HasValue)
                     return string.Empty;
-                else if (Due.Value.ToLocalTime().Date == DateTime.Now.Date)
-                    return "Today";
-                else if (Due.Value.ToLocalTime().Date >= DateTime.Now.Date
-                    && Due.Value.ToLocalTime() < DateTime.Now.Date.AddDays(7))
-                    return Due.Value.ToLocalTime().DayOfWeek.ToString();
-                else if (Due.Value.ToLocalTime().Date.Year == DateTime.Now.Date.Year)
-                    return Due.Value.ToLocalTime().ToString("MMM d");
+                else if (HasDueTime)
+                {
+                    if (Due.Value.ToLocalTime().Date == DateTime.Now.Date)
+                        return "Today";
+                    else if (Due.Value.ToLocalTime().Date >= DateTime.Now.Date
+                        && Due.Value.ToLocalTime() < DateTime.Now.Date.AddDays(7))
+                        return Due.Value.ToLocalTime().ToString("dddd @ h:mm tt");
+                    else if (Due.Value.ToLocalTime().Date.Year == DateTime.Now.Date.Year)
+                        return Due.Value.ToLocalTime().ToString("MMM d @ h:mm tt");
+                    else
+                        return Due.Value.ToLocalTime().ToShortDateString();
+                }
                 else
-                    return Due.Value.ToLocalTime().ToShortDateString();
+                {
+                    if (Due.Value.Date == DateTime.Now.Date)
+                        return "Today";
+                    else if (Due.Value.Date >= DateTime.Now.Date
+                        && Due.Value.Date < DateTime.Now.Date.AddDays(7))
+                        return Due.Value.Date.ToString("dddd");
+                    else if (Due.Value.Date.Year == DateTime.Now.Date.Year)
+                        return Due.Value.Date.ToString("MMM d");
+                    else
+                        return Due.Value.Date.ToShortDateString();
+                }
             }
         }
 

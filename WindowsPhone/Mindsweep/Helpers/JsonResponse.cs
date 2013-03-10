@@ -39,10 +39,9 @@ namespace Mindsweep.Helpers
                     || rsp.tasks.list == null)
                     return projects;
 
-
                 foreach(JsonTasksResultsList list in rsp.tasks.list)
                 {
-                    if (list.taskseries != null && list.taskseries.Count  > 0)
+                    if (list.taskseries != null && list.taskseries.Count > 0)
                     {
                         Project p = new Project() { Id = list.id };
                         p.TaskSeries.AddRange(list.taskseries);

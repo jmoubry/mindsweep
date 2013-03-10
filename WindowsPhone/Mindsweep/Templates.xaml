@@ -14,16 +14,21 @@
                 <ColumnDefinition Width="120"/>
             </Grid.ColumnDefinitions>
             <Border Grid.Column="0"  BorderThickness="5,0,0,0" BorderBrush="{Binding Priority, Converter={StaticResource PrioritySolidBrushConverter}}" CornerRadius="3"></Border>
-            <StackPanel Orientation="Vertical" Grid.Column="1" Margin="6,-4,6,6" VerticalAlignment="Top">
+            <StackPanel Grid.Column="1" Orientation="Vertical" Margin="6,-4,6,6" VerticalAlignment="Top">
                 <TextBlock TextWrapping="Wrap" 
                                Text="{Binding TaskSeries.Name}" Style="{StaticResource JPhoneTextTitle2Style}" />
                 <TextBlock TextTrimming="WordEllipsis"
                                Foreground="LightGray"
                                Text="{Binding TaskSeries.Project.Name}" Style="{StaticResource JPhoneTextSmallStyle}" />
             </StackPanel>
-            <TextBlock Grid.Column="2"  VerticalAlignment="Top" HorizontalAlignment="Right" 
-                           Text="{Binding DueString}" Style="{StaticResource JPhoneTextSmallStyle}"
-                           Foreground="{Binding Converter={StaticResource TaskDueSolidBrushConverter}}"/>
+            <StackPanel Grid.Column="2" Orientation="Vertical">
+                <TextBlock VerticalAlignment="Top" HorizontalAlignment="Right" 
+                               Text="{Binding DueDayString}" Style="{StaticResource JPhoneTextSmallStyle}"
+                               Foreground="{Binding Converter={StaticResource TaskDueSolidBrushConverter}}"/>
+                <TextBlock VerticalAlignment="Top" HorizontalAlignment="Right" 
+                               Text="{Binding DueTimeString}" Style="{StaticResource JPhoneTextSmallStyle}"
+                               Foreground="{Binding Converter={StaticResource TaskDueSolidBrushConverter}}"/>                
+            </StackPanel>
         </Grid>
     </DataTemplate>
     <DataTemplate x:Name="TaskDataTemplateWithoutDate">
