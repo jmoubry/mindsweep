@@ -24,8 +24,7 @@ namespace Mindsweep.Helpers
         public static Func<Task, bool> IsOpen = t => !t.Completed.HasValue && !t.Deleted.HasValue;
 
         public static Func<Task, bool> IsNextAction = t => !t.Completed.HasValue && !t.Deleted.HasValue && t.Due.HasValue
-                                                           && ((t.HasDueTime && t.Due.Value.ToLocalTime() <= DateTime.Now)
-                                                           || (!t.HasDueTime && t.Due.Value.Date <= DateTime.Now.Date));
+                                                           && t.DueInLocalTime.Date <= DateTime.Now.Date;
 
         public static Func<Task, bool> IsDueToday = t => !t.Completed.HasValue && !t.Deleted.HasValue && t.Due.HasValue
                                                            && t.DueInLocalTime.Date == DateTime.Now.Date;
