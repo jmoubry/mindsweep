@@ -19,6 +19,7 @@ namespace Mindsweep.Helpers
         public const string URI_SETCOMPLETE = "http://www.rememberthemilk.com/services/rest/?method=rtm.tasks.complete";
         public const string URI_POSTPONE = "http://www.rememberthemilk.com/services/rest/?method=rtm.tasks.postpone";
         public const string URI_DELETETASK = "http://www.rememberthemilk.com/services/rest/?method=rtm.tasks.delete";
+        public const string URI_ADDTASK = "http://www.rememberthemilk.com/services/rest/?method=rtm.tasks.add";
 
         public static Uri SignRequest(string url, bool formatJson = false, bool authToken = false)
         {
@@ -44,7 +45,7 @@ namespace Mindsweep.Helpers
 
             string sortedParamsAndValues = App.RtmSecret;
             foreach (string key in qparams.Keys.OrderBy(k => k))
-                sortedParamsAndValues += key + qparams[key];
+                sortedParamsAndValues += key + Uri.UnescapeDataString(qparams[key]);
 
 
             url = string.Format("{0}&api_key={1}&api_sig={2}", url, App.RtmApiKey, MD5CryptoServiceProvider.GetMd5String(sortedParamsAndValues));
@@ -55,8 +56,7 @@ namespace Mindsweep.Helpers
             if (authToken)
                 url = url + "&auth_token=" + App.ViewModel.Token;
 
-
-            return new Uri(url);
+            return new Uri(Uri.EscapeUriString(url));
         }
 
         public static Uri SignJsonRequest(string url)

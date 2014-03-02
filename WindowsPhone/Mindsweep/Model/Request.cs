@@ -9,16 +9,29 @@ namespace Mindsweep.Model
     [Table]
     public class Request : INotifyPropertyChanged
     {
-        private string _id;
+        private int _id;
 
         [Column(IsPrimaryKey = true, IsDbGenerated = true, DbType = "INT NOT NULL Identity", CanBeNull = false)]
-        public string Id
+        public int Id
         {
             get { return _id; }
             set
             {
                 _id = value;
                 NotifyPropertyChanged("Id");
+            }
+        }
+
+        private string _localTaskSeriesIdForAdd;
+
+        [Column(CanBeNull = true)]
+        public string LocalTaskSeriesIdForAdd
+        {
+            get { return _localTaskSeriesIdForAdd; }
+            set
+            {
+                _localTaskSeriesIdForAdd = value;
+                NotifyPropertyChanged("LocalTaskSeriesIdForAdd");
             }
         }
 

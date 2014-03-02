@@ -335,18 +335,22 @@ namespace Mindsweep.ViewModels
 
                     if (localProject == null && !serverProject.Deleted)
                     {
+                        // Project exists on the server, but not locally.
                         AddProject(serverProject);
                     }
-                    else if (serverProject.Deleted)
+                    else if (localProject != null && serverProject.Deleted)
                     {
+                        // Project exists locally, but is marked deleted on the server.
                         mainDB.Projects.DeleteOnSubmit(localProject);
                     }
-                    else
+                    else if (localProject != null)
                     {
+                        // Project exists both locally and on the server
                         _SyncProject(localProject, serverProject);
                     } 
                 }
 
+                // Loop through projects that exist locally, but are not on the server
                 foreach (Project toDelete in mainDB.Projects.ToList().Except(response.Projects, new ProjectComparer()).ToList())
                 {
                     // Cheap way to avoid null task references...don't delete the project from the db if it has tasks.
@@ -573,10 +577,10 @@ namespace Mindsweep.ViewModels
 
         public string Timeline;
 
-        public void QueueRequest(string requestUri)
+        public void QueueRequest(string requestUri, string localTaskSeriesIdForAdd = null)
         {
             // Add a project to the data context.
-            mainDB.RequestQueue.InsertOnSubmit(new Request { RequestUri = requestUri, Requested = DateTime.UtcNow });
+            mainDB.RequestQueue.InsertOnSubmit(new Request { LocalTaskSeriesIdForAdd = localTaskSeriesIdForAdd, RequestUri = requestUri, Requested = DateTime.UtcNow });
 
             // Save changes to the database.
             mainDB.SubmitChanges();
@@ -659,13 +663,31 @@ namespace Mindsweep.ViewModels
             ProcessRequestQueue();
         }
 
+        public void Add(Task task)
+        {
+            task.Id = Guid.NewGuid().ToString();
+            task.Added = DateTime.UtcNow;
+            task.TaskSeries.Id = Guid.NewGuid().ToString();
+            task.TaskSeries.Created = DateTime.UtcNow;
+            task.TaskSeries.Modified = DateTime.UtcNow;
+            task.TaskSeries.Project = AllProjects.Where(Exp.IsInbox).FirstOrDefault();
+            task.TaskSeries.Source = "Mindsweep";
+
+            mainDB.Tasks.InsertOnSubmit(task);
+            mainDB.SubmitChanges();
+
+            LoadCollectionsFromDatabase();
+
+            QueueRequest(string.Format("{0}&list_id={1}&name={2}&parse={3}", RTM.URI_ADDTASK, task.TaskSeries.Project.Id, task.TaskSeries.Name, "0"), task.TaskSeries.Id);
+        }
+
         // Mark task completed.
         public void Complete(Task task)
         {
             task.Completed = DateTime.UtcNow;
             task.TaskSeries.Modified = DateTime.UtcNow;
 
-            // Handle repeat logic.
+            // TODO: Handle repeat logic.
 
             // Save changes to the database.
             mainDB.SubmitChanges();
@@ -714,15 +736,33 @@ namespace Mindsweep.ViewModels
         // Mark task as deleted.
         private void _Delete(Task task)
         {
-            task.Deleted = DateTime.UtcNow;
-            task.TaskSeries.Modified = DateTime.UtcNow;
+            // TODO: handle stop repeating.
 
-            // Save changes to the database.
+            bool hasBeenSynced = task.TaskSeries.Source != "Mindsweep";
+
+            if (hasBeenSynced)
+            {
+                task.Deleted = DateTime.UtcNow;
+                task.TaskSeries.Modified = DateTime.UtcNow;
+            }
+            else
+            {
+                var requestsToDelete = mainDB.RequestQueue.Where(q => q.LocalTaskSeriesIdForAdd == task.TaskSeries.Id).ToList();
+                var tasksToDelete = mainDB.Tasks.Where(t => t.TaskSeries.Id == task.TaskSeries.Id).ToList();
+                mainDB.RequestQueue.DeleteAllOnSubmit(requestsToDelete);
+                mainDB.Tasks.DeleteAllOnSubmit(tasksToDelete);
+                mainDB.TaskSeries.DeleteOnSubmit(task.TaskSeries);
+            }
+
             mainDB.SubmitChanges();
 
             LoadCollectionsFromDatabase();
 
-            QueueRequest(string.Format("{0}&list_id={1}&taskseries_id={2}&task_id={3}", RTM.URI_DELETETASK, task.TaskSeries.Project.Id, task.TaskSeries.Id, task.Id));
+            // If the task source is still mindsweep, it hasn't been synced with RTM yet. No need to request delete.
+            if (hasBeenSynced)
+            {
+                QueueRequest(string.Format("{0}&list_id={1}&taskseries_id={2}&task_id={3}", RTM.URI_DELETETASK, task.TaskSeries.Project.Id, task.TaskSeries.Id, task.Id));
+            }
         }
 
         public void ConfirmAndDeleteProject(Page page, Project project)

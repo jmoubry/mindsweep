@@ -1,29 +1,38 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mindsweep", "Mindsweep\Mindsweep.csproj", "{050DE0A9-A6B4-49F8-B034-8E4F1846843F}"
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 2
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://moubry.visualstudio.com/defaultcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Mindsweep\\Mindsweep.csproj
-		SccProjectName1 = Mindsweep
-		SccLocalPath1 = Mindsweep
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{050DE0A9-A6B4-49F8-B034-8E4F1846843F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{050DE0A9-A6B4-49F8-B034-8E4F1846843F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{050DE0A9-A6B4-49F8-B034-8E4F1846843F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{050DE0A9-A6B4-49F8-B034-8E4F1846843F}.Debug|ARM.ActiveCfg = Debug|ARM
+		{050DE0A9-A6B4-49F8-B034-8E4F1846843F}.Debug|ARM.Build.0 = Debug|ARM
+		{050DE0A9-A6B4-49F8-B034-8E4F1846843F}.Debug|ARM.Deploy.0 = Debug|ARM
+		{050DE0A9-A6B4-49F8-B034-8E4F1846843F}.Debug|x86.ActiveCfg = Debug|x86
+		{050DE0A9-A6B4-49F8-B034-8E4F1846843F}.Debug|x86.Build.0 = Debug|x86
+		{050DE0A9-A6B4-49F8-B034-8E4F1846843F}.Debug|x86.Deploy.0 = Debug|x86
 		{050DE0A9-A6B4-49F8-B034-8E4F1846843F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{050DE0A9-A6B4-49F8-B034-8E4F1846843F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{050DE0A9-A6B4-49F8-B034-8E4F1846843F}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{050DE0A9-A6B4-49F8-B034-8E4F1846843F}.Release|ARM.ActiveCfg = Release|ARM
+		{050DE0A9-A6B4-49F8-B034-8E4F1846843F}.Release|ARM.Build.0 = Release|ARM
+		{050DE0A9-A6B4-49F8-B034-8E4F1846843F}.Release|ARM.Deploy.0 = Release|ARM
+		{050DE0A9-A6B4-49F8-B034-8E4F1846843F}.Release|x86.ActiveCfg = Release|x86
+		{050DE0A9-A6B4-49F8-B034-8E4F1846843F}.Release|x86.Build.0 = Release|x86
+		{050DE0A9-A6B4-49F8-B034-8E4F1846843F}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
